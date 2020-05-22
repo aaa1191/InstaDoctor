@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="android.view.View"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/thankuimg"
+            android:layout_width="wrap_content"
+            android:layout_height="250dp"
+            android:src="@drawable/thankuimg"
+            android:layout_marginTop="200dp"
+            android:paddingEnd="@dimen/fourty"
+            android:paddingStart="@dimen/fourty"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/thankuscreentxt"
+            android:gravity="center"
+            android:textSize="@dimen/textsize_fourteen"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/thankuimg"
+            android:paddingStart="@dimen/ten"
+            android:paddingEnd="@dimen/ten"
+            android:layout_marginTop="@dimen/thirty"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dr. Willim is available"
+            android:gravity="center"
+            android:textSize="@dimen/textsize_fourteen"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt"
+            android:paddingStart="@dimen/ten"
+            android:paddingEnd="@dimen/ten"
+            />
+
+
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

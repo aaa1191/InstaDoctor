@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textSizeetn">18sp</dimen>
+    <dimen name="textsize_eight">8sp</dimen>
+    <dimen name="textsize_twoenty">20sp</dimen>
+    <dimen name="twoenty">20dp</dimen>
+    <dimen name="ten">10dp</dimen>
+    <dimen name="fifteen">15dp</dimen>
+    <dimen name="five">5dp</dimen>
+    <dimen name="textsize_twl">12sp</dimen>
+    <dimen name="textsize_ten">10sp</dimen>
+    <dimen name="textsize_etn">18sp</dimen>
+    <dimen name="textsize_sixteen">16sp</dimen>
+    <dimen name="textsize_twoentytwo">22sp</dimen>
+    <dimen name="thirty">30dp</dimen>
+    <dimen name="textsize_fourteen">14sp</dimen>
+    <dimen name="textsize_profilesubtext">12sp</dimen>
+    <dimen name="fifty">50dp</dimen>
+    <dimen name="contactLRmargin">20dp</dimen>
+    <dimen name="profilescreenheight">90dp</dimen>
+    <dimen name="fourtyfive">45dp</dimen>
+    <dimen name="viewheight">1dp</dimen>
+    <dimen name="selectwidth">64dp</dimen>
+    <dimen name="selectheight">35dp</dimen>
+    <dimen name="twoentyfive">25dp</dimen>
+    <dimen name="fourty">40dp</dimen>
+
+    <dimen name="leftarrowheight">36dp</dimen>
+    <dimen name="backarrowheight">26dp</dimen>
+    <dimen name="buttonheight">50dp</dimen>
+
+
+    <dimen name="otpwidth">50dp</dimen>
+    <dimen name="otpheight">70dp</dimen>
+
+    <dimen name="navigationimgsize">20dp</dimen>
+    <dimen name="navigationimgsizetop">13dp</dimen>
+    <dimen name="halffive">2.5dp</dimen>
+    <dimen name="drawertextsize">14sp</dimen>
+    <dimen name="drawermarginstart">20dp</dimen>
+    <dimen name="drawericonheight">24dp</dimen>
+    <dimen name="drawermargintop">15dp</dimen>
+    <dimen name="popsize">20dp</dimen>
+    <dimen name="tab_spacing_half">2dp</dimen>
+    <dimen name="two">2dp</dimen>
+    <dimen name="thirtyfive">35dp</dimen>
+    <dimen name="malefemaleimg">80dp</dimen>
+    <dimen name="patientdrableradius">6dp</dimen>
+    <dimen name="termconditioncardsize">50dp</dimen>
+    <dimen name="sixty">60dp</dimen>
+    <dimen name="seventy">70dp</dimen>
+    <dimen name="eight">8dp</dimen>
+    <dimen name="margintime">4dp</dimen>
+    <dimen name="timeheight">45dp</dimen>
+
+</resources>

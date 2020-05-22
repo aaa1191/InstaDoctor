@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="android.view.View"/>
+    </data>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/ten"
+        android:background="@android:color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/instadoctorimg"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/instadoctor"
+            android:layout_marginStart="@dimen/twoenty"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/notification"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/twoenty"
+            android:layout_marginEnd="@dimen/fifteen"
+            android:layout_marginStart="@dimen/ten"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/onlinedoctor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/onlinedoctor"
+            android:fontFamily="@font/poppin_reg"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/textsize_sixteen"
+            app:layout_constraintTop_toBottomOf="@+id/instadoctorimg"
+            android:layout_marginStart="@dimen/twoenty"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/onlinerecyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/onlinedoctor"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/offlinedoctor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/offlinedoctors"
+            android:fontFamily="@font/poppin_reg"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/five"
+            android:textSize="@dimen/textsize_sixteen"
+            app:layout_constraintTop_toBottomOf="@+id/onlinerecyclerview"
+            android:layout_marginStart="@dimen/twoenty"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/offlinerecyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/offlinedoctor"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/five"
+            />
+
+        <RelativeLayout
+            android:id="@+id/loginbtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/gradient_seedoctor"
+            app:layout_constraintTop_toBottomOf="@+id/offlinerecyclerview"
+            android:layout_marginStart="@dimen/fourtyfive"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/fourtyfive">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/seeadoctor"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/poppin_reg"
+                android:textSize="@dimen/textsize_sixteen"
+                android:textColor="@android:color/white"
+                />
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

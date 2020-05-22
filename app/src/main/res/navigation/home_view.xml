@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/home_view"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.softgates.instadoctor.home.HomeView"
+        android:label="HomeView" >
+
+        <action
+            android:id="@+id/action_home_to_doctorProfileFragment"
+            app:destination="@id/doctorProfileFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/doctorProfileFragment"
+        android:name="com.softgates.instadoctor.doctorprofile.DoctorProfileFragment"
+        android:label="DoctorProfileFragment" />
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.softgates.instadoctor.profile.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profile_to_termConditionFragment"
+            app:destination="@id/termConditionFragment" />
+        <action
+            android:id="@+id/action_profile_to_customerSupportView"
+            app:destination="@id/customerSupportView" />
+        <action
+            android:id="@+id/action_profile_to_passwordinformationView"
+            app:destination="@id/passwordinformationView" />
+        <action
+            android:id="@+id/action_profile_to_contactinformationView"
+            app:destination="@id/contactinformationView" />
+        <action
+            android:id="@+id/action_profile_to_seeDoctorView"
+            app:destination="@id/seeDoctorView" />
+        <action
+            android:id="@+id/action_profile_to_addPaymentView"
+            app:destination="@id/addPaymentView" />
+    </fragment>
+    <fragment
+        android:id="@+id/termConditionFragment"
+        android:name="com.softgates.instadoctor.termcondition.TermConditionFragment"
+        android:label="TermConditionFragment" >
+        <action
+            android:id="@+id/action_termConditionFragment_to_termUseView"
+            app:destination="@id/termUseView" />
+        <action
+            android:id="@+id/action_termConditionFragment_to_whoVisitView"
+            app:destination="@id/whoVisitView" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerSupportView"
+        android:name="com.softgates.instadoctor.customersuport.CustomerSupportView"
+        android:label="CustomerSupportView" />
+    <fragment
+        android:id="@+id/passwordinformationView"
+        android:name="com.softgates.instadoctor.passwordinformation.PasswordinformationView"
+        android:label="PasswordinformationView" />
+    <fragment
+        android:id="@+id/contactinformationView"
+        android:name="com.softgates.instadoctor.contactinformation.ContactinformationView"
+        android:label="ContactinformationView" />
+    <fragment
+        android:id="@+id/termUseView"
+        android:name="com.softgates.instadoctor.termuse.TermUseView"
+        android:label="TermUseView" />
+    <fragment
+        android:id="@+id/whoVisitView"
+        android:name="com.softgates.instadoctor.whovisit.WhoVisitView"
+        android:label="WhoVisitView" >
+        <action
+            android:id="@+id/action_whoVisitView_to_registerChildView"
+            app:destination="@id/registerChildView" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerChildView"
+        android:name="com.softgates.instadoctor.registerchild.RegisterChildView"
+        android:label="RegisterChildView" >
+        <action
+            android:id="@+id/action_registerChildView_to_feltWayView"
+            app:destination="@id/feltWayView" />
+    </fragment>
+    <fragment
+        android:id="@+id/feltWayView"
+        android:name="com.softgates.instadoctor.feltway.FeltWayView"
+        android:label="FeltWayView" >
+        <action
+            android:id="@+id/action_feltWayView_to_anyMedicineView"
+            app:destination="@id/anyMedicineView" />
+    </fragment>
+    <fragment
+        android:id="@+id/anyMedicineView"
+        android:name="com.softgates.instadoctor.anymedicine.AnyMedicineView"
+        android:label="AnyMedicineView" >
+        <action
+            android:id="@+id/action_anyMedicineView_to_anyDrugAllergyView"
+            app:destination="@id/anyDrugAllergyView" />
+    </fragment>
+    <fragment
+        android:id="@+id/anyDrugAllergyView"
+        android:name="com.softgates.instadoctor.anydrugallergy.AnyDrugAllergyView"
+        android:label="AnyDrugAllergyView" >
+        <action
+            android:id="@+id/action_anyDrugAllergyView_to_weightHeightView"
+            app:destination="@id/weightHeightView" />
+    </fragment>
+    <fragment
+        android:id="@+id/weightHeightView"
+        android:name="com.softgates.instadoctor.weightheightview.WeightHeightView"
+        android:label="WeightHeightView" />
+    <fragment
+        android:id="@+id/seeDoctorView"
+        android:name="com.softgates.instadoctor.seecdoctor.SeeDoctorView"
+        android:label="SeeDoctorView" >
+        <action
+            android:id="@+id/action_seeDoctorView_to_scheduleAppointmentView"
+            app:destination="@id/scheduleAppointmentView" />
+    </fragment>
+    <fragment
+        android:id="@+id/scheduleAppointmentView"
+        android:name="com.softgates.instadoctor.scheduleappointment.ScheduleAppointmentView"
+        android:label="ScheduleAppointmentView" >
+        <action
+            android:id="@+id/action_scheduleAppointmentView_to_thankuScreenView"
+            app:destination="@id/thankuScreenView" />
+    </fragment>
+    <fragment
+        android:id="@+id/thankuScreenView"
+        android:name="com.softgates.instadoctor.thankuview.ThankuScreenView"
+        android:label="ThankuScreenView" />
+    <fragment
+        android:id="@+id/addPaymentView"
+        android:name="com.softgates.instadoctor.addpayment.AddPaymentView"
+        android:label="AddPaymentView" />
+
+</navigation>

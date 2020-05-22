@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/saleviewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </androidx.viewpager.widget.ViewPager>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/skip"
+        android:textColor="@color/darkgreen"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/twoenty"
+        android:fontFamily="@font/poppin_reg"
+        android:textSize="@dimen/textsize_sixteen"
+        android:layout_marginTop="@dimen/thirty"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/nextbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+        android:textColor="@color/darkgreen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="@dimen/thirty"
+        android:fontFamily="@font/poppin_reg"
+        android:textSize="@dimen/textsize_sixteen"
+        android:layout_marginTop="@dimen/thirty"
+        />
+
+    <LinearLayout
+        android:id="@+id/saleslider"
+        android:orientation="horizontal"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/ten"
+        android:layout_gravity="bottom"
+        app:layout_constraintBottom_toTopOf="@+id/nextbtn"
+        android:layout_marginBottom="@dimen/thirty"
+        android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

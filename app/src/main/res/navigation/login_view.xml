@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/login_view"
+    app:startDestination="@id/loginView">
+
+
+    <fragment
+        android:id="@+id/loginView"
+        android:name="com.softgates.instadoctor.loginview.LoginView"
+        android:label="LoginView" >
+        <action
+            android:id="@+id/action_loginView_to_createAccountView"
+            app:destination="@id/createAccountView" />
+        <action
+            android:id="@+id/action_loginView_to_recoverPasswordView"
+            app:destination="@id/recoverPasswordView" />
+    </fragment>
+    <fragment
+        android:id="@+id/createAccountView"
+        android:name="com.softgates.instadoctor.createaccount.CreateAccountView"
+        android:label="CreateAccountView" />
+    <fragment
+        android:id="@+id/recoverPasswordView"
+        android:name="com.softgates.instadoctor.recoverpassword.RecoverPasswordView"
+        android:label="RecoverPasswordView" />
+</navigation>
