@@ -52,5 +52,6 @@
     <dimen name="eight">8dp</dimen>
     <dimen name="margintime">4dp</dimen>
     <dimen name="timeheight">45dp</dimen>
+    <dimen name="eighty">80dp</dimen>
 
 </resources>

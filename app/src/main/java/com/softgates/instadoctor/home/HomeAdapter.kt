@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.softgates.instadoctor.databinding.HomeListviewBinding
-import com.softgates.instadoctor.network.HomeList
+import com.softgates.instadoctor.network.DoctorList
 
-class HomeAdapter (private val onClickListener: OnClick ) :  ListAdapter<HomeList, RecyclerView.ViewHolder>(completeListDiffCallback()) {
+class HomeAdapter (private val onClickListener: OnClick ) :  ListAdapter<DoctorList, RecyclerView.ViewHolder>(completeListDiffCallback()) {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as HomeAdapter.ViewHolder).bind(getItem(position)!!,onClickListener,position)
@@ -24,7 +24,7 @@ class HomeAdapter (private val onClickListener: OnClick ) :  ListAdapter<HomeLis
 
     class ViewHolder private constructor(val binding: HomeListviewBinding) : RecyclerView.ViewHolder(binding.root){
 
-        fun bind(item: HomeList, clickListener: OnClick, position:Int) {
+        fun bind(item: DoctorList, clickListener: OnClick, position:Int) {
            binding.viewModel = item
             binding.index = position
                binding.clickListener = clickListener
@@ -41,18 +41,18 @@ class HomeAdapter (private val onClickListener: OnClick ) :  ListAdapter<HomeLis
     }
 }
 
-class OnClick(val clickListener: (marsProperty: HomeList, type:Int, index:Int) -> Unit) {
-    fun onView(marsProperty: HomeList, index:Int) = clickListener(marsProperty,1,index)
-    fun onDesc(marsProperty: HomeList, index:Int) = clickListener(marsProperty,2,index)
+class OnClick(val clickListener: (marsProperty: DoctorList, type:Int, index:Int) -> Unit) {
+    fun onView(marsProperty: DoctorList, index:Int) = clickListener(marsProperty,1,index)
+    fun onDesc(marsProperty: DoctorList, index:Int) = clickListener(marsProperty,2,index)
 }
 
-class completeListDiffCallback : DiffUtil.ItemCallback<HomeList>() {
+class completeListDiffCallback : DiffUtil.ItemCallback<DoctorList>() {
 
-    override fun areItemsTheSame(oldItem: HomeList, newItem: HomeList): Boolean {
+    override fun areItemsTheSame(oldItem: DoctorList, newItem: DoctorList): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: HomeList, newItem: HomeList): Boolean {
+    override fun areContentsTheSame(oldItem: DoctorList, newItem: DoctorList): Boolean {
         return oldItem == newItem
     }
 }

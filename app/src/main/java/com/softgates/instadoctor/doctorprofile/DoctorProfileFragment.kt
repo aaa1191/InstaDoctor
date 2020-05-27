@@ -3,6 +3,7 @@ package com.softgates.instadoctor.doctorprofile
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
 import com.softgates.instadoctor.databinding.DoctorprofilefragmentBinding
+import com.softgates.instadoctor.network.DoctorList
 
 class DoctorProfileFragment : Fragment() {
 
@@ -22,7 +24,7 @@ class DoctorProfileFragment : Fragment() {
     private lateinit var vi: View
     lateinit var linearLayoutManager: LinearLayoutManager
     lateinit var sharedPreferences: SharedPreferences
-
+    lateinit var doctorlist:DoctorList
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,10 +33,11 @@ class DoctorProfileFragment : Fragment() {
         //   vi = inflater.inflate(R.layout.fragment_registration_first,container,false)
         binding = DataBindingUtil.inflate<DoctorprofilefragmentBinding>(
             inflater, R.layout.doctorprofilefragment, container, false)
-
+        doctorlist = DoctorProfileFragmentArgs.fromBundle(arguments!!).doctorlist as DoctorList
+        Log.e("RESPONSEDOCTOR","doctorlist....."+doctorlist.toString())
         sharedPreferences =   (activity as AppCompatActivity).getSharedPreferences("dd", Context.MODE_PRIVATE)
         val application = requireNotNull(this.activity).application
-        val viewModelFactory = DoctorProfileViewModelFactory(sharedPreferences, application)
+        val viewModelFactory = DoctorProfileViewModelFactory(sharedPreferences, application,doctorlist)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(DoctorProfileViewModel::class.java)
         linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.ratingrecyclerview?.setLayoutManager(linearLayoutManager)
@@ -43,12 +46,13 @@ class DoctorProfileFragment : Fragment() {
 
         })
 
-        viewModel.GetVerblist.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+        viewModel.GetRatinglist.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             adapter.submitList(it)
             adapter.notifyDataSetChanged()
         })
 
         binding.ratingrecyclerview?.adapter = adapter
+        binding.viewModel = viewModel
         return  binding.root
     }
 

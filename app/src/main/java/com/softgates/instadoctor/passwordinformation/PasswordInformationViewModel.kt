@@ -121,10 +121,8 @@ class PasswordInformationViewModel (val sharedPreferences: SharedPreferences,
 
     fun changepasswordApi()
     {
-
         var token=sharedPreferences.getString(Constant.USERTOKEN,"")
         var email=sharedPreferences.getString(Constant.USERTOKEN,"")
-
         if(!Constant.connected(context))
         {
             _message.value= context.resources.getString(R.string.nointernet)

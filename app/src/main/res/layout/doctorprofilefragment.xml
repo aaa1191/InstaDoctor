@@ -4,7 +4,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <import type="android.view.View"/>
-
+        <variable
+            name="viewModel"
+            type="com.softgates.instadoctor.doctorprofile.DoctorProfileViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -47,13 +49,12 @@
 
                 <ImageView
                     android:id="@+id/imageview"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/ten"
-                    android:src="@drawable/doctor"
-                    android:padding="@dimen/twoenty"
-                    android:background="@drawable/profileimg"
+                    android:scaleType="fitXY"
+                    app:imageFromUrl="@{viewModel.doctorlist.doc_image_link}"                    android:background="@drawable/profileimg"
                     app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -61,13 +62,13 @@
                     android:id="@+id/username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="@dimen/twoentyfive"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/poppin_reg"
-                    android:text="Dr. William Jones"
+                    android:text="@{`Dr. `+viewModel.doctorlist.doc_name}"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textsize_fourteen"
-                    android:textStyle="normal"
+                    android:textSize="@dimen/textsize_sixteen"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/imageview"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,30 +76,30 @@
                     android:id="@+id/activedeactiveview"
                     android:layout_width="8dp"
                     android:layout_height="8dp"
-                    android:background="@drawable/offline_dr"
                     app:layout_constraintTop_toTopOf="@+id/username"
                     app:layout_constraintBottom_toBottomOf="@+id/username"
                     app:layout_constraintStart_toEndOf="@+id/username"
-                    android:layout_marginStart="@dimen/five"
+                    android:layout_marginStart="@dimen/fifteen"
+                    app:statuscolor="@{viewModel.doctorlist.doc_online_status}"
                     />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/profession"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="MBSS, FCPC, MF, MACP"
+                    android:layout_marginStart="@dimen/twoentyfive"
+                    android:text="@{viewModel.doctorlist.doc_education}"
                     android:textSize="@dimen/textsize_fourteen"
                     app:layout_constraintStart_toEndOf="@+id/imageview"
                     app:layout_constraintTop_toBottomOf="@+id/username" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="130dp"
-                    android:layout_height="30dp"
+                    android:layout_height="25dp"
                     app:cardBackgroundColor="@color/yellow"
                     app:cardCornerRadius="@dimen/five"
                     android:layout_marginTop="@dimen/five"
-                    android:layout_marginStart="@dimen/ten"
+                    android:layout_marginStart="@dimen/twoentyfive"
                     app:layout_constraintTop_toBottomOf="@+id/profession"
                     app:layout_constraintStart_toEndOf="@+id/imageview"
                     >
@@ -106,10 +107,10 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/venereology"
+                        android:text="@{viewModel.doctorlist.doc_specialty}"
                         android:textColor="@android:color/white"
                         android:layout_gravity="center"
-                        android:textSize="@dimen/textsize_ten"
+                        android:textSize="@dimen/textsize_twl"
                         />
 
                 </androidx.cardview.widget.CardView>
@@ -117,8 +118,8 @@
                 <LinearLayout
                     android:id="@+id/patientratinglayout"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_marginTop="@dimen/ten"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="@dimen/twoentyfive"
                     app:layout_constraintTop_toBottomOf="@+id/imageview">
 
                     <FrameLayout
@@ -126,7 +127,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:elevation="0dp"
-
                         android:background="@drawable/patient_drawable"
                         >
 
@@ -147,7 +147,7 @@
                             android:layout_gravity="center|bottom"
                             android:layout_marginBottom="@dimen/ten"
                             android:fontFamily="@font/poppin_reg"
-                            android:text="1.2 K"
+                            android:text="@{viewModel.doctorlist.total_patient_attended}"
                             android:textColor="@color/yellow"
                             android:textSize="@dimen/textsize_etn"
                                android:textStyle="bold" />
@@ -177,7 +177,7 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="4.9"
+                            android:text="@{viewModel.doctorlist.avg_rating}"
                             android:textColor="@color/darkgreen"
                             android:fontFamily="@font/poppin_reg"
                             android:textStyle="bold"
@@ -209,7 +209,7 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="3 Yr"
+                            android:text="@{viewModel.doctorlist.doc_exp+` yr`}"
                             android:textColor="@color/yellow"
                             android:fontFamily="@font/poppin_reg"
                             android:textStyle="bold"
@@ -217,6 +217,7 @@
                             android:layout_marginBottom="@dimen/ten"
                             android:layout_gravity="center|bottom"
                             />
+
                     </FrameLayout>
 
 
@@ -225,8 +226,8 @@
                 <LinearLayout
                     android:id="@+id/availablecheckuplayout"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_marginTop="@dimen/ten"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="@dimen/twoenty"
                     app:layout_constraintTop_toBottomOf="@+id/patientratinglayout">
 
                     <FrameLayout
@@ -252,7 +253,7 @@
                             android:layout_gravity="center|bottom"
                             android:layout_marginBottom="@dimen/ten"
                             android:fontFamily="@font/poppin_reg"
-                            android:text="10:00 AM-08:00 PM"
+                            android:text="@{viewModel.doctorlist.today_timing}"
                             android:textColor="@color/darkgreen"
                             android:textSize="@dimen/textsize_fourteen"
                             android:textStyle="bold" />
@@ -281,7 +282,7 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="AED 80"
+                            android:text="@{`AED `+viewModel.doctorlist.doc_fee}"
                             android:textColor="@color/darkgray"
                             android:fontFamily="@font/poppin_reg"
                             android:textStyle="bold"
@@ -312,7 +313,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@+id/biographytxt"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:text="Loreum ipsum dolor sit amet, consecturer adipiscing elit,sed do eiusmod tempor incididunt labour dolore magne aliqua  Ut"
+                    android:text="@{viewModel.doctorlist.doc_message}"
                     android:textColor="@color/darkgray"
                     android:textSize="@dimen/textsize_sixteen"
                     android:layout_marginTop="@dimen/ten"

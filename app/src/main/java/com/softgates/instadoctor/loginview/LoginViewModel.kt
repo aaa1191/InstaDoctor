@@ -41,15 +41,9 @@ class LoginViewModel (val sharedPreferences: SharedPreferences,
     val navigateActivity : LiveData<Int?>
         get() = _navigateActivity
 
-
     private val _password = MutableLiveData<String>()
     val password : LiveData<String?>
         get() = _password
-
-
-
-
-
 
     init {
         _email.value="mk@gmail.com"
@@ -61,6 +55,7 @@ class LoginViewModel (val sharedPreferences: SharedPreferences,
     fun complete() {
 
     }
+
     fun onTextChangedEmail(s: CharSequence, start: Int, before: Int, count: Int) {
         if(!s.toString().isEmpty())
         {

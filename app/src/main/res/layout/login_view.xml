@@ -68,16 +68,21 @@
         android:layout_marginStart="@dimen/fourty"
         android:layout_marginEnd="@dimen/fourty"
         android:fontFamily="@font/poppin_reg"
-        android:theme="@style/TextLabel"
+        app:errorEnabled="true"
+        app:hintTextAppearance="@style/HintInputTextAppearance"
+        app:errorTextAppearance="@style/ErrorTextAppearance"
         android:textSize="@dimen/textsize_fourteen"
-        android:hint="@string/emailaddress">
+        android:hint="@string/emailaddress"
+        android:textColorHint="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppin_reg"
             android:textColor="@color/black"
             android:textSize="@dimen/textsize_fourteen"
+            android:textAppearance="@style/InputTextAppearance"
             android:text="@{viewModel.email}"
             android:onTextChanged="@{viewModel.onTextChangedEmail}"
             />
@@ -91,25 +96,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/emailedittxt"
-        android:layout_marginTop="@dimen/ten"
         android:layout_marginStart="@dimen/fourty"
         android:layout_marginEnd="@dimen/fourty"
         android:fontFamily="@font/poppin_reg"
         android:textSize="@dimen/textsize_fourteen"
-        android:theme="@style/TextLabel"
-        android:hint="@string/password">
+        app:errorEnabled="true"
+        app:hintTextAppearance="@style/HintInputTextAppearance"
+        app:errorTextAppearance="@style/ErrorTextAppearance"
+        android:hint="@string/password"
+        android:textColorHint="@color/black">
 
-        <com.google.android.material.textfield.TextInputEditText
+
+    <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:fontFamily="@font/poppin_reg"
             android:textSize="@dimen/textsize_fourteen"
+            android:textAppearance="@style/InputTextAppearance"
             android:text="@{viewModel.password}"
             android:onTextChanged="@{viewModel.onTextChangedPassword}"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+<!--
+    android:onClick="@{()-> viewModel.login()}"
+-->
+
 
     <RelativeLayout
         android:id="@+id/loginbtn"
@@ -120,7 +135,6 @@
         android:background="@drawable/gradient_loginbtn"
         android:layout_marginStart="@dimen/fourtyfive"
         android:layout_marginTop="@dimen/twoenty"
-        android:onClick="@{()-> viewModel.login()}"
         android:layout_marginEnd="@dimen/fourtyfive">
 
         <androidx.appcompat.widget.AppCompatTextView

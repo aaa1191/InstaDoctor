@@ -7,8 +7,6 @@
             <variable
                 name="viewModel"
                 type="com.softgates.instadoctor.createaccount.CreateAccountViewModel" />
-
-
     </data>
     <ScrollView
         android:layout_width="match_parent"
@@ -110,6 +108,13 @@
 
     </LinearLayout>
 
+<!--
+    android:theme="@style/TextLabel"
+
+            android:theme="@style/TextLabel"
+
+-->
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameedittxt"
         android:layout_width="match_parent"
@@ -118,19 +123,24 @@
         android:layout_marginTop="@dimen/twoenty"
         android:fontFamily="@font/poppin_reg"
         android:textSize="@dimen/textsize_sixteen"
-        android:theme="@style/TextLabel"
+        app:errorEnabled="true"
+        android:maxHeight="50dp"
+        app:errorTextAppearance="@style/ErrorTextAppearance"
+        app:hintTextAppearance="@style/HintInputTextAppearance"
         android:layout_marginStart="@dimen/fifteen"
         android:layout_marginEnd="@dimen/fifteen"
-        android:hint="@string/name">
+        android:hint="@string/name"
+        android:textColorHint="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppin_reg"
-            android:textSize="@dimen/textsize_sixteen"
-            android:text="@{viewModel.name}"
+            android:textAppearance="@style/InputTextAppearance"
             android:onTextChanged="@{viewModel.onTextChangedName}"
-            />
+            android:text="@{viewModel.name}"
+            android:textSize="@dimen/textsize_sixteen" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -139,19 +149,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/nameedittxt"
-        android:layout_marginTop="@dimen/ten"
         android:fontFamily="@font/poppin_reg"
         android:textSize="@dimen/textsize_sixteen"
-        android:theme="@style/TextLabel"
+        app:errorEnabled="true"
+        app:hintTextAppearance="@style/HintInputTextAppearance"
+        app:errorTextAppearance="@style/ErrorTextAppearance"
         android:layout_marginStart="@dimen/fifteen"
         android:layout_marginEnd="@dimen/fifteen"
-        android:hint="@string/emailaddress">
+        android:hint="@string/emailaddress"
+        android:textColorHint="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppin_reg"
             android:textSize="@dimen/textsize_sixteen"
+            android:textAppearance="@style/InputTextAppearance"
             android:text="@{viewModel.email}"
             android:onTextChanged="@{viewModel.onTextChangedEmail}"
             />
@@ -184,16 +198,21 @@
         android:layout_marginStart="@dimen/fifteen"
         android:layout_marginEnd="@dimen/fifteen"
         android:textSize="@dimen/textsize_sixteen"
+        app:errorEnabled="true"
+        app:hintTextAppearance="@style/HintInputTextAppearance"
+        app:errorTextAppearance="@style/ErrorTextAppearance"
         android:fontFamily="@font/poppin_reg"
-        android:theme="@style/TextLabel"
-        android:hint="@string/password">
+        android:hint="@string/password"
+        android:textColorHint="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:fontFamily="@font/poppin_reg"
             android:textSize="@dimen/textsize_sixteen"
+            android:textAppearance="@style/InputTextAppearance"
             android:text="@{viewModel.password}"
             android:onTextChanged="@{viewModel.onTextChangedPassword}"
             />
@@ -257,6 +276,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+<!--
+    android:onClick="@{()-> viewModel.register()}"
+-->
 
     <RelativeLayout
         android:id="@+id/createaccount"
@@ -266,7 +288,6 @@
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/gradient_create_account"
         android:layout_marginTop="@dimen/twoenty"
-        android:onClick="@{()-> viewModel.register()}"
         android:layout_marginStart="@dimen/twoenty"
         android:layout_marginEnd="@dimen/twoenty">
 

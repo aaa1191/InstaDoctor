@@ -24,11 +24,18 @@
     </style>
 
 
+    <style name="blackNoactionbar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/black</item>
+
+    </style>
+
     <style name="TextLabel" parent="TextAppearance.AppCompat">
         <!-- Hint color and label color in FALSE state -->
         <item name="android:textColorHint">@color/black</item>
         <item name="android:textSize">20sp</item>
-
         <item name="android:keyTextSize">18sp</item>
 
         <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
@@ -36,6 +43,30 @@
         <item name="colorControlNormal">@color/black</item>
         <item name="colorControlActivated">@color/black</item>
     </style>
+
+    <style name="HintInputTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="colorAccent">@color/black</item>
+        <item name="android:textColorHint">@color/black</item>
+        <item name="colorControlNormal">@color/black</item>
+
+    </style>
+
+   <style name="InputTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@color/black</item>
+        <item name="android:textSize">20sp</item>
+        <item name="colorAccent">@color/black</item>
+       <item name="colorControlNormal">@color/black</item>
+   </style>
+    <style name="ErrorTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">#ffff0000</item>
+        <item name="android:textColorHint">#ffff0000</item>
+        <item name="android:textSize">10sp</item>
+        <item name="colorAccent">#ffff0000</item>
+    </style>
+
 
     <style name="TextLabelblue" parent="TextAppearance.AppCompat">
         <!-- Hint color and label color in FALSE state -->

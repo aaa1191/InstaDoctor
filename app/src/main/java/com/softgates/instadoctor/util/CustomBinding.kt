@@ -1,10 +1,18 @@
 package com.softgates.myapplication.util
 
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowInsets
+import android.widget.ImageView
+import android.widget.RatingBar
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.view.updateLayoutParams
 import androidx.databinding.BindingAdapter
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.softgates.instadoctor.R
 
 
 @BindingAdapter("layoutFullscreen")
@@ -14,6 +22,70 @@ fun View.bindLayoutFullscreen(previousFullscreen: Boolean, fullscreen: Boolean) 
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
                 View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
     }
+}
+
+@BindingAdapter("imageFromUrl")
+fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
+    if (!imageUrl.isNullOrEmpty()) {
+        Log.e("CHECKDATA","ondata is called...."+imageUrl.toString())
+        Glide.with(view.context)
+            .load(imageUrl)
+            .transition(DrawableTransitionOptions.withCrossFade()).circleCrop()
+            .into(view)
+    }
+}
+
+@BindingAdapter("setRating")
+fun bindsetRating(view: RatingBar, rating: String?) {
+    if (!rating.isNullOrEmpty()) {
+        Log.e("RATINGBAR","rating......"+rating.toString())
+      // var ratingbar= rating.toString().toInt()
+        val ratingbar: Float? =rating.toString().toFloat()
+
+        view.rating=ratingbar!!.toFloat()
+    }
+}
+
+@BindingAdapter("statuscolor")
+fun bindstatuscolor(view: View, statusType: String?) {
+    Log.e("STATUSTYPE","addlImage...."+statusType)
+    if(statusType.equals("1"))
+    {
+      //  view.setBackgroundColor(ContextCompat.getColor(view.context, R.color.green))
+        view.setBackgroundResource(R.drawable.online_dr)
+    }
+    else if(statusType.equals("2"))
+    {
+     //   view.setBackgroundColor(ContextCompat.getColor(view.context, R.color.yellow))
+        view.setBackgroundResource(R.drawable.busy_dr)
+    }
+    else if(statusType.equals("0"))
+    {
+        view.setBackgroundResource(R.drawable.offline_dr)
+     //   view.setBackgroundColor(ContextCompat.getColor(view.context, R.color.red))
+    }
+    //context.resources.getString(R.string.nointernet)
+}
+
+@BindingAdapter("statustxt")
+fun bindstatustxt(view: TextView, statusType: String?) {
+    Log.e("STATUSTYPE","addlImage...."+statusType)
+    if(statusType.equals("1"))
+    {
+        //  view.setBackgroundColor(ContextCompat.getColor(view.context, R.color.green))
+        view.text ="Active"
+    }
+    else if(statusType.equals("2"))
+    {
+        //   view.setBackgroundColor(ContextCompat.getColor(view.context, R.color.yellow))
+        view.text ="Busy"
+    }
+    else if(statusType.equals("0"))
+    {
+        view.text ="Offline"
+        //   view.setBackgroundColor(ContextCompat.getColor(view.context, R.color.red))
+    }
+    //context.resources.getString(R.string.nointernet)
 }
 
 /*

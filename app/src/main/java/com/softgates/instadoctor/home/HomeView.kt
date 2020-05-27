@@ -7,14 +7,21 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
+import com.softgates.instadoctor.activity.HomeActivity
+import com.softgates.instadoctor.activity.LoginActivity
 import com.softgates.instadoctor.databinding.HomeViewBinding
+import com.softgates.instadoctor.network.DoctorList
+import com.softgates.instadoctor.util.ApiStatus
+import com.softgates.instadoctor.util.ProgressDialog
 
 class HomeView: Fragment() {
 
@@ -25,6 +32,7 @@ class HomeView: Fragment() {
     lateinit var linearLayoutManager: LinearLayoutManager
     lateinit var offlinelinearLayoutManager: LinearLayoutManager
     lateinit var sharedPreferences: SharedPreferences
+    private lateinit var loader: ProgressDialog
 
 
     override fun onCreateView(
@@ -50,23 +58,76 @@ class HomeView: Fragment() {
             if(type==1)
             {
 
-                this.findNavController().navigate(
+                val action = HomeViewDirections.actionHomeToDoctorProfileFragment()
+                action.doctorlist = data as DoctorList
+                NavHostFragment.findNavController(this).navigate(action)
+
+            /*    this.findNavController().navigate(
                     //  CategoryViewDirections.actionCategoryView2ToSubCategoryView())
-                    HomeViewDirections.actionHomeToDoctorProfileFragment())
+                    HomeViewDirections.actionHomeToDoctorProfileFragment())*/
                 viewModel.complete()
             }
         })
 
-        viewModel.GetVerblist.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+        val offlineadapter = HomeAdapter(OnClick { data, type, position ->
+            Log.e("CHECKDATA","checkdata is called....called..called")
+            if(type==1)
+            {
+                Log.e("DOCTORLIST","doctorlist is...."+data.toString())
+                val action = HomeViewDirections.actionHomeToDoctorProfileFragment()
+                action.doctorlist = data as DoctorList
+                NavHostFragment.findNavController(this).navigate(action)
+              /*  this.findNavController().navigate(
+                    //  CategoryViewDirections.actionCategoryView2ToSubCategoryView())
+                    HomeViewDirections.actionHomeToDoctorProfileFragment())*/
+                viewModel.complete()
+            }
+        })
+
+        viewModel.GetOnlinelist.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             adapter.submitList(it)
             adapter.notifyDataSetChanged()
         })
+
+        viewModel.GetOfflinelist.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            offlineadapter.submitList(it)
+            offlineadapter.notifyDataSetChanged()
+        })
+
+
         binding.onlinerecyclerview?.adapter = adapter
-        binding.offlinerecyclerview?.adapter = adapter
+        binding.offlinerecyclerview?.adapter = offlineadapter
+
+        viewModel.message.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            Toast.makeText(activity as AppCompatActivity,it.toString(), Toast.LENGTH_SHORT).show()
+        })
+        viewModel.status.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            when (it) {
+                ApiStatus.LOADING -> {
+                    loader.setLoading(true)
+                }
+                ApiStatus.ERROR -> {
+                    loader.setLoading(false)
+                }
+                ApiStatus.DONE -> {
+                    loader.setLoading(false)
+                }
+            }
+        })
+
+        binding.loginbtn.setOnClickListener {
+
+            (activity as HomeActivity).loginView()
+
+        }
+
+        binding.viewModel = viewModel
         return  binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        loader = ProgressDialog(view.context)
     }
+
 }

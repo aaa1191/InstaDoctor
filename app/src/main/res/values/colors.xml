@@ -6,18 +6,19 @@
 
     <color name="black">#000000</color>
     <color name="yellow">#FFAB2E</color>
-    <color name="yellowopacity">#80FFAB2E</color>
+    <color name="yellowopacity">#ffe9c7</color>
 <!--
     <color name="yellows">#05DAAA</color>
 -->
     <color name="green">#05DAAA</color>
     <color name="darkgreen">#089675</color>
-    <color name="darkgreenopacity">#80089675</color>
+    <color name="darkgreenopacity">#e1f6ef</color>
     <color name="darkgray">#9E9E9E</color>
-    <color name="darkgrayopacity">#339E9E9E</color>
+    <color name="darkgrayopacity">#f9fbfc</color>
     <color name="gray">#E0E0E0</color>
     <color name="fbbg">#F7F9F8</color>
     <color name="blue">#23D5ED</color>
+    <color name="red">#d50000</color>
     <color name="Black0Percent">#D9000000</color>
 
 </resources>

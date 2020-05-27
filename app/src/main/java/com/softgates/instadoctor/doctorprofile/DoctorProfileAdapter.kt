@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.softgates.instadoctor.databinding.DoctorprofileratingListBinding
-import com.softgates.instadoctor.network.HomeList
+import com.softgates.instadoctor.network.DoctorReviewList
 
-class DoctorProfileAdapter (private val onClickListener: OnClick ) :  ListAdapter<HomeList, RecyclerView.ViewHolder>(completeListDiffCallback()) {
+class DoctorProfileAdapter (private val onClickListener: OnClick ) :  ListAdapter<DoctorReviewList, RecyclerView.ViewHolder>(completeListDiffCallback()) {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as DoctorProfileAdapter.ViewHolder).bind(getItem(position)!!,onClickListener,position)
@@ -23,8 +23,8 @@ class DoctorProfileAdapter (private val onClickListener: OnClick ) :  ListAdapte
 
     class ViewHolder private constructor(val binding: DoctorprofileratingListBinding) : RecyclerView.ViewHolder(binding.root){
 
-        fun bind(item: HomeList, clickListener: OnClick, position:Int) {
-            // binding.viewModel = item
+        fun bind(item: DoctorReviewList, clickListener: OnClick, position:Int) {
+            binding.viewModel = item
             binding.index = position
             //   binding.clickListener = clickListener
             binding.executePendingBindings()
@@ -40,18 +40,18 @@ class DoctorProfileAdapter (private val onClickListener: OnClick ) :  ListAdapte
     }
 }
 
-class OnClick(val clickListener: (marsProperty: HomeList, type:Int, index:Int) -> Unit) {
-    fun onRenew(marsProperty: HomeList, index:Int) = clickListener(marsProperty,1,index)
-    fun onDesc(marsProperty: HomeList, index:Int) = clickListener(marsProperty,2,index)
+class OnClick(val clickListener: (marsProperty: DoctorReviewList, type:Int, index:Int) -> Unit) {
+    fun onRenew(marsProperty: DoctorReviewList, index:Int) = clickListener(marsProperty,1,index)
+    fun onDesc(marsProperty: DoctorReviewList, index:Int) = clickListener(marsProperty,2,index)
 }
 
-class completeListDiffCallback : DiffUtil.ItemCallback<HomeList>() {
+class completeListDiffCallback : DiffUtil.ItemCallback<DoctorReviewList>() {
 
-    override fun areItemsTheSame(oldItem: HomeList, newItem: HomeList): Boolean {
-        return oldItem.id == newItem.id
+    override fun areItemsTheSame(oldItem: DoctorReviewList, newItem: DoctorReviewList): Boolean {
+        return oldItem.patient_name == newItem.patient_name
     }
 
-    override fun areContentsTheSame(oldItem: HomeList, newItem: HomeList): Boolean {
+    override fun areContentsTheSame(oldItem: DoctorReviewList, newItem: DoctorReviewList): Boolean {
         return oldItem == newItem
     }
 }

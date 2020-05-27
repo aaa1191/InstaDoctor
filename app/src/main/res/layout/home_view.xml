@@ -4,20 +4,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.softgates.instadoctor.home.HomeViewModel" />
     </data>
-    <androidx.core.widget.NestedScrollView
+  <!--  <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingBottom="@dimen/ten"
-        android:background="@android:color/white">
+        android:background="@android:color/white">-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white">
-
-
-
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/instadoctorimg"
@@ -49,6 +50,7 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="@dimen/textsize_sixteen"
+            android:layout_marginTop="@dimen/ten"
             app:layout_constraintTop_toBottomOf="@+id/instadoctorimg"
             android:layout_marginStart="@dimen/twoenty"
             app:layout_constraintStart_toStartOf="parent"
@@ -88,14 +90,13 @@
 
         <RelativeLayout
             android:id="@+id/loginbtn"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
             app:layout_constraintStart_toStartOf="parent"
-            android:background="@drawable/gradient_seedoctor"
-            app:layout_constraintTop_toBottomOf="@+id/offlinerecyclerview"
-            android:layout_marginStart="@dimen/fourtyfive"
-            android:layout_marginTop="@dimen/ten"
-            android:layout_marginEnd="@dimen/fourtyfive">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/gradient_seedoctor" android:layout_marginTop="@dimen/ten"
+            android:layout_marginBottom="@dimen/thirty">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
@@ -104,12 +105,17 @@
                 android:layout_centerInParent="true"
                 android:fontFamily="@font/poppin_reg"
                 android:textSize="@dimen/textsize_sixteen"
+                android:paddingStart="@dimen/eighty"
+                android:paddingEnd="@dimen/eighty"
+                android:textStyle="bold"
                 android:textColor="@android:color/white"
                 />
 
         </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+<!--
     </androidx.core.widget.NestedScrollView>
+-->
 
 </layout>

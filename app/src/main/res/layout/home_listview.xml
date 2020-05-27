@@ -7,7 +7,7 @@
         <variable name="index" type="int" />
 
         <variable name="viewModel"
-            type="com.softgates.instadoctor.network.HomeList"
+            type="com.softgates.instadoctor.network.DoctorList"
             />
         <variable
             name="clickListener"
@@ -21,14 +21,13 @@
 
     <ImageView
         android:id="@+id/imageview"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="@dimen/fifteen"
         android:layout_marginTop="@dimen/ten"
-        android:src="@drawable/doctor"
-        android:padding="@dimen/ten"
-        android:background="@drawable/profileimg"
+        android:scaleType="fitXY"
+        app:imageFromUrl="@{viewModel.doc_image_link}"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
@@ -37,7 +36,7 @@
         android:background="@color/bg_gray"
         android:layout_marginStart="@dimen/ten"
         android:layout_marginEnd="@dimen/twoenty"
-        android:layout_marginTop="@dimen/ten"
+        android:layout_marginTop="@dimen/twoenty"
         app:layout_constraintTop_toBottomOf="@+id/imageview"
         />
 
@@ -55,13 +54,13 @@
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="@dimen/fifteen"
+        android:layout_marginTop="@dimen/ten"
         android:fontFamily="@font/poppin_reg"
-        android:text="Dr. William Jones"
+        android:text="@{`Dr. `+viewModel.doc_name}"
         android:textColor="@color/black"
-        android:textSize="@dimen/textsize_twl"
-        android:textStyle="normal"
+        android:textSize="@dimen/textsize_fourteen"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imageview"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -73,13 +72,14 @@
         app:layout_constraintTop_toTopOf="@+id/username"
         app:layout_constraintBottom_toBottomOf="@+id/username"
         app:layout_constraintStart_toEndOf="@+id/username"
-        android:layout_marginStart="@dimen/five"
+        app:statuscolor="@{viewModel.doc_online_status}"
+        android:layout_marginStart="@dimen/ten"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Active"
+        app:statustxt="@{viewModel.doc_online_status}"
         android:textSize="@dimen/textsize_twl"
         app:layout_constraintTop_toTopOf="@+id/username"
         app:layout_constraintBottom_toBottomOf="@+id/username"
@@ -91,8 +91,8 @@
         android:id="@+id/profession"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="MBSS, FCPC, MF, MACP"
+        android:layout_marginStart="@dimen/fifteen"
+        android:text="@{viewModel.doc_education}"
         android:textSize="@dimen/textsize_twl"
         app:layout_constraintStart_toEndOf="@+id/imageview"
         app:layout_constraintTop_toBottomOf="@+id/username" />
@@ -102,9 +102,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numStars="5"
-        android:rating="3.5"
+        app:setRating="@{viewModel.avg_rating}"
         style = "?android:attr/ratingBarStyleSmall"
-        android:layout_marginStart="@dimen/ten"
+        android:layout_marginStart="@dimen/fifteen"
+        android:layout_marginTop="@dimen/five"
         app:layout_constraintTop_toBottomOf="@+id/profession"
         app:layout_constraintStart_toEndOf="@+id/imageview"
         />
@@ -112,7 +113,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="(200)"
+        android:text="@{`(`+viewModel.total_reviews+`)`}"
         app:layout_constraintTop_toTopOf="@+id/ratingbar"
         app:layout_constraintBottom_toBottomOf="@+id/ratingbar"
         android:layout_marginStart="@dimen/five"

@@ -1,18 +1,17 @@
 package com.softgates.instadoctor.util
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.softgates.instadoctor.network.DoctorReviewListModel
+import com.softgates.instadoctor.network.GetDoctorDataModel
 import com.softgates.instadoctor.network.ResponseModel
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.Deferred
-import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
-import okhttp3.RequestBody
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.*
 import retrofit2.http.GET
-import java.util.HashMap
 import java.util.concurrent.TimeUnit
 
 
@@ -51,15 +50,11 @@ interface InstaDoctorApiService {
     fun getCategory(
     ): Deferred<ResponseModel>
 
-    // @FieldMap
-  //  @Multipart
-
- //   @FormUrlEncoded
-
-    @POST("login")
-    fun login(
-        @Body hashMap: Map<String, String>
-    ): Deferred<ResponseModel>
+    @GET("index.php")
+    fun getDoctorList(
+        @Query("apiname") apiname: String,
+        @Query("token") device_type: String
+    ): Deferred<GetDoctorDataModel>
 
     @FormUrlEncoded
     @POST("user/login")
@@ -69,33 +64,6 @@ interface InstaDoctorApiService {
         @Field("device_type") device_type: String,
         @Field("device_id") device_id: String
     ): Deferred<ResponseModel>
-
-    @FormUrlEncoded
-    @POST("user/verify")
-    fun verify(
-        @Field("code") catId: String
-    ): Deferred<ResponseModel>
-
-    @POST("signup")
-    fun signup(
-        @Body hashMap: Map<String, String>
-    ): Deferred<ResponseModel>
-
-    @POST("contact")
-    fun contact(
-        @Body hashMap: Map<String, String>
-    ): Deferred<ResponseModel>
-
-    @POST("subcat")
-    fun getSubCategory(
-        @Body hashMap: Map<String, String>
-    ): Deferred<ResponseModel>
-
-    @POST("viewproperty")
-    fun getProperty(
-        @Body hashMap: Map<String, String>
-    ): Deferred<ResponseModel>
-
 
     @FormUrlEncoded
     @POST("index.php")
@@ -108,12 +76,18 @@ interface InstaDoctorApiService {
         @Field("role_id") type: String
     ): Deferred<ResponseModel>
 
-    @FormUrlEncoded
-    @POST("index.php")
+    @GET("index.php")
     fun forgetpassword(
-        @Field("apiname") apiname: String,
-        @Field("email") email: String
+        @Query("apiname") apiname: String,
+        @Query("email") email: String
     ): Deferred<ResponseModel>
+
+    @GET("index.php")
+    fun doctorreview(
+        @Query("apiname") apiname: String,
+        @Query("doc_id") docid: String,
+        @Query("token") token: String
+    ): Deferred<DoctorReviewListModel>
 
     @FormUrlEncoded
     @POST("index.php")

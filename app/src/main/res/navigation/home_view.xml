@@ -17,7 +17,16 @@
     <fragment
         android:id="@+id/doctorProfileFragment"
         android:name="com.softgates.instadoctor.doctorprofile.DoctorProfileFragment"
-        android:label="DoctorProfileFragment" />
+        android:label="DoctorProfileFragment">
+
+        <argument
+            android:name="doctorlist"
+            app:argType="com.softgates.instadoctor.network.DoctorList"
+            app:nullable="true"
+            android:defaultValue="@null"/>
+
+    </fragment>
+
     <fragment
         android:id="@+id/profile"
         android:name="com.softgates.instadoctor.profile.ProfileFragment"

@@ -24,6 +24,7 @@ import com.softgates.instadoctor.createaccount.CreateAccountViewModelFactory
 import com.softgates.instadoctor.databinding.LoginViewBinding
 import com.softgates.instadoctor.util.ApiStatus
 import com.softgates.instadoctor.util.ProgressDialog
+import com.softgates.instadoctor.util.ValidationUtil
 
 class LoginView : Fragment() {
 
@@ -89,6 +90,40 @@ class LoginView : Fragment() {
                 ApiStatus.DONE -> {
                     loader.setLoading(false)
                 }
+            }
+        })
+
+        binding.loginbtn.setOnClickListener {
+
+            if(viewModel.email.value!!.isEmpty())
+            {
+                binding.emailedittxt.setError("The email field is required.");
+                binding.email.clearFocus()
+            }
+            else if(!ValidationUtil.isEmailValid(viewModel.email.value.toString()))
+            {
+                binding.emailedittxt.setError("The Email address is not valid");
+                binding.email.clearFocus()
+            }
+            else if(viewModel.password.value!!.isEmpty())
+            {
+                binding.passwordtxt.setError("The password field is required.");
+                binding.password.clearFocus()
+            }
+            else{
+                viewModel.loginApi()
+            }
+        }
+
+        binding.email.setOnFocusChangeListener(View.OnFocusChangeListener { view, hasFocus ->
+            if (hasFocus) {
+                binding.emailedittxt.error = null
+
+            }
+        })
+        binding.password.setOnFocusChangeListener(View.OnFocusChangeListener { view, hasFocus ->
+            if (hasFocus) {
+                binding.passwordtxt.error = null
             }
         })
 

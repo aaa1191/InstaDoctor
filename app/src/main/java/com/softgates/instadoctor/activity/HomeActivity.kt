@@ -1,5 +1,6 @@
 package com.softgates.instadoctor.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
@@ -35,6 +36,13 @@ class HomeActivity : AppCompatActivity()
                 }
             }
         }
+    }
+
+    fun loginView()
+    {
+        val inten = Intent(this@HomeActivity, LoginActivity::class.java)
+        startActivity(inten)
+        finish()
     }
 
 }

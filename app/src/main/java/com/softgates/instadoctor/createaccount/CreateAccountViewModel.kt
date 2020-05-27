@@ -62,6 +62,10 @@ class CreateAccountViewModel (val sharedPreferences: SharedPreferences,
     val setDate: LiveData<String>
         get() = _setDate
 
+    private val _navigateActivity = MutableLiveData<Int>()
+    val navigateActivity : LiveData<Int?>
+        get() = _navigateActivity
+
     init {
         _name.value=""
         _email.value=""
@@ -69,6 +73,7 @@ class CreateAccountViewModel (val sharedPreferences: SharedPreferences,
         _setDate.value=""
         _gender.value=""
         _termCondition.value=false
+        _navigateActivity.value=0
         Log.e("APIRESPONSE","wishlist api is called...")
     }
 
@@ -130,6 +135,11 @@ class CreateAccountViewModel (val sharedPreferences: SharedPreferences,
         }
     }
 
+    fun setErrormsg(errorTxt:String)
+    {
+        _message.value=errorTxt.toString()
+    }
+
     fun register()
     {
         when {
@@ -162,13 +172,15 @@ class CreateAccountViewModel (val sharedPreferences: SharedPreferences,
                     val response = getPropertiesDeferred.await()
                     Log.e(Constant.APIRESPONSE,"registration api response is......"+response.toString())
 
-                    if(response.status == Constant.SUCCEESSSTATUS)
+                    if(response.status == Constant.SUCCEESSSTATUSTWOHUNDRED)
                     {
                         Log.e(Constant.APIRESPONSE,"registration api response success one one one is......")
 
                         // _message.value= response.message
                       //  _navigateVerification.value=1
                       _message.value= response.message!!.toString()
+                        _navigateActivity.value =1
+
                     }
                     else
                     {

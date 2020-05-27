@@ -5,6 +5,12 @@
     <data>
         <import type="android.view.View"/>
         <variable name="index" type="int" />
+
+        <variable name="viewModel"
+            type="com.softgates.instadoctor.network.DoctorReviewList"
+            />
+
+
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -28,7 +34,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppin_reg"
-            android:text="William Jones"
+            android:text="@{viewModel.patient_name}"
             android:textColor="@color/black"
             android:textSize="@dimen/textsize_twl"
             android:textStyle="normal"
@@ -43,7 +49,7 @@
             android:layout_height="wrap_content"
             android:numStars="5"
             style = "?android:attr/ratingBarStyleSmall"
-            android:rating="3.5"
+            app:setRating="@{viewModel.review_stars}"
             android:layout_marginStart="@dimen/ten"
             app:layout_constraintTop_toBottomOf="@+id/username"
             app:layout_constraintStart_toEndOf="@+id/imageview"
@@ -54,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Loreum ipsum dolor sit amet, consecturer adipiscing elit,sed do eiusmod tempor incididunt labour dolore magne aliqua  Ut"
+            android:text="@{viewModel.review_description}"
             android:textSize="@dimen/textsize_twl"
             android:textColor="@color/darkgray"
             app:layout_constraintStart_toEndOf="@+id/imageview"

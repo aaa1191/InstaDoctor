@@ -73,13 +73,13 @@ class IntroductionActivity : AppCompatActivity()
         })
 
         binding.skip.setOnClickListener {
-            val inten = Intent(this@IntroductionActivity, LoginActivity::class.java)
+            val inten = Intent(this@IntroductionActivity, HomeActivity::class.java)
         //    val inten = Intent(this@IntroductionActivity, HomeActivity::class.java)
             startActivity(inten)
             finish()
         }
 
-/*        binding.nextbtn.setOnClickListener {
+        binding.nextbtn.setOnClickListener {
          var viewpagerpostion =   saleviewpager.getCurrentItem()
             Log.e("VIEWPAGERPOSITION","viewpager position....."+viewpagerpostion)
             if(viewpagerpostion==0)
@@ -92,12 +92,12 @@ class IntroductionActivity : AppCompatActivity()
             }
             else if(viewpagerpostion==2)
             {
-                val inten = Intent(this@IntroductionActivity, LoginActivity::class.java)
+                val inten = Intent(this@IntroductionActivity, HomeActivity::class.java)
                 startActivity(inten)
                 finish()
             }
 
-        }*/
+        }
     }
 
 }
