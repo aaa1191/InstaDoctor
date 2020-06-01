@@ -144,6 +144,7 @@
                     android:background="@drawable/btn_yellow_bg"
                     android:layout_marginTop="@dimen/thirty"
                     android:layout_marginStart="@dimen/fourty"
+                    android:visibility="gone"
                     android:layout_marginEnd="@dimen/fourty">
 
                     <androidx.appcompat.widget.AppCompatTextView

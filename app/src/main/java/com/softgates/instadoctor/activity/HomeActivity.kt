@@ -1,28 +1,66 @@
 package com.softgates.instadoctor.activity
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.softgates.instadoctor.R
 import com.softgates.instadoctor.databinding.HomeactivityViewBinding
+import com.softgates.instadoctor.util.Constant
 import com.softgates.instadoctor.util.hide
 import com.softgates.instadoctor.util.show
+import com.softgates.myapplication.util.bindLayoutFullscreen
+import kotlinx.android.synthetic.main.homeactivity_view.*
 
 class HomeActivity : AppCompatActivity()
 {
+    lateinit var sharedPreferences: SharedPreferences
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding: HomeactivityViewBinding = DataBindingUtil.setContentView(
             this, R.layout.homeactivity_view)
       //  setContentView(R.layout.homeactivity_view)
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+     //   getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        sharedPreferences =   getSharedPreferences("dd", Context.MODE_PRIVATE)
+
+        val navHostFragment = nav_host as NavHostFragment
+        val inflater = navHostFragment.navController.navInflater
+        val graph = inflater.inflate(R.navigation.home_view)
+
+
+        binding.linearlayout.bindLayoutFullscreen(false,false)
+        binding.bottomNav.visibility= View.VISIBLE
+        graph.startDestination = (R.id.home)
+        navHostFragment.navController.graph = graph
+
+
+       /*if(sharedPreferences.getString(Constant.LOGINSIGNUPCHECK,"").equals("1"))
+        {
+            Log.e("HOMEVIEW","INVISIBLE is called")
+            binding.bottomNav.visibility= View.GONE
+            binding.linearlayout.bindLayoutFullscreen(true,true)
+            graph.startDestination = (R.id.whoVisitView)
+            navHostFragment.navController.graph = graph
+        }
+        else
+        {
+            Log.e("HOMEVIEW","VISIBLE is called")
+            binding.linearlayout.bindLayoutFullscreen(false,false)
+            binding.bottomNav.visibility= View.VISIBLE
+            graph.startDestination = (R.id.home)
+            navHostFragment.navController.graph = graph
+        }*/
 
 
         val navController = Navigation.findNavController(this@HomeActivity, R.id.nav_host)
@@ -45,4 +83,15 @@ class HomeActivity : AppCompatActivity()
         finish()
     }
 
+    fun whiteStatusbar()
+    {
+        getWindow().setNavigationBarColor(getResources().getColor(android.R.color.white));
+        getWindow().setStatusBarColor(getResources().getColor(android.R.color.white));
+    }
+
+    fun greyStatusbar()
+    {
+        getWindow().setNavigationBarColor(getResources().getColor(R.color.homebg));
+        getWindow().setStatusBarColor(getResources().getColor(R.color.homebg));
+    }
 }

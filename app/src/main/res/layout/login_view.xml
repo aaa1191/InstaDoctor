@@ -18,6 +18,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
+    android:paddingBottom="@dimen/twoenty"
     >
 
 
@@ -50,11 +51,10 @@
 
     <ImageView
         android:id="@+id/loginimg"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="340dp"
-        android:background="@drawable/loginimg_bg"
-        android:paddingStart="@dimen/twoenty"
-        android:scaleType="fitXY"
+        android:padding="@dimen/thirty"
+        android:scaleType="fitCenter"
         android:src="@drawable/loginimg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -14,6 +14,5 @@ data class GetDoctorDataModel(
     var otp_code: String? = null,
 
     @Json(name="data")
-    var data: MutableList<GetDoctorListModel>? = null
-
+    var data: MutableList<DoctorList>? = null
 )

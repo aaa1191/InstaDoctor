@@ -8,7 +8,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/homebg"
+        android:paddingBottom="@dimen/twoenty">
 
         <ImageView
             android:id="@+id/backbtn"
@@ -28,9 +30,9 @@
             android:text="@string/howlongfeltthisway"
             android:fontFamily="@font/poppin_reg"
             android:textColor="@color/black"
-            android:textStyle="bold"
+            app:fontFamily="@font/poppin_semi_bold"
             android:layout_marginStart="@dimen/twoenty"
-            android:textSize="@dimen/textsize_etn"
+            android:textSize="@dimen/textsize_twoenty"
             app:layout_constraintTop_toBottomOf="@+id/backbtn"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="@dimen/twoenty"
@@ -40,25 +42,16 @@
             android:id="@+id/days"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/days"
+            android:text="20 Days"
             app:layout_constraintTop_toBottomOf="@+id/feltwaytxt"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="100dp"
-            android:textColor="@color/green"
-            android:fontFamily="@font/poppin_reg"
-            android:textSize="@dimen/textsize_sixteen"
+            android:layout_marginTop="60dp"
+            android:textColor="@color/darkgreen"
+            android:fontFamily="@font/poppin_semi_bold"
+            android:textSize="@dimen/textsize_twoentytwo"
+            android:paddingBottom="@dimen/ten"
             />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/down_arrow"
-            app:layout_constraintStart_toEndOf="@+id/days"
-            app:layout_constraintTop_toTopOf="@+id/days"
-            app:layout_constraintBottom_toBottomOf="@+id/days"
-            />
-
         <SeekBar
             android:id="@+id/seekBar"
             android:layout_width="match_parent"
@@ -66,10 +59,40 @@
             android:layout_centerInParent="true"
             app:layout_constraintTop_toBottomOf="@+id/days"
             app:layout_constraintBottom_toTopOf="@+id/nextarrow"
-            android:layout_marginTop="@dimen/fifty"
-            android:layout_marginBottom="@dimen/fifty"
+            android:layout_marginTop="@dimen/fourty"
+            android:layout_marginBottom="@dimen/eighty"
+            android:paddingStart="@dimen/fifty"
+            android:padding="@dimen/twoenty"
+            style="@style/seekbarstyle"
+            android:thumbTint="@color/darkgreen"
             android:rotation="270"/>
 
+        <RelativeLayout
+            android:id="@+id/nextarrow"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/gradient_lightcreate_account"
+            android:layout_marginTop="@dimen/twoenty"
+            android:layout_marginStart="@dimen/fourty"
+            android:layout_marginEnd="@dimen/fourty">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/next"
+                android:gravity="center"
+                android:fontFamily="@font/poppin_reg"
+                android:textSize="@dimen/textsize_etn"
+                android:textColor="@color/orange"
+                />
+
+        </RelativeLayout>
+
+
+<!--
         <RelativeLayout
             android:id="@+id/nextarrow"
             android:layout_width="60dp"
@@ -88,6 +111,7 @@
                 />
 
         </RelativeLayout>
+-->
 
 
 

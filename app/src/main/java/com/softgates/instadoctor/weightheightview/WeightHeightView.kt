@@ -12,11 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
 import com.softgates.instadoctor.databinding.FeltwayViewBinding
 import com.softgates.instadoctor.databinding.WeightheightViewBinding
+import com.softgates.instadoctor.databinding.WeightheightViewsBinding
 import com.softgates.instadoctor.feltway.FeltWayViewDirections
 
 class WeightHeightView  : Fragment() {
 
-    lateinit var binding: WeightheightViewBinding
+    lateinit var binding: WeightheightViewsBinding
     //private lateinit var viewModel : HomeViewModel
     private lateinit var vi: View
     lateinit var sharedPreferences: SharedPreferences
@@ -28,8 +29,8 @@ class WeightHeightView  : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         //   vi = inflater.inflate(R.layout.fragment_registration_first,container,false)
-        binding = DataBindingUtil.inflate<WeightheightViewBinding>(
-            inflater, R.layout.weightheight_view, container, false)
+        binding = DataBindingUtil.inflate<WeightheightViewsBinding>(
+            inflater, R.layout.weightheight_views, container, false)
 
         return  binding.root
     }

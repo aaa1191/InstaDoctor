@@ -13,18 +13,32 @@
             name="clickListener"
             type="com.softgates.instadoctor.home.OnClick" />
     </data>
+ <!--   <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:elevation="0dp"
+        android:background="@drawable/home_list_dr"
+        app:cardCornerRadius="@dimen/five">-->
+
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/twoenty"
+    android:layout_marginEnd="@dimen/twoenty"
+    android:layout_marginTop="@dimen/eight"
+    android:layout_marginBottom="@dimen/eight"
+    android:background="@drawable/home_list_dr"
+
     android:onClick="@{() -> clickListener.onView(viewModel,index)}"
     >
 
     <ImageView
         android:id="@+id/imageview"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="@dimen/fifteen"
+        android:layout_marginStart="@dimen/ten"
         android:layout_marginTop="@dimen/ten"
         android:scaleType="fitXY"
         app:imageFromUrl="@{viewModel.doc_image_link}"
@@ -33,10 +47,8 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/bg_gray"
-        android:layout_marginStart="@dimen/ten"
-        android:layout_marginEnd="@dimen/twoenty"
-        android:layout_marginTop="@dimen/twoenty"
+        android:background="@android:color/white"
+        android:layout_marginTop="@dimen/ten"
         app:layout_constraintTop_toBottomOf="@+id/imageview"
         />
 
@@ -48,19 +60,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginEnd="@dimen/fifteen"
+        android:visibility="gone"
         />
+<!--
+    android:text="@{`Dr. `+viewModel.doc_name}"
+-->
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/username"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="18dp"
         android:layout_marginStart="@dimen/fifteen"
         android:layout_marginTop="@dimen/ten"
         android:fontFamily="@font/poppin_reg"
-        android:text="@{`Dr. `+viewModel.doc_name}"
         android:textColor="@color/black"
         android:textSize="@dimen/textsize_fourteen"
         android:textStyle="bold"
+        android:gravity="center"
+        android:text="Dr. Ravi Kapoor"
         app:layout_constraintStart_toEndOf="@+id/imageview"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -69,30 +86,39 @@
         android:layout_width="10dp"
         android:layout_height="10dp"
         android:background="@drawable/offline_dr"
-        app:layout_constraintTop_toTopOf="@+id/username"
-        app:layout_constraintBottom_toBottomOf="@+id/username"
-        app:layout_constraintStart_toEndOf="@+id/username"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/onlinestatustxt"
         app:statuscolor="@{viewModel.doc_online_status}"
-        android:layout_marginStart="@dimen/ten"
+        android:layout_marginStart="@dimen/five"
+        android:layout_marginEnd="@dimen/ten"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/onlinestatustxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:statustxt="@{viewModel.doc_online_status}"
         android:textSize="@dimen/textsize_twl"
-        app:layout_constraintTop_toTopOf="@+id/username"
-        app:layout_constraintBottom_toBottomOf="@+id/username"
-        app:layout_constraintStart_toEndOf="@+id/activedeactiveview"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginStart="@dimen/five"
+        android:layout_marginEnd="@dimen/fifteen"
         />
+
+<!--
+    android:text="@{viewModel.doc_education}"
+-->
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/profession"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:layout_marginStart="@dimen/fifteen"
-        android:text="@{viewModel.doc_education}"
+        android:gravity="top"
+        android:text="MBBS,MSE,Surgoen"
+        android:layout_marginTop="0dp"
         android:textSize="@dimen/textsize_twl"
         app:layout_constraintStart_toEndOf="@+id/imageview"
         app:layout_constraintTop_toBottomOf="@+id/username" />
@@ -105,7 +131,6 @@
         app:setRating="@{viewModel.avg_rating}"
         style = "?android:attr/ratingBarStyleSmall"
         android:layout_marginStart="@dimen/fifteen"
-        android:layout_marginTop="@dimen/five"
         app:layout_constraintTop_toBottomOf="@+id/profession"
         app:layout_constraintStart_toEndOf="@+id/imageview"
         />
@@ -122,4 +147,9 @@
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--
+    </RelativeLayout>
+-->
+
 </layout>

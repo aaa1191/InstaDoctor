@@ -31,8 +31,13 @@ class AnyMedicineView : Fragment() {
         binding = DataBindingUtil.inflate<AnymedicineViewBinding>(
             inflater, R.layout.anymedicine_view, container, false)
 
-        binding.savemedication.setOnClickListener {
+        binding.nomedicine.setOnClickListener {
             val action = AnyMedicineViewDirections.actionAnyMedicineViewToAnyDrugAllergyView()
+            NavHostFragment.findNavController(this).navigate(action)
+        }
+
+        binding.yesmedicine.setOnClickListener {
+            val action = AnyMedicineViewDirections.actionAnyMedicineViewToTakeMedicineView()
             NavHostFragment.findNavController(this).navigate(action)
         }
 

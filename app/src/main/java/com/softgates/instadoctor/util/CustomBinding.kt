@@ -2,13 +2,11 @@ package com.softgates.myapplication.util
 
 import android.util.Log
 import android.view.View
-import android.view.ViewGroup
-import android.view.WindowInsets
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
-import androidx.core.view.updateLayoutParams
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -16,7 +14,7 @@ import com.softgates.instadoctor.R
 
 
 @BindingAdapter("layoutFullscreen")
-fun View.bindLayoutFullscreen(previousFullscreen: Boolean, fullscreen: Boolean) {
+fun View.bindLayoutFullscreen(previousFullscreen: Boolean,fullscreen:Boolean) {
     if (previousFullscreen != fullscreen && fullscreen) {
         systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
@@ -43,6 +41,20 @@ fun bindsetRating(view: RatingBar, rating: String?) {
         val ratingbar: Float? =rating.toString().toFloat()
 
         view.rating=ratingbar!!.toFloat()
+    }
+}
+
+@BindingAdapter("symptom")
+fun bindImageFromUrl(view: CardView, tick: String?) {
+    if (!tick.isNullOrEmpty()) {
+        if(tick.equals("1"))
+        {
+            view.setCardBackgroundColor(ContextCompat.getColor(view.context,R.color.darkblue))
+        }
+        else
+        {
+            view.setCardBackgroundColor(ContextCompat.getColor(view.context,android.R.color.white))
+        }
     }
 }
 
@@ -73,12 +85,12 @@ fun bindstatustxt(view: TextView, statusType: String?) {
     if(statusType.equals("1"))
     {
         //  view.setBackgroundColor(ContextCompat.getColor(view.context, R.color.green))
-        view.text ="Active"
+        view.text ="Online"
     }
     else if(statusType.equals("2"))
     {
         //   view.setBackgroundColor(ContextCompat.getColor(view.context, R.color.yellow))
-        view.text ="Busy"
+        view.text ="Busy  "
     }
     else if(statusType.equals("0"))
     {

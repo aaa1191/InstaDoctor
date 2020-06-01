@@ -36,6 +36,12 @@ class WhoVisitView : Fragment() {
             NavHostFragment.findNavController(this).navigate(action)
         }
 
+        binding.namearrow.setOnClickListener {
+
+            val action = WhoVisitViewDirections.actionWhoVisitViewToSymptomView()
+            NavHostFragment.findNavController(this).navigate(action)
+        }
+
         return  binding.root
     }
 

@@ -18,6 +18,7 @@
     android:layout_height="match_parent"
     android:paddingStart="@dimen/thirty"
     android:paddingEnd="@dimen/thirty"
+    android:paddingBottom="@dimen/twoenty"
     android:background="@android:color/white">
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -49,7 +50,7 @@
             android:layout_width="140dp"
             android:layout_height="155dp"
             android:layout_marginEnd="@dimen/ten"
-            app:cardBackgroundColor="@color/yellow"
+            app:cardBackgroundColor="@color/gray"
             app:cardCornerRadius="@dimen/fifteen">
 
             <ImageView
@@ -71,8 +72,6 @@
                 android:fontFamily="@font/poppin_reg"
                 android:textStyle="bold"
                 />
-
-
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -80,8 +79,8 @@
             android:layout_width="140dp"
             android:layout_height="155dp"
             android:layout_marginStart="@dimen/fifteen"
-            app:cardBackgroundColor="@color/yellow"
-            app:cardCornerRadius="@dimen/ten">
+            app:cardBackgroundColor="@color/gray"
+            app:cardCornerRadius="@dimen/fifteen">
 
 
             <ImageView

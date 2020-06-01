@@ -15,9 +15,11 @@ class SplashActivity  : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash_view)
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        Glide.with(this).load(R.drawable.splash).into(splashimgview);
 
+   //  getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        Glide.with(this).load(R.drawable.splash).into(splashimgview);
         Handler().postDelayed({
 //            val inten = Intent(this@SplashActivity, HomeActivity::class.java)
             val inten = Intent(this@SplashActivity, IntroductionActivity::class.java)
@@ -26,6 +28,6 @@ class SplashActivity  : AppCompatActivity()
 //            val inten = Intent(this@SplashActivity, Activity_Login::class.java)
 //            startActivity(inten)
 //            finish()
-        }, 3000)
+        }, 4000)
     }
 }

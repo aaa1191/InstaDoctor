@@ -40,11 +40,10 @@ class IntroductionActivity : AppCompatActivity()
         val viewModelFactory = IntroductionViewModelFactory(sharedPreferences, application)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(IntroductionViewModel::class.java)
 
-
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+      //  getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //sliderimages
-
         viewModel.sliderimg.observe(this, Observer {
             pagerAdapter = PropertySliderAdapter(supportFragmentManager, it as  MutableList<PropertiesImages> )
             binding.saleviewpager.adapter = pagerAdapter
@@ -60,14 +59,21 @@ class IntroductionActivity : AppCompatActivity()
             dots!![0].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.property_active_dot))
             binding.saleviewpager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
                 override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+
+                    Log.e("SCROLPOSSITION","scroo position......"+position)
+
                 }
                 override fun onPageSelected(position: Int) {
+
+                    Log.e("SCROLPOSSITION","scroo onPageSelected......"+position)
+
                     for (i in 0 until dotscount) {
                         dots!![i].setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.propertynon_active_dot))
                     }
                     dots!![position].setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.property_active_dot))
                 }
                 override fun onPageScrollStateChanged(state: Int) {
+                    Log.e("SCROLPOSSITION","scroo onPageScrollStateChanged......"+state)
                 }
             })
         })

@@ -7,7 +7,7 @@
         android:startColor="#Ff7700"
         android:centerColor="#Ff7700"
         android:type="linear"
-        android:endColor="#FFBA66">
+        android:endColor="#Ff7700">
     </gradient>
 
 </shape>

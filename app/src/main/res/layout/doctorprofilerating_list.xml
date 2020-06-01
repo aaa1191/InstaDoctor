@@ -24,6 +24,7 @@
             android:layout_marginTop="@dimen/ten"
             android:src="@drawable/doctor"
             android:padding="@dimen/ten"
+            android:layout_marginStart="@dimen/five"
             android:background="@drawable/profileimg"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,7 +38,7 @@
             android:text="@{viewModel.patient_name}"
             android:textColor="@color/black"
             android:textSize="@dimen/textsize_twl"
-            android:textStyle="normal"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageview"
             app:layout_constraintTop_toTopOf="parent" />
 

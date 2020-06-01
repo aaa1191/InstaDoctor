@@ -8,10 +8,13 @@
         android:name="com.softgates.instadoctor.home.HomeView"
         android:label="HomeView" >
 
-        <action
+       <!-- <action
             android:id="@+id/action_home_to_doctorProfileFragment"
-            app:destination="@id/doctorProfileFragment" />
+            app:destination="@id/doctorProfileFragment" />-->
 
+        <action
+            android:id="@+id/action_home_to_whoVisitView"
+            app:destination="@id/whoVisitView" />
     </fragment>
 
     <fragment
@@ -84,6 +87,9 @@
         <action
             android:id="@+id/action_whoVisitView_to_registerChildView"
             app:destination="@id/registerChildView" />
+        <action
+            android:id="@+id/action_whoVisitView_to_symptomView"
+            app:destination="@id/symptomView" />
     </fragment>
     <fragment
         android:id="@+id/registerChildView"
@@ -93,6 +99,7 @@
             android:id="@+id/action_registerChildView_to_feltWayView"
             app:destination="@id/feltWayView" />
     </fragment>
+
     <fragment
         android:id="@+id/feltWayView"
         android:name="com.softgates.instadoctor.feltway.FeltWayView"
@@ -100,7 +107,11 @@
         <action
             android:id="@+id/action_feltWayView_to_anyMedicineView"
             app:destination="@id/anyMedicineView" />
+        <action
+            android:id="@+id/action_feltWayView_to_chooseDoctorView"
+            app:destination="@id/chooseDoctorView" />
     </fragment>
+
     <fragment
         android:id="@+id/anyMedicineView"
         android:name="com.softgates.instadoctor.anymedicine.AnyMedicineView"
@@ -108,6 +119,9 @@
         <action
             android:id="@+id/action_anyMedicineView_to_anyDrugAllergyView"
             app:destination="@id/anyDrugAllergyView" />
+        <action
+            android:id="@+id/action_anyMedicineView_to_takeMedicineView"
+            app:destination="@id/takeMedicineView" />
     </fragment>
     <fragment
         android:id="@+id/anyDrugAllergyView"
@@ -116,6 +130,9 @@
         <action
             android:id="@+id/action_anyDrugAllergyView_to_weightHeightView"
             app:destination="@id/weightHeightView" />
+        <action
+            android:id="@+id/action_anyDrugAllergyView_to_takeAllergieView"
+            app:destination="@id/takeAllergieView" />
     </fragment>
     <fragment
         android:id="@+id/weightHeightView"
@@ -145,5 +162,37 @@
         android:id="@+id/addPaymentView"
         android:name="com.softgates.instadoctor.addpayment.AddPaymentView"
         android:label="AddPaymentView" />
+    <fragment
+        android:id="@+id/symptomView"
+        android:name="com.softgates.instadoctor.selectsymptom.SymptomView"
+        android:label="SymptomView" >
+        <action
+            android:id="@+id/action_symptomView_to_feltWayView"
+            app:destination="@id/feltWayView" />
+    </fragment>
+    <fragment
+        android:id="@+id/takeMedicineView"
+        android:name="com.softgates.instadoctor.takemedicine.TakeMedicineView"
+        android:label="TakeMedicineView" >
+        <action
+            android:id="@+id/action_takeMedicineView_to_anyDrugAllergyView"
+            app:destination="@id/anyDrugAllergyView" />
+    </fragment>
+    <fragment
+        android:id="@+id/takeAllergieView"
+        android:name="com.softgates.instadoctor.takeallergieview.TakeAllergieView"
+        android:label="TakeAllergieView" >
+        <action
+            android:id="@+id/action_takeAllergieView_to_weightHeightView"
+            app:destination="@id/weightHeightView" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseDoctorView"
+        android:name="com.softgates.instadoctor.choosedoctor.ChooseDoctorView"
+        android:label="ChooseDoctorView" >
+        <action
+            android:id="@+id/action_chooseDoctorView_to_doctorProfileFragment"
+            app:destination="@id/doctorProfileFragment" />
+    </fragment>
 
 </navigation>

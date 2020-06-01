@@ -30,10 +30,18 @@ class AnyDrugAllergyView : Fragment() {
         //   vi = inflater.inflate(R.layout.fragment_registration_first,container,false)
         binding = DataBindingUtil.inflate<AnydrugalergyViewBinding>(
             inflater, R.layout.anydrugalergy_view, container, false)
-        binding.savemedication.setOnClickListener {
+
+
+        binding.nomedicine.setOnClickListener {
             val action = AnyDrugAllergyViewDirections.actionAnyDrugAllergyViewToWeightHeightView()
             NavHostFragment.findNavController(this).navigate(action)
         }
+
+        binding.yesmedicine.setOnClickListener {
+            val action = AnyDrugAllergyViewDirections.actionAnyDrugAllergyViewToTakeAllergieView()
+            NavHostFragment.findNavController(this).navigate(action)
+        }
+
         return  binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

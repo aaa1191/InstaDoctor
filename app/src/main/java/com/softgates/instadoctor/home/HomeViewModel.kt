@@ -83,9 +83,8 @@ class HomeViewModel (val sharedPreferences: SharedPreferences,
                         Log.e(Constant.APIRESPONSE,"getdoctorlist api response success one one one is......")
                         // _message.value= response.message
                         //  sharedPreferences.edit { putInt("COUNT",0) }
-
-                        _GetOnlinelist.value=  response.data!!.get(0).online_doctor_array as MutableList<DoctorList>
-                        _GetOfflinelist.value=  response.data!!.get(0).offline_doctor_array as MutableList<DoctorList>
+                        _GetOnlinelist.value=  response.data!! as MutableList<DoctorList>
+                     //   _GetOfflinelist.value=  response.data!!.get(0).offline_doctor_array as MutableList<DoctorList>
                            //   _message.value= response.message!!.toString()
                     }
                     else

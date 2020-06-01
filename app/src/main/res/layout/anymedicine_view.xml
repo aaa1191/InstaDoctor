@@ -65,7 +65,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/registerchildimg"
                     android:layout_width="wrap_content"
-                    android:layout_height="200dp"
+                    android:layout_height="180dp"
                     android:padding="@dimen/fifteen"
                     android:src="@drawable/anymedicie"
                     app:layout_constraintTop_toBottomOf="@+id/takingmedicinne"
@@ -117,12 +117,8 @@
                             android:textSize="@dimen/textsize_twl"
                             android:textColor="@android:color/white"
                             />
-
                     </RelativeLayout>
-
-
                 </LinearLayout>
-
 
                 <RelativeLayout
                     android:id="@+id/savemedication"
@@ -132,6 +128,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     android:background="@drawable/btn_yellow_bg"
                     android:layout_marginTop="@dimen/thirty"
+                    android:visibility="gone"
                     android:layout_marginStart="@dimen/fourty"
                     android:layout_marginEnd="@dimen/fourty">
 

@@ -18,16 +18,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white">
+        android:background="#F7F7F7">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/instadoctorimg"
             android:layout_width="100dp"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/instadoctor"
-            android:layout_marginStart="@dimen/twoenty"
+            android:scaleType="fitXY"
+            android:layout_marginTop="@dimen/ten"
             />
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -38,6 +40,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/twoenty"
             android:layout_marginEnd="@dimen/fifteen"
+            android:visibility="gone"
             android:layout_marginStart="@dimen/ten"
             />
 
@@ -50,6 +53,7 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="@dimen/textsize_sixteen"
+            android:visibility="gone"
             android:layout_marginTop="@dimen/ten"
             app:layout_constraintTop_toBottomOf="@+id/instadoctorimg"
             android:layout_marginStart="@dimen/twoenty"
@@ -62,6 +66,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/onlinedoctor"
             app:layout_constraintStart_toStartOf="parent"
+            android:paddingBottom="@dimen/ten"
+            android:layout_marginTop="@dimen/fifteen"
             />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -74,6 +80,7 @@
             android:textStyle="bold"
             android:layout_marginTop="@dimen/five"
             android:textSize="@dimen/textsize_sixteen"
+            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@+id/onlinerecyclerview"
             android:layout_marginStart="@dimen/twoenty"
             app:layout_constraintStart_toStartOf="parent"
@@ -86,6 +93,7 @@
             app:layout_constraintTop_toBottomOf="@+id/offlinedoctor"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="@dimen/five"
+            android:visibility="gone"
             />
 
         <RelativeLayout
@@ -96,19 +104,19 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:background="@drawable/gradient_seedoctor" android:layout_marginTop="@dimen/ten"
-            android:layout_marginBottom="@dimen/thirty">
+            android:layout_marginBottom="@dimen/ten">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/seeadoctor"
+                android:text="@string/startnow"
                 android:layout_centerInParent="true"
                 android:fontFamily="@font/poppin_reg"
                 android:textSize="@dimen/textsize_sixteen"
                 android:paddingStart="@dimen/eighty"
                 android:paddingEnd="@dimen/eighty"
                 android:textStyle="bold"
-                android:textColor="@android:color/white"
+                android:textColor="@color/darkgreen"
                 />
 
         </RelativeLayout>

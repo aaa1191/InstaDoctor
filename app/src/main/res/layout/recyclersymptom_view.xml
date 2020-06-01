@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="android.view.View"/>
+        <variable name="index" type="int" />
+
+        <variable name="viewModel"
+            type="com.softgates.instadoctor.network.SymptomList"
+            />
+
+        <variable
+            name="clickListener"
+            type="com.softgates.instadoctor.selectsymptom.OnClick" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/searchview"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="@{() -> clickListener.ontick(viewModel,index)}"
+        android:background="@drawable/search_symptom_dr"
+        android:layout_marginStart="@dimen/twoentyfive"
+        android:layout_marginEnd="@dimen/twoentyfive"
+        android:layout_marginTop="@dimen/twoenty"
+        >
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.symptom_name}"
+            android:textSize="@dimen/textsize_fourteen"
+            android:textColor="@color/darkgreen"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/poppin_reg"
+            android:layout_marginStart="@dimen/twoenty"
+            />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/selecttick"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            app:cardBackgroundColor="@color/darkblue"
+            android:layout_centerVertical="true"
+            app:symptom="@{String.valueOf(viewModel.tick)}"
+            android:layout_marginEnd="@dimen/twoenty"
+            app:cardCornerRadius="@dimen/ten"
+            android:elevation="0dp"
+            >
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/tick"
+                android:padding="@dimen/five"
+
+                />
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -28,7 +28,7 @@ class LoginViewModel (val sharedPreferences: SharedPreferences,
     private val _message = MutableLiveData<String>()
     val message: LiveData<String?>
         get() = _message
-
+//paytab
     private val _status = MutableLiveData<ApiStatus>()
     val status: LiveData<ApiStatus?>
         get() = _status
@@ -109,6 +109,7 @@ class LoginViewModel (val sharedPreferences: SharedPreferences,
                         Log.e(Constant.APIRESPONSE,"registration api response success one one one is......")
                         // _message.value= response.message
                         //  sharedPreferences.edit { putInt("COUNT",0) }
+                        sharedPreferences.edit { putString(Constant.LOGINSIGNUPCHECK,"1") }
                         sharedPreferences.edit { putString(Constant.USERTOKEN, response.data!!.token.toString()) }
                         sharedPreferences.edit { putString(Constant.USEREMAIL, response.data!!.patient_email.toString()) }
                         _navigateActivity.value=1

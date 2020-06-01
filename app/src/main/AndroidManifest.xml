@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.SplashActivity"
-            android:theme="@style/Noactionbar">
+            android:theme="@style/splashNoactionbar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,7 +32,7 @@
 
         <activity android:name=".activity.HomeActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/yelloNoactionbar"
+            android:theme="@style/homeNoactionbar"
             />
 
     </application>

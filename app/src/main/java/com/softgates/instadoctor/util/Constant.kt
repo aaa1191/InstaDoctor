@@ -10,6 +10,7 @@ object Constant
     const val ADDPRODUCTBTN = "ADDPRODUCTBTN"
 
     const val EMPTY ="EMPTY"
+    const val LOGINSIGNUPCHECK ="LOGINSIGNUPCHECK"
     const val SUCCEESSSTATUS = 1
     const val SUCCEESSSTATUSTWOHUNDRED = 200
     const val TOKENEXPIRED = 505

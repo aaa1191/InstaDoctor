@@ -16,13 +16,34 @@
     <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
+    <style name="splashNoactionbar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">#EDF9F5</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:statusBarColor">#EDF9F5</item>
+    </style>
+
+    <style name="homeNoactionbar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/homebg</item>
+        <item name="colorPrimaryDark">@color/homebg</item>
+        <item name="colorAccent">@color/homebg</item>
+    </style>
+
     <style name="yelloNoactionbar" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/yellow</item>
-        <item name="colorPrimaryDark">@color/yellow</item>
+        <item name="colorPrimaryDark">@android:color/white</item>
         <item name="colorAccent">@color/yellow</item>
     </style>
 
+
+    <style name="seekbarstyle" parent="Widget.AppCompat.SeekBar">
+        <item name="android:progressBackgroundTint">#FF000000</item>
+        <item name="android:progressTint">@color/darkgreen</item>
+        <item name="android:colorControlActivated">@color/darkgreen</item>
+    </style>
 
     <style name="blackNoactionbar" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->

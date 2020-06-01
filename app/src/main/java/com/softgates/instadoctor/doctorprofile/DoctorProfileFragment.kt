@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
+import com.softgates.instadoctor.activity.HomeActivity
 import com.softgates.instadoctor.databinding.DoctorprofilefragmentBinding
 import com.softgates.instadoctor.network.DoctorList
 
@@ -42,15 +43,15 @@ class DoctorProfileFragment : Fragment() {
         linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.ratingrecyclerview?.setLayoutManager(linearLayoutManager)
 
-        val adapter = DoctorProfileAdapter(OnClick { data, type, position ->
+        (activity as HomeActivity).whiteStatusbar()
 
+        val adapter = DoctorProfileAdapter(OnClick { data, type, position ->
         })
 
         viewModel.GetRatinglist.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             adapter.submitList(it)
             adapter.notifyDataSetChanged()
         })
-
         binding.ratingrecyclerview?.adapter = adapter
         binding.viewModel = viewModel
         return  binding.root

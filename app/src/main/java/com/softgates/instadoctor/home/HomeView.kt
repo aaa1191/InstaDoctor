@@ -21,9 +21,10 @@ import com.softgates.instadoctor.activity.LoginActivity
 import com.softgates.instadoctor.databinding.HomeViewBinding
 import com.softgates.instadoctor.network.DoctorList
 import com.softgates.instadoctor.util.ApiStatus
+import com.softgates.instadoctor.util.Constant
 import com.softgates.instadoctor.util.ProgressDialog
 
-class HomeView: Fragment() {
+class HomeView : Fragment() {
 
     lateinit var binding: HomeViewBinding
     private lateinit var viewModel : HomeViewModel
@@ -53,50 +54,46 @@ class HomeView: Fragment() {
         binding.onlinerecyclerview?.setLayoutManager(linearLayoutManager)
         binding.offlinerecyclerview?.setLayoutManager(offlinelinearLayoutManager)
 
+        Log.e("DOCTORLIST","sharedpreference value is called....."+sharedPreferences.getString(Constant.LOGINSIGNUPCHECK,"0"))
+
         val adapter = HomeAdapter(OnClick { data, type, position ->
             Log.e("CHECKDATA","checkdata is called....called..called")
             if(type==1)
             {
-
-                val action = HomeViewDirections.actionHomeToDoctorProfileFragment()
+             /*   val action = HomeViewDirections.actionHomeToDoctorProfileFragment()
                 action.doctorlist = data as DoctorList
                 NavHostFragment.findNavController(this).navigate(action)
+                viewModel.complete()*/
 
-            /*    this.findNavController().navigate(
-                    //  CategoryViewDirections.actionCategoryView2ToSubCategoryView())
-                    HomeViewDirections.actionHomeToDoctorProfileFragment())*/
-                viewModel.complete()
+               /* if(sharedPreferences.getString(Constant.LOGINSIGNUPCHECK,"").equals("1"))
+                {
+                    Log.e("DOCTORLIST","doctorlist is...."+data.toString())
+                  //  val action = HomeViewDirections.actionHomeToDoctorProfileFragment()
+                  //  action.doctorlist = data as DoctorList
+                  //  NavHostFragment.findNavController(this).navigate(action)
+                  //  viewModel.complete()
+                }
+                else
+                {
+                    Toast.makeText(activity as AppCompatActivity,"Login first", Toast.LENGTH_SHORT).show()
+
+                    (activity as HomeActivity).loginView()
+                }*/
+            /*    val action = HomeViewDirections.actionHomeToDoctorProfileFragment()
+                action.doctorlist = data as DoctorList
+                NavHostFragment.findNavController(this).navigate(action)
+                viewModel.complete()*/
             }
         })
 
-        val offlineadapter = HomeAdapter(OnClick { data, type, position ->
-            Log.e("CHECKDATA","checkdata is called....called..called")
-            if(type==1)
-            {
-                Log.e("DOCTORLIST","doctorlist is...."+data.toString())
-                val action = HomeViewDirections.actionHomeToDoctorProfileFragment()
-                action.doctorlist = data as DoctorList
-                NavHostFragment.findNavController(this).navigate(action)
-              /*  this.findNavController().navigate(
-                    //  CategoryViewDirections.actionCategoryView2ToSubCategoryView())
-                    HomeViewDirections.actionHomeToDoctorProfileFragment())*/
-                viewModel.complete()
-            }
-        })
 
         viewModel.GetOnlinelist.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             adapter.submitList(it)
             adapter.notifyDataSetChanged()
         })
 
-        viewModel.GetOfflinelist.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            offlineadapter.submitList(it)
-            offlineadapter.notifyDataSetChanged()
-        })
-
 
         binding.onlinerecyclerview?.adapter = adapter
-        binding.offlinerecyclerview?.adapter = offlineadapter
 
         viewModel.message.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             Toast.makeText(activity as AppCompatActivity,it.toString(), Toast.LENGTH_SHORT).show()
@@ -117,10 +114,27 @@ class HomeView: Fragment() {
 
         binding.loginbtn.setOnClickListener {
 
-            (activity as HomeActivity).loginView()
+            Log.e("DOCTORLIST","sharedpreference value is called....."+sharedPreferences.getString(Constant.LOGINSIGNUPCHECK,"0"))
 
+            if(sharedPreferences.getString(Constant.LOGINSIGNUPCHECK,"0").equals("1"))
+            {
+
+              Log.e("DOCTORLIST","doctorlist is called called called called....")
+
+
+                  val action = HomeViewDirections.actionHomeToWhoVisitView()
+               //   action.doctorlist = data as DoctorList
+                  NavHostFragment.findNavController(this).navigate(action)
+                //  viewModel.complete()
+            }
+            else
+            {
+           //     Toast.makeText(activity as AppCompatActivity,"Login first", Toast.LENGTH_SHORT).show()
+                (activity as HomeActivity).loginView()
+            }
+
+        //    (activity as HomeActivity).loginView()
         }
-
         binding.viewModel = viewModel
         return  binding.root
     }

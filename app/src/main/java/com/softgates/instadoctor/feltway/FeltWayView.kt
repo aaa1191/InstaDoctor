@@ -33,11 +33,9 @@ class FeltWayView : Fragment() {
             inflater, R.layout.feltway_view, container, false)
 
         binding.nextarrow.setOnClickListener {
-
-            val action = FeltWayViewDirections.actionFeltWayViewToAnyMedicineView()
+            val action = FeltWayViewDirections.actionFeltWayViewToChooseDoctorView()
             NavHostFragment.findNavController(this).navigate(action)
         }
-
         return  binding.root
     }
 
