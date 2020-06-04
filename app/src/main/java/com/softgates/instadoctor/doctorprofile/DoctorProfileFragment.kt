@@ -11,10 +11,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
 import com.softgates.instadoctor.activity.HomeActivity
 import com.softgates.instadoctor.databinding.DoctorprofilefragmentBinding
+import com.softgates.instadoctor.feltway.FeltWayViewDirections
 import com.softgates.instadoctor.network.DoctorList
 
 class DoctorProfileFragment : Fragment() {
@@ -52,6 +54,16 @@ class DoctorProfileFragment : Fragment() {
             adapter.submitList(it)
             adapter.notifyDataSetChanged()
         })
+        binding.meetupbtn.setOnClickListener {
+            val action = DoctorProfileFragmentDirections.actionDoctorProfileFragmentToPaymentSummeryView()
+            NavHostFragment.findNavController(this).navigate(action)
+        }
+
+        binding.book.setOnClickListener {
+            val action = DoctorProfileFragmentDirections.actionDoctorProfileFragmentToScheduleAppointmentView()
+            NavHostFragment.findNavController(this).navigate(action)
+        }
+
         binding.ratingrecyclerview?.adapter = adapter
         binding.viewModel = viewModel
         return  binding.root

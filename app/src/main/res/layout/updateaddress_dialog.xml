@@ -232,10 +232,11 @@
             android:text="Save"
             android:layout_centerInParent="true"
             android:textColor="@android:color/white"
-            android:paddingStart="@dimen/twoenty"
-            android:paddingEnd="@dimen/twoenty"
+            android:paddingStart="@dimen/sixty"
+            android:paddingEnd="@dimen/sixty"
             android:paddingTop="@dimen/ten"
             android:paddingBottom="@dimen/ten"
+            android:fontFamily="@font/poppin_semi_bold"
             android:textSize="@dimen/textsize_fourteen"/>
 
     </RelativeLayout>

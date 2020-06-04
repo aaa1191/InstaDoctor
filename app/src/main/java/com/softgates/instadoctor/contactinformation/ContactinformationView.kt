@@ -41,7 +41,12 @@ class ContactinformationView : Fragment() {
             updateAddressDialog()
         }
 
-        binding.emailedittext.onRightDrawableClicked {
+       /* binding.emailedittext.onRightDrawableClicked {
+           // it.text.clear()
+            updateEmailDialog()
+        }*/
+
+        binding.savecontactinformation.setOnClickListener {
            // it.text.clear()
             updateEmailDialog()
         }

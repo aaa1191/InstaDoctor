@@ -12,21 +12,33 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
     android:layout_height="match_parent"
+        android:background="@color/homebg"
         android:paddingBottom="@dimen/twoenty">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/backbtn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/backbtn_back"
+            android:layout_marginStart="@dimen/twoenty"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/thirty"
+            />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/contactinformation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/contactinformation"
-            android:fontFamily="@font/poppin_reg"
+            android:fontFamily="@font/poppin_semi_bold"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_marginStart="@dimen/fifteen"
             android:textSize="@dimen/textsize_etn"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backbtn"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/fourty"
+            android:layout_marginTop="@dimen/ten"
             />
 
 
@@ -138,6 +150,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/twoenty"
+            app:fontFamily="@font/poppin_reg"
             android:textColor="@color/black"
             />
 
@@ -168,6 +181,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/twoenty"
             android:textColor="@color/black"
+            app:fontFamily="@font/poppin_reg"
+
             />
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -204,7 +219,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/savecontactinformation"
-                android:textSize="@dimen/textsize_etn"
+                android:textSize="@dimen/textsize_sixteen"
                 android:paddingStart="@dimen/twoenty"
                 android:paddingEnd="@dimen/twoenty"
                 android:fontFamily="@font/poppin_reg"

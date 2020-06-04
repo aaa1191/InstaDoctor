@@ -33,8 +33,7 @@ class SeeDoctorView : Fragment() {
             inflater, R.layout.seedoctor_view, container, false)
 
         binding.scheduleappointment.setOnClickListener {
-            val action = SeeDoctorViewDirections.actionSeeDoctorViewToScheduleAppointmentView()
-            NavHostFragment.findNavController(this).navigate(action)
+
         }
         return  binding.root
     }

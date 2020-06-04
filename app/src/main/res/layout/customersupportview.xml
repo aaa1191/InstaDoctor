@@ -8,7 +8,19 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/twoenty"
+        android:paddingEnd="@dimen/twoenty">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/backbtn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/backbtn_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/thirty"
+            />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/customersupporttxt"
@@ -18,33 +30,22 @@
             android:fontFamily="@font/poppin_reg"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:layout_marginStart="@dimen/fifteen"
             android:textSize="@dimen/textsize_etn"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backbtn"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="@dimen/twoenty"
             />
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@+id/customersupporttxt"
-            >
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="@dimen/twoenty"
-                android:paddingEnd="@dimen/twoenty"
-                android:paddingBottom="@dimen/twoenty">
+
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/customersupportimg"
                     android:layout_width="wrap_content"
-                    android:layout_height="350dp"
-                    android:padding="@dimen/fifteen"
+                    android:layout_height="260dp"
+                    android:padding="@dimen/thirty"
                     android:src="@drawable/customersupport"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/customersupporttxt"
                     app:layout_constraintStart_toStartOf="parent"
                     />
 
@@ -52,6 +53,7 @@
                     android:id="@+id/helpquickly"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
+                    android:visibility="gone"
                     android:background="@drawable/customersprt_drawable"
                     app:layout_constraintTop_toBottomOf="@+id/customersupportimg"
                     tools:layout_editor_absoluteX="20dp">
@@ -111,15 +113,16 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/livechatsupport"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="90dp"
                     android:background="@drawable/customersprt_drawable"
-                    app:layout_constraintTop_toBottomOf="@+id/helpquickly"
-                    android:layout_marginTop="@dimen/twoenty">
+                    app:layout_constraintTop_toBottomOf="@+id/customersupportimg"
+                    android:layout_marginStart="@dimen/ten"
+                    android:layout_marginEnd="@dimen/ten">
 
 
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
                         android:layout_marginStart="@dimen/twoenty"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -141,7 +144,8 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppin_reg"
                             android:text="@string/livechartsupport"
-                            android:textColor="@color/blue"
+                            android:textColor="@color/lightblue"
+                            app:fontFamily="@font/poppin_semi_bold"
                             android:textSize="@dimen/textsize_sixteen"
                             android:textStyle="bold" />
 
@@ -150,6 +154,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppin_reg"
                             android:text="@string/sendamessage"
+                            app:fontFamily="@font/poppin_reg"
                             android:textColor="@color/black"
                             android:textSize="@dimen/textsize_fourteen" />
 
@@ -159,7 +164,7 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/rightarrow_blue"
+                        android:src="@drawable/rightarrow_lightblue"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -170,14 +175,16 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="90dp"
                     android:background="@drawable/customersprt_drawable"
                     app:layout_constraintTop_toBottomOf="@+id/livechatsupport"
-                    android:layout_marginTop="@dimen/twoenty">
+                    android:layout_marginTop="@dimen/twoenty"
+                    android:layout_marginStart="@dimen/ten"
+                    android:layout_marginEnd="@dimen/ten">
 
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
                         android:layout_marginStart="@dimen/twoenty"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -199,7 +206,8 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppin_reg"
                             android:text="@string/callsupporttwofourseven"
-                            android:textColor="@color/blue"
+                            android:textColor="@color/lightblue"
+                            app:fontFamily="@font/poppin_semi_bold"
                             android:textSize="@dimen/textsize_sixteen"
                             android:textStyle="bold" />
 
@@ -208,6 +216,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppin_reg"
                             android:text="(900)997-0900"
+                            app:fontFamily="@font/poppin_reg"
                             android:textColor="@color/black"
                             android:textSize="@dimen/textsize_fourteen" />
 
@@ -217,7 +226,7 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/rightarrow_blue"
+                        android:src="@drawable/rightarrow_lightblue"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -227,9 +236,7 @@
 
 
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </ScrollView>
 
 
 

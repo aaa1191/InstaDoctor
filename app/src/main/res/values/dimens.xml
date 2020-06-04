@@ -14,7 +14,7 @@
     <dimen name="textsize_twoentytwo">22sp</dimen>
     <dimen name="thirty">30dp</dimen>
     <dimen name="textsize_fourteen">14sp</dimen>
-    <dimen name="textsize_profilesubtext">12sp</dimen>
+    <dimen name="textsize_profilesubtext">16sp</dimen>
     <dimen name="fifty">50dp</dimen>
     <dimen name="contactLRmargin">20dp</dimen>
     <dimen name="profilescreenheight">90dp</dimen>
@@ -51,10 +51,12 @@
     <dimen name="sixty">60dp</dimen>
     <dimen name="seventy">70dp</dimen>
     <dimen name="eight">8dp</dimen>
-    <dimen name="margintime">4dp</dimen>
-    <dimen name="timeheight">45dp</dimen>
+    <dimen name="margintime">6dp</dimen>
+    <dimen name="timeheight">40dp</dimen>
     <dimen name="eighty">80dp</dimen>
     <dimen name="six">6dp</dimen>
     <dimen name="textsize_eleven">11sp</dimen>
+    <dimen name="sixtyfive">65dp</dimen>
+    <dimen name="timetextsize">12sp</dimen>
 
 </resources>

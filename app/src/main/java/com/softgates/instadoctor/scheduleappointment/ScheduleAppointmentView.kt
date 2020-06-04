@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
 import com.softgates.instadoctor.databinding.ScheduleappointmentViewBinding
 import com.softgates.instadoctor.databinding.WhovisitViewBinding
-import com.softgates.instadoctor.seecdoctor.SeeDoctorViewDirections
 import com.softgates.instadoctor.whovisit.WhoVisitViewDirections
 
 class ScheduleAppointmentView : Fragment() {
@@ -34,7 +33,7 @@ class ScheduleAppointmentView : Fragment() {
 
 
         binding.schedulbtn.setOnClickListener {
-            val action = ScheduleAppointmentViewDirections.actionScheduleAppointmentViewToThankuScreenView()
+            val action = ScheduleAppointmentViewDirections.actionScheduleAppointmentViewToPaymentSummeryView()
             NavHostFragment.findNavController(this).navigate(action)
         }
 

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.softgates.instadoctor.doctorprofile.DoctorProfileViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/fifteen"
+        android:paddingEnd="@dimen/fifteen"
+        android:paddingBottom="@dimen/twoenty"
+        android:background="@android:color/white">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/backbtn_back"
+            android:layout_marginStart="@dimen/twoenty"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/instadoctorimg"
+            app:layout_constraintBottom_toBottomOf="@+id/instadoctorimg"
+            />
+
+        <ImageView
+            android:id="@+id/instadoctorimg"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:src="@drawable/instadoctor"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/requestedsubmit"
+                app:fontFamily="@font/poppin_semi_bold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_twoenty"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/five"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ourdriverercontact"
+                app:fontFamily="@font/poppin_reg"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textsize_fourteen"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/ten"
+                />
+
+
+        </LinearLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/yesmedicinebtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/thirty"
+            android:layout_marginTop="@dimen/thirty"
+            android:layout_marginEnd="@dimen/thirty"
+            android:layout_marginBottom="@dimen/twoenty"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/gradient_lightcreate_account"
+            app:layout_constraintBottom_toTopOf="@+id/nomedicinebtn">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/poppin_semi_bold"
+                android:gravity="center"
+                android:text="@string/reviewapp"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/textsize_etn" />
+
+        </RelativeLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/nomedicinebtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/thirty"
+            android:layout_marginEnd="@dimen/thirty"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/gradient_seedoctor"
+>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="@string/share"
+                android:textColor="@color/darkgreen"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/textsize_etn"
+                app:fontFamily="@font/poppin_semi_bold"
+                android:layout_marginTop="@dimen/five"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

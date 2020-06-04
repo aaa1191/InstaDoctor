@@ -11,7 +11,6 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
 import com.softgates.instadoctor.databinding.AnymedicineViewBinding
-import com.softgates.instadoctor.databinding.FeltwayViewBinding
 import com.softgates.instadoctor.whovisit.WhoVisitViewDirections
 
 class AnyMedicineView : Fragment() {
@@ -31,12 +30,12 @@ class AnyMedicineView : Fragment() {
         binding = DataBindingUtil.inflate<AnymedicineViewBinding>(
             inflater, R.layout.anymedicine_view, container, false)
 
-        binding.nomedicine.setOnClickListener {
+        binding.nomedicinebtn.setOnClickListener {
             val action = AnyMedicineViewDirections.actionAnyMedicineViewToAnyDrugAllergyView()
             NavHostFragment.findNavController(this).navigate(action)
         }
 
-        binding.yesmedicine.setOnClickListener {
+        binding.yesmedicinebtn.setOnClickListener {
             val action = AnyMedicineViewDirections.actionAnyMedicineViewToTakeMedicineView()
             NavHostFragment.findNavController(this).navigate(action)
         }

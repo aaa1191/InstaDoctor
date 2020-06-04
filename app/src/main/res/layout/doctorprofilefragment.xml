@@ -371,6 +371,7 @@
                     >
 
                     <RelativeLayout
+                        android:id="@+id/meetupbtn"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/five"
@@ -392,6 +393,7 @@
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/book"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/eight"

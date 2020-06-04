@@ -32,12 +32,12 @@ class AnyDrugAllergyView : Fragment() {
             inflater, R.layout.anydrugalergy_view, container, false)
 
 
-        binding.nomedicine.setOnClickListener {
+        binding.nomedicinebtn.setOnClickListener {
             val action = AnyDrugAllergyViewDirections.actionAnyDrugAllergyViewToWeightHeightView()
             NavHostFragment.findNavController(this).navigate(action)
         }
 
-        binding.yesmedicine.setOnClickListener {
+        binding.yesmedicinebtn.setOnClickListener {
             val action = AnyDrugAllergyViewDirections.actionAnyDrugAllergyViewToTakeAllergieView()
             NavHostFragment.findNavController(this).navigate(action)
         }

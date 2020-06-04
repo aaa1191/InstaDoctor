@@ -103,7 +103,7 @@
     <string name="no">No</string>
     <string name="yes">Yes</string>
     <string name="savemedication">Save medication</string>
-    <string name="doyouhaveanydrugallergy">Do you have any drug \nallergy</string>
+    <string name="doyouhaveanydrugallergy">Do you have any \ndrug allergy?</string>
     <string name="pleaseconsidermedicine">Please consider all the medicines you are taking</string>
     <string name="example">Examples</string>
     <string name="mediname">Amoxicillin \nBactrim \nAspirin</string>
@@ -131,6 +131,33 @@
     <string name="keepfee">Fees</string>
     <string name="meetnow">Meet Now</string>
     <string name="book">Book</string>
+    <string name="paymentsummery">Payment Summery</string>
+    <string name="constitutionfee">Consultation fee</string>
+    <string name="total">Total:</string>
+    <string name="selectpayment">Select Payment Method</string>
+    <string name="byplacingcreditcard">By placing this order, you agree to credit card</string>
+    <string name="termandcondition"><![CDATA[Terms & Conditions]]></string>
+    <string name="addpaymentcard">Add a new Payment Card</string>
+    <string name="servicefee">Service fee.</string>
+    <string name="thankyou">Thank you</string>
+    <string name="yourpaymentcompleted">Your payment has been completed\nyour appointment has been scheduled</string>
+    <string name="joinsession">Join Session</string>
+    <string name="addcomment">Add comments</string>
+    <string name="sumbit">Submit</string>
+    <string name="prescription">Prescription</string>
+    <string name="deliverymedicinetome">Deliver this medicine</string>
+    <string name="deliverreq">Delivery request</string>
+    <string name="selectamenties">Select emirate:</string>
+    <string name="notedriver">Note: Our driver will call you to update you on the final cost of your medicine once he reaches the pharmacy in the next one hour.</string>
+    <string name="request">Request</string>
+    <string name="requestedsubmit">Request Submitted</string>
+    <string name="ourdriverercontact">Our driver will contact you shortly to \nupdate you on the medicine cost.</string>
+    <string name="reviewapp">Review App</string>
+    <string name="share">Share</string>
+    <string name="mobileno">Mobile number:</string>
+    <string name="fulladdress">Full address:</string>
+    <string name="medicalhistory">Medicalhistory</string>
+    <string name="prescriptions">Prescriptions</string>
 
 
 </resources>

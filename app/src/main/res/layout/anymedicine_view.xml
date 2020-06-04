@@ -5,10 +5,10 @@
     <data>
         <import type="android.view.View"/>
     </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/twoenty">
 
         <ImageView
             android:id="@+id/backbtn"
@@ -26,9 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/takingmedicinetxt"
-            android:fontFamily="@font/poppin_reg"
+            android:fontFamily="@font/poppins_bold"
             android:textColor="@color/black"
-            android:textStyle="bold"
             android:layout_marginStart="@dimen/twoenty"
             android:textSize="@dimen/textsize_etn"
             app:layout_constraintTop_toBottomOf="@+id/backbtn"
@@ -36,27 +35,14 @@
             android:layout_marginTop="@dimen/thirty"
             />
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/customersupporttxt"
-            >
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="@dimen/twoenty"
-                android:paddingEnd="@dimen/twoenty"
-                android:paddingBottom="@dimen/twoenty"
-                android:layout_marginTop="@dimen/ten">
-                
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/takingmedicinne"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:textSize="@dimen/textsize_fourteen"
+                    android:textSize="@dimen/textsize_sixteen"
+                    android:visibility="invisible"
                     android:text="@string/considermedicine"
                     android:textColor="@color/black"
                     />
@@ -68,10 +54,12 @@
                     android:layout_height="180dp"
                     android:padding="@dimen/fifteen"
                     android:src="@drawable/anymedicie"
+                    android:visibility="invisible"
                     app:layout_constraintTop_toBottomOf="@+id/takingmedicinne"
                     app:layout_constraintStart_toStartOf="parent"
                     />
 
+<!--
                 <LinearLayout
                     android:id="@+id/yesnolayout"
                     android:layout_width="wrap_content"
@@ -79,10 +67,11 @@
                     app:layout_constraintTop_toBottomOf="@+id/registerchildimg"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    android:visibility="invisible"
                     android:layout_marginTop="@dimen/twoenty">
 
                     <RelativeLayout
-                        android:id="@+id/yesmedicine"
+                        android:id="@+id/hjjhhj"
                         android:layout_width="90dp"
                         android:layout_height="40dp"
                         android:background="@drawable/btn_green_bg"
@@ -101,7 +90,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
-                        android:id="@+id/nomedicine"
+                        android:id="@+id/nomedicinddde"
                         android:layout_width="90dp"
                         android:layout_height="40dp"
                         android:background="@drawable/btn_yellow_bg"
@@ -119,7 +108,9 @@
                             />
                     </RelativeLayout>
                 </LinearLayout>
+-->
 
+<!--
                 <RelativeLayout
                     android:id="@+id/savemedication"
                     android:layout_width="match_parent"
@@ -143,11 +134,65 @@
                         />
 
                 </RelativeLayout>
+-->
 
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                <RelativeLayout
+                    android:id="@+id/yesmedicinebtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="@dimen/fourty"
+                    android:layout_marginTop="@dimen/thirty"
+                    android:layout_marginEnd="@dimen/fourty"
+                    android:layout_marginBottom="@dimen/twoenty"
+                    android:background="@drawable/gradient_seedoctor"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/nomedicinebtn">
 
-        </ScrollView>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/poppin_semi_bold"
+                        android:gravity="center"
+                        android:text="@string/yes"
+                        android:textColor="@color/darkgreen"
+                        android:textSize="@dimen/textsize_etn" />
+
+                </RelativeLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/nomedicinebtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="@dimen/fourty"
+                    android:layout_marginEnd="@dimen/fourty"
+                    android:layout_weight="1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:background="@drawable/gradient_lightcreate_account">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="@string/no"
+                        android:textColor="@color/orange"
+                        android:gravity="center"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_centerInParent="true"
+                        android:textSize="@dimen/textsize_etn"
+                        app:fontFamily="@font/poppin_semi_bold"
+                        android:layout_marginTop="@dimen/five"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
 
 
 

@@ -7,7 +7,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/homebg">
 
         <ImageView
             android:id="@+id/backbtn"
@@ -26,13 +27,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/twoenty"
             android:layout_marginTop="@dimen/twoenty"
-            android:fontFamily="@font/poppin_reg"
+            android:fontFamily="@font/poppin_semi_bold"
             android:text="@string/selectdatetime"
             android:textColor="@color/black"
             android:textSize="@dimen/textsize_etn"
-            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/backbtn" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -43,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingBottom="@dimen/thirty"
-                android:layout_marginTop="@dimen/thirty">
+                android:layout_marginTop="@dimen/ten">
 
                 <CalendarView
                     android:id="@+id/calender"
@@ -52,6 +54,13 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black"
+                    app:layout_constraintTop_toBottomOf="@+id/calender"
                     />
 
 
@@ -64,8 +73,9 @@
                     android:textSize="@dimen/textsize_etn"
                     app:layout_constraintTop_toBottomOf="@+id/calender"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="@dimen/fifteen"
+                    android:layout_marginStart="@dimen/twoenty"
                     android:textStyle="bold"
+                    android:layout_marginTop="@dimen/twoenty"
                     />
 
                 <LinearLayout
@@ -73,7 +83,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginTop="@dimen/ten"
+                    android:layout_marginEnd="@dimen/ten"
+                    android:layout_marginStart="@dimen/ten"
+                    android:layout_marginTop="@dimen/fifteen"
                     app:layout_constraintTop_toBottomOf="@+id/timetxt"
                     >
 
@@ -95,7 +107,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="10:00 am"
-                                android:textSize="@dimen/textsize_sixteen"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/timetextsize"
+                                app:fontFamily="@font/poppin_reg"
                                 android:layout_centerInParent="true"
                                 />
 
@@ -113,7 +127,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="10:30 am"
-                                android:textSize="@dimen/textsize_sixteen"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/timetextsize"
+                                app:fontFamily="@font/poppin_reg"
                                 android:layout_centerInParent="true"
                                 />
 
@@ -130,7 +146,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="11:00 am"
-                                android:textSize="@dimen/textsize_sixteen"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/timetextsize"
+                                app:fontFamily="@font/poppin_reg"
                                 android:layout_centerInParent="true"
                                 />
 
@@ -147,7 +165,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="11:30 am"
-                                android:textSize="@dimen/textsize_sixteen"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/timetextsize"
+                                app:fontFamily="@font/poppin_reg"
                                 android:layout_centerInParent="true"
                                 />
 
@@ -173,7 +193,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="12:00 pm"
-                                android:textSize="@dimen/textsize_sixteen"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/timetextsize"
+                                app:fontFamily="@font/poppin_reg"
                                 android:layout_centerInParent="true"
                                 />
 
@@ -191,7 +213,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="12:30 pm"
-                                android:textSize="@dimen/textsize_sixteen"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/timetextsize"
+                                app:fontFamily="@font/poppin_reg"
                                 android:layout_centerInParent="true"
                                 />
 
@@ -208,7 +232,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="13:00 pm"
-                                android:textSize="@dimen/textsize_sixteen"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/timetextsize"
+                                app:fontFamily="@font/poppin_reg"
                                 android:layout_centerInParent="true"
                                 />
 
@@ -225,7 +251,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="13:30 pm"
-                                android:textSize="@dimen/textsize_sixteen"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/timetextsize"
+                                app:fontFamily="@font/poppin_reg"
                                 android:layout_centerInParent="true"
                                 />
 
@@ -251,8 +279,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="14:00 pm"
-                                android:textSize="@dimen/textsize_sixteen"
+                                android:textSize="@dimen/timetextsize"
+                                app:fontFamily="@font/poppin_reg"
                                 android:layout_centerInParent="true"
+                                android:textColor="@color/black"
                                 />
 
                         </RelativeLayout>
@@ -269,8 +299,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="14:30 pm"
-                                android:textSize="@dimen/textsize_sixteen"
+                                android:textSize="@dimen/timetextsize"
+                                app:fontFamily="@font/poppin_reg"
                                 android:layout_centerInParent="true"
+                                android:textColor="@color/black"
                                 />
 
                         </RelativeLayout>
@@ -286,7 +318,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="15:00 pm"
-                                android:textSize="@dimen/textsize_sixteen"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/timetextsize"
+                                app:fontFamily="@font/poppin_reg"
                                 android:layout_centerInParent="true"
                                 />
 
@@ -303,7 +337,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="15:30 pm"
-                                android:textSize="@dimen/textsize_sixteen"
+                                android:textSize="@dimen/timetextsize"
+                                app:fontFamily="@font/poppin_reg"
+                                android:textColor="@color/black"
                                 android:layout_centerInParent="true"
                                 />
 
@@ -314,27 +350,25 @@
 
                 </LinearLayout>
 
-
-
                 <RelativeLayout
                     android:id="@+id/schedulbtn"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="50dp"
                     app:layout_constraintTop_toBottomOf="@+id/timelayout"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:background="@drawable/btn_yellow_bg"
+                    android:background="@drawable/gradient_lightcreate_account"
                     android:layout_marginTop="@dimen/thirty"
-                    android:layout_marginStart="@dimen/fourty"
-                    android:layout_marginEnd="@dimen/fourty">
+                    android:layout_marginStart="@dimen/fifty"
+                    android:layout_marginEnd="@dimen/fifty">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:text="@string/schedule"
-                        android:fontFamily="@font/poppin_reg"
+                        android:fontFamily="@font/poppin_semi_bold"
                         android:textSize="@dimen/textsize_etn"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/orange"
                         />
 
                 </RelativeLayout>

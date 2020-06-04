@@ -27,20 +27,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/whichmedication"
-            android:fontFamily="@font/poppin_reg"
+            android:fontFamily="@font/poppins_bold"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_marginStart="@dimen/twoenty"
             android:textSize="@dimen/textsize_etn"
             app:layout_constraintTop_toBottomOf="@+id/backbtn"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/thirty"
+            android:layout_marginTop="@dimen/twoenty"
             />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/addrecyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/ten"
+            android:layout_marginEnd="@dimen/ten"
             app:layout_constraintTop_toBottomOf="@+id/whichmedicationtxt"
             app:layout_constraintStart_toStartOf="parent"
             />
@@ -64,12 +66,10 @@
             app:layout_constraintTop_toBottomOf="@+id/addrecyclerview"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="@dimen/twoenty"
-            android:layout_marginTop="@dimen/twoenty"
-            android:textColor="@color/green"
-            android:textSize="@dimen/textsize_twoenty"
+            android:layout_marginTop="@dimen/fifteen"
+            android:textColor="@color/darkgreen"
+            android:textSize="@dimen/textsize_sixteen"
             />
-
-
 
         <RelativeLayout
             android:id="@+id/next"
@@ -77,19 +77,19 @@
             android:layout_height="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:background="@drawable/gradient_create_account"
+            android:background="@drawable/gradient_lightcreate_account"
             android:layout_marginTop="@dimen/twoenty"
-            android:layout_marginStart="@dimen/fourty"
-            android:layout_marginEnd="@dimen/fourty">
+            android:layout_marginStart="@dimen/fifty"
+            android:layout_marginEnd="@dimen/fifty">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/next"
-                android:fontFamily="@font/poppin_reg"
+                android:fontFamily="@font/poppin_semi_bold"
                 android:textSize="@dimen/textsize_etn"
-                android:textColor="@android:color/white"
+                android:textColor="@color/orange"
                 />
 
         </RelativeLayout>

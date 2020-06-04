@@ -13,7 +13,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingStart="@dimen/twoenty"
-    android:paddingEnd="@dimen/twoenty">
+    android:paddingEnd="@dimen/twoenty"
+    android:paddingBottom="@dimen/thirty">
 
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -30,8 +31,8 @@
 
     <ImageView
         android:id="@+id/imageview"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="@dimen/ten"
         android:src="@drawable/doctor"
@@ -57,7 +58,7 @@
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:fontFamily="@font/poppin_reg"
+            android:fontFamily="@font/poppin_semi_bold"
             android:text="William Jones"
             android:textColor="@color/black"
             android:textSize="@dimen/textsize_twl"
@@ -71,7 +72,7 @@
             app:layout_constraintTop_toBottomOf="@+id/username"
             android:fontFamily="@font/poppin_reg"
             android:text="@string/vieweditprofile"
-            android:textColor="@color/black"
+            android:textColor="@color/darkgreen"
             android:textSize="@dimen/textsize_twl"
             android:textStyle="normal"/>
 
@@ -123,11 +124,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/ten"
             android:layout_marginTop="@dimen/twoenty"
-            android:fontFamily="@font/poppin_reg"
+            android:fontFamily="@font/poppin_semi_bold"
             android:text="@string/payment"
             android:textColor="@color/black"
             android:textSize="@dimen/textsize_profilesubtext"
-            android:textStyle="bold"
             app:textAllCaps="true" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -138,20 +138,12 @@
             android:layout_marginTop="@dimen/fifty"
             android:layout_marginStart="@dimen/ten"
             android:textSize="@dimen/textsize_profilesubtext"
-            android:fontFamily="@font/poppin_reg"
+            android:fontFamily="@font/poppin_semi_bold"
             android:textColor="@color/darkgray"
             />
 
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/payment"
-            android:paddingTop="@dimen/ten"
-            android:paddingBottom="@dimen/ten"
-            android:layout_gravity="end"
-            android:scaleType="fitXY"
-            />
+
 
     </androidx.cardview.widget.CardView>
 
@@ -159,7 +151,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/profiletablayout"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="230dp"
         app:cardBackgroundColor="@color/gray"
         app:cardCornerRadius="@dimen/ten"
         android:elevation="0dp"
@@ -181,7 +173,7 @@
                 android:text="@string/profile"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:fontFamily="@font/poppin_reg"
+                android:fontFamily="@font/poppin_semi_bold"
                 android:textSize="@dimen/textsize_profilesubtext"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -194,7 +186,7 @@
                 android:layout_marginTop="@dimen/fifteen"
                 android:text="@string/contactinformation"
                 android:textSize="@dimen/textsize_profilesubtext"
-                android:fontFamily="@font/poppin_reg"
+                android:fontFamily="@font/poppin_semi_bold"
                 android:textColor="@color/darkgray"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -208,7 +200,7 @@
                 android:text="@string/changepassword"
                 android:textSize="@dimen/textsize_profilesubtext"
                 android:textColor="@color/darkgray"
-                android:fontFamily="@font/poppin_reg"
+                android:fontFamily="@font/poppin_semi_bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:textAllCaps="true" />
@@ -219,7 +211,7 @@
                 android:layout_marginTop="@dimen/fifteen"
                 android:text="@string/insurance"
                 android:textSize="@dimen/textsize_profilesubtext"
-                android:fontFamily="@font/poppin_reg"
+                android:fontFamily="@font/poppin_semi_bold"
                 android:textColor="@color/darkgray"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -231,7 +223,7 @@
                 android:layout_marginTop="@dimen/fifteen"
                 android:text="@string/employer"
                 android:textSize="@dimen/textsize_profilesubtext"
-                android:fontFamily="@font/poppin_reg"
+                android:fontFamily="@font/poppin_semi_bold"
                 android:textColor="@color/darkgray"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -245,6 +237,8 @@
             android:src="@drawable/profiletab"
             android:layout_gravity="end"
             android:scaleType="fitXY"
+            android:visibility="gone"
+
             />
 
     </androidx.cardview.widget.CardView>
@@ -252,7 +246,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="190dp"
         app:cardBackgroundColor="@color/gray"
         app:cardCornerRadius="@dimen/ten"
         android:elevation="0dp"
@@ -270,7 +264,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppin_reg"
+                android:fontFamily="@font/poppin_semi_bold"
                 android:text="@string/getintouch"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_profilesubtext"
@@ -286,7 +280,7 @@
                 android:layout_marginTop="@dimen/fifteen"
                 android:text="@string/customersupport"
                 android:textSize="@dimen/textsize_profilesubtext"
-                android:fontFamily="@font/poppin_reg"
+                android:fontFamily="@font/poppin_semi_bold"
                 android:textColor="@color/darkgray"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -299,7 +293,7 @@
                 android:layout_marginTop="@dimen/fifteen"
                 android:text="@string/aboutinstadoctor"
                 android:textSize="@dimen/textsize_profilesubtext"
-                android:fontFamily="@font/poppin_reg"
+                android:fontFamily="@font/poppin_semi_bold"
                 android:textColor="@color/darkgray"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -312,7 +306,7 @@
                 android:layout_marginTop="@dimen/fifteen"
                 android:text="@string/termcondition"
                 android:textSize="@dimen/textsize_profilesubtext"
-                android:fontFamily="@font/poppin_reg"
+                android:fontFamily="@font/poppin_semi_bold"
                 android:textColor="@color/darkgray"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -326,6 +320,7 @@
             android:src="@drawable/getintouch"
             android:layout_gravity="end"
             android:scaleType="fitXY"
+            android:visibility="gone"
             />
 
     </androidx.cardview.widget.CardView>

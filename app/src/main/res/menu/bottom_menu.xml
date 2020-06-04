@@ -7,12 +7,12 @@
       />
 
      <item
-         android:id="@+id/dd"
+         android:id="@+id/profile"
           android:icon="@drawable/setting"
          />
 
     <item
-        android:id="@+id/profile"
+        android:id="@+id/profiless"
         android:icon="@drawable/userprofile"
         />
 

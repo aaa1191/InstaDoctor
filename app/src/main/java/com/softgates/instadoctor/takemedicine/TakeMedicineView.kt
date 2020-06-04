@@ -58,6 +58,7 @@ class TakeMedicineView : Fragment() {
             adapter.submitList(it)
             adapter.notifyDataSetChanged()
         })
+
         binding.addrecyclerview?.adapter = adapter
 
 

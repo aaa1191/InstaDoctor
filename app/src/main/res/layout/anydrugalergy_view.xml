@@ -8,7 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/twoenty">
 
         <ImageView
             android:id="@+id/backbtn"
@@ -30,13 +31,13 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_marginStart="@dimen/twoenty"
-            android:textSize="@dimen/textsize_etn"
+            android:textSize="@dimen/textsize_twoenty"
             app:layout_constraintTop_toBottomOf="@+id/backbtn"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/thirty"
+            android:layout_marginTop="@dimen/twoenty"
             />
 
-        <ScrollView
+       <!-- <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/customersupporttxt"
@@ -183,6 +184,61 @@
                         />
                 </RelativeLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
+        </ScrollView>-->
+        <RelativeLayout
+            android:id="@+id/yesmedicinebtn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="@dimen/fifty"
+            android:layout_marginTop="@dimen/thirty"
+            android:layout_marginEnd="@dimen/fifty"
+            android:layout_marginBottom="@dimen/twoenty"
+            android:background="@drawable/gradient_seedoctor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/nomedicinebtn">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/poppin_semi_bold"
+                android:gravity="center"
+                android:text="@string/yes"
+                android:textColor="@color/darkgreen"
+                android:textSize="@dimen/textsize_etn" />
+
+        </RelativeLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/nomedicinebtn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="@dimen/fourty"
+            android:layout_marginEnd="@dimen/fourty"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/gradient_lightcreate_account">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="@string/no"
+                android:textColor="@color/orange"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/textsize_etn"
+                app:fontFamily="@font/poppin_semi_bold"
+                android:layout_marginTop="@dimen/five"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

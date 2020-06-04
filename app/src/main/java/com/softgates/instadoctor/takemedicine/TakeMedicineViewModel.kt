@@ -45,10 +45,10 @@ class TakeMedicineViewModel(val sharedPreferences: SharedPreferences,
 
         getlist!!.add(SymptomList(1,"Cold",0))
         getlist!!.add(SymptomList(2,"Cough",0))
-        getlist!!.add(SymptomList(3,"Headech",0))
-        getlist!!.add(SymptomList(4,"Sore Throat",0))
-        getlist!!.add(SymptomList(5,"Nasal Congestion",0))
-        getlist!!.add(SymptomList(6,"Rash",0))
+//        getlist!!.add(SymptomList(3,"Headech",0))
+//        getlist!!.add(SymptomList(4,"Sore Throat",0))
+//        getlist!!.add(SymptomList(5,"Nasal Congestion",0))
+//        getlist!!.add(SymptomList(6,"Rash",0))
         _addlist.value = getlist
         Log.e("APIRESPONSE", "wishlist api is called..." )
         //   _symptomlist.value = doctorlist

@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
 import com.softgates.instadoctor.databinding.SeedoctorViewBinding
 import com.softgates.instadoctor.databinding.ThankuscreenViewBinding
-import com.softgates.instadoctor.seecdoctor.SeeDoctorViewDirections
 
 class ThankuScreenView : Fragment() {
 

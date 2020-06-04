@@ -26,8 +26,10 @@
     <color name="gray">#E0E0E0</color>
     <color name="lightgray">#f5f5f5</color>
     <color name="fbbg">#F7F9F8</color>
-    <color name="blue">#23D5ED</color>
+    <color name="blue">#3689ae</color>
+    <color name="lightblue">#4bbbde</color>
     <color name="red">#d50000</color>
+    <color name="maroon">#862529</color>
     <color name="Black0Percent">#D9000000</color>
     <color name="homebg">#f7f7f7</color>
 

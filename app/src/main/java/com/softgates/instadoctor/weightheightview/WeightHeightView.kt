@@ -32,6 +32,10 @@ class WeightHeightView  : Fragment() {
         binding = DataBindingUtil.inflate<WeightheightViewsBinding>(
             inflater, R.layout.weightheight_views, container, false)
 
+        binding.nextarrow.setOnClickListener {
+            val action = WeightHeightViewDirections.actionWeightHeightViewToJoinSessionView()
+            NavHostFragment.findNavController(this).navigate(action)
+        }
         return  binding.root
     }
 
