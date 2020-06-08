@@ -40,6 +40,7 @@
         android:hint="@string/address">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/addrssone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppin_reg"
@@ -75,6 +76,7 @@
         android:hint="@string/addresstwo">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/addressedittxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppin_reg"
@@ -215,7 +217,7 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/verifypassword"
+        android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/gradient_resetpassword"

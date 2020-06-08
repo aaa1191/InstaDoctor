@@ -6,11 +6,16 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.softgates.instadoctor.R
+import com.softgates.instadoctor.network.DoctorReviewList
 import com.softgates.instadoctor.network.SymptomList
 import com.softgates.instadoctor.util.ApiStatus
+import com.softgates.instadoctor.util.Constant
+import com.softgates.instadoctor.util.InstaDoctorApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class SymptomViewModel (val sharedPreferences: SharedPreferences,
                         application: Application
@@ -28,8 +33,6 @@ class SymptomViewModel (val sharedPreferences: SharedPreferences,
     val message: LiveData<String?>
         get() = _message
 
-
-
     private val _symptomlist = MutableLiveData<List<SymptomList>>()
     val symptomlist: LiveData<List<SymptomList>>
         get() = _symptomlist
@@ -40,9 +43,11 @@ class SymptomViewModel (val sharedPreferences: SharedPreferences,
     val notifyItem: LiveData<Int>
         get() = _notifyItem
 
+    private val _GetSymptomlist = MutableLiveData<List<SymptomList>>()
+    val GetSymptomlist: LiveData<List<SymptomList>>
+        get() = _GetSymptomlist
+
     init {
-
-
         getlist!!.add(SymptomList(1,"Cold",0))
         getlist!!.add(SymptomList(2,"Cough",0))
         getlist!!.add(SymptomList(3,"Headech",0))
@@ -52,19 +57,57 @@ class SymptomViewModel (val sharedPreferences: SharedPreferences,
         _symptomlist.value = getlist
         Log.e("APIRESPONSE", "wishlist api is called..." )
      //   _symptomlist.value = doctorlist
+        getSymtomApi()
     }
 
     fun addClick(product: SymptomList,type:Int,index:Int)
     {
-        Log.e("UPDATETICK","update tick is called......"+ _symptomlist.value!!.get(index).tick)
-        if(_symptomlist.value!!.get(index).tick==0)
+        Log.e("UPDATETICK","update tick is called......"+ _GetSymptomlist.value!!.get(index).tick)
+        if(_GetSymptomlist.value!!.get(index).tick==0)
         {
-            _symptomlist.value!!.get(index).tick=1
+            _GetSymptomlist.value!!.get(index).tick=1
         }
         else{
-            _symptomlist.value!!.get(index).tick=0
+            _GetSymptomlist.value!!.get(index).tick=0
         }
-        _symptomlist.value=  _symptomlist.value
+        _GetSymptomlist.value=  _GetSymptomlist.value
         _notifyItem.value=index
+    }
+
+    fun getSymtomApi()
+    {
+        if(!Constant.connected(context))
+        {
+            _message.value= context.resources.getString(R.string.nointernet)
+        }
+        else
+        {
+            _status.value = ApiStatus.LOADING
+            //   var token=sharedPreferences.getString(Constant.USERTOKEN,"")
+            coroutineScope.launch {
+                // Get the Deferred object for our Retrofit request
+                var getPropertiesDeferred = InstaDoctorApi.retrofitService.getSymptoms("get_symptoms")
+                try {
+                    val response = getPropertiesDeferred.await()
+                    Log.e(Constant.APIRESPONSE,"reviewlist api response is......"+response.toString())
+                    if(response.status == Constant.SUCCEESSSTATUSTWOHUNDRED)
+                    {
+                        Log.e(Constant.APIRESPONSE,"registration api response success one one one is......")
+                        // _message.value= response.message
+                        _GetSymptomlist.value=  response.data!! as MutableList<SymptomList>
+                        _message.value= response.message!!.toString()
+                    }
+                    else
+                    {
+                        _message.value= response.message!!.toString()
+                    }
+                    _status.value = ApiStatus.DONE
+                } catch (e: Exception) {
+                    _status.value = ApiStatus.ERROR
+                    _message.value= "Api Failure "+e.message
+                    Log.e(Constant.APIRESPONSE,"registration api failure is......"+e.toString())
+                }
+            }
+        }
     }
 }

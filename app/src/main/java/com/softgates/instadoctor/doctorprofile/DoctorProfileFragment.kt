@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -18,6 +19,7 @@ import com.softgates.instadoctor.activity.HomeActivity
 import com.softgates.instadoctor.databinding.DoctorprofilefragmentBinding
 import com.softgates.instadoctor.feltway.FeltWayViewDirections
 import com.softgates.instadoctor.network.DoctorList
+import kotlin.reflect.jvm.internal.impl.load.java.Constant
 
 class DoctorProfileFragment : Fragment() {
 
@@ -38,7 +40,7 @@ class DoctorProfileFragment : Fragment() {
             inflater, R.layout.doctorprofilefragment, container, false)
         doctorlist = DoctorProfileFragmentArgs.fromBundle(arguments!!).doctorlist as DoctorList
         Log.e("RESPONSEDOCTOR","doctorlist....."+doctorlist.toString())
-        sharedPreferences =   (activity as AppCompatActivity).getSharedPreferences("dd", Context.MODE_PRIVATE)
+        sharedPreferences =   (activity as AppCompatActivity).getSharedPreferences(com.softgates.instadoctor.util.Constant.SHAREDPREFERENCENAME, Context.MODE_PRIVATE)
         val application = requireNotNull(this.activity).application
         val viewModelFactory = DoctorProfileViewModelFactory(sharedPreferences, application,doctorlist)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(DoctorProfileViewModel::class.java)
@@ -54,7 +56,9 @@ class DoctorProfileFragment : Fragment() {
             adapter.submitList(it)
             adapter.notifyDataSetChanged()
         })
+
         binding.meetupbtn.setOnClickListener {
+            sharedPreferences.edit { putString(com.softgates.instadoctor.util.Constant.DOCID,doctorlist.id) }
             val action = DoctorProfileFragmentDirections.actionDoctorProfileFragmentToPaymentSummeryView()
             NavHostFragment.findNavController(this).navigate(action)
         }

@@ -10,12 +10,24 @@ object Constant
     const val ADDPRODUCTBTN = "ADDPRODUCTBTN"
 
     const val EMPTY ="EMPTY"
+    const val SHAREDPREFERENCENAME ="INSTADOCTOR"
+    const val FELTDAYS ="FELTDAYS"
+    const val SYMPTOMNAME ="SYMPTOMNAME"
+    const val MEDICATIONNAME ="MEDICATIONNAME"
+    const val ALLERGY ="ALLERGY"
+    const val ALLERGYNAME ="ALLERGYNAME"
+    const val MEDICATION ="MEDICATION"
     const val LOGINSIGNUPCHECK ="LOGINSIGNUPCHECK"
+    const val CHILDSTATUS = "CHILDSTATUS"
+    const val CHILDID = "CHILDID"
+    const val DOCID = "DOCID"
+
     const val SUCCEESSSTATUS = 1
     const val SUCCEESSSTATUSTWOHUNDRED = 200
     const val TOKENEXPIRED = 505
     const val USERTOKEN = "USERTOKEN"
     const val USEREMAIL = "USEREMAIL"
+    const val PATIENTID = "PATIENTID"
     const val LANGUAGAE = "LANGUAGAE"
     const val WEBVIEWTYPE = "WEBVIEWTYPE"
     const val HOWITWORKS = "HOWITWORKS"

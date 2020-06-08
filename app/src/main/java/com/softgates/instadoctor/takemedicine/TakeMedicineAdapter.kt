@@ -5,9 +5,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.softgates.instadoctor.databinding.RecyclerviewtakemedicineViewBinding
-import com.softgates.instadoctor.network.SymptomList
+import com.softgates.instadoctor.network.AddValue
 
-class TakeMedicineAdapter (private val onClickListener: OnClick ) :  ListAdapter<SymptomList, RecyclerView.ViewHolder>(symptomListDiffCallback()) {
+class TakeMedicineAdapter (private val onClickListener: OnClick ) :  ListAdapter<AddValue, RecyclerView.ViewHolder>(symptomListDiffCallback()) {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as TakeMedicineAdapter.ViewHolder).bind(getItem(position)!!,onClickListener,position)
@@ -21,7 +21,7 @@ class TakeMedicineAdapter (private val onClickListener: OnClick ) :  ListAdapter
     }
 
     class ViewHolder private constructor(val binding: RecyclerviewtakemedicineViewBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(item: SymptomList, clickListener: OnClick, position:Int) {
+        fun bind(item: AddValue, clickListener: OnClick, position:Int) {
             binding.viewModel = item
             binding.index = position
          //   binding.clickListener = clickListener
@@ -37,16 +37,16 @@ class TakeMedicineAdapter (private val onClickListener: OnClick ) :  ListAdapter
     }
 }
 
-class OnClick(val clickListener: (marsProperty: SymptomList, type:Int, index:Int) -> Unit) {
-    fun ontick(marsProperty: SymptomList, index:Int) = clickListener(marsProperty,1,index)
-    fun onDesc(marsProperty: SymptomList, index:Int) = clickListener(marsProperty,2,index)
+class OnClick(val clickListener: (marsProperty: AddValue, type:Int, index:Int) -> Unit) {
+    fun ontick(marsProperty: AddValue, index:Int) = clickListener(marsProperty,1,index)
+    fun onDesc(marsProperty: AddValue, index:Int) = clickListener(marsProperty,2,index)
 }
 
-class symptomListDiffCallback : DiffUtil.ItemCallback<SymptomList>() {
-    override fun areItemsTheSame(oldItem: SymptomList, newItem: SymptomList): Boolean {
-        return oldItem.id == newItem.id
+class symptomListDiffCallback : DiffUtil.ItemCallback<AddValue>() {
+    override fun areItemsTheSame(oldItem: AddValue, newItem: AddValue): Boolean {
+        return oldItem.addTxt == newItem.addTxt
     }
-    override fun areContentsTheSame(oldItem: SymptomList, newItem: SymptomList): Boolean {
+    override fun areContentsTheSame(oldItem: AddValue, newItem: AddValue): Boolean {
         return oldItem == newItem
     }
 }

@@ -28,7 +28,7 @@ import com.softgates.instadoctor.util.ProgressDialog
 class ChooseDoctorView : Fragment() {
 
     lateinit var binding: ChoosedoctorViewBinding
-    private lateinit var viewModel : HomeViewModel
+    private lateinit var viewModel : ChooseDoctorViewModel
     //private lateinit var viewModel : HomeViewModel
     private lateinit var vi: View
     lateinit var linearLayoutManager: LinearLayoutManager
@@ -45,13 +45,12 @@ class ChooseDoctorView : Fragment() {
         binding = DataBindingUtil.inflate<ChoosedoctorViewBinding>(
             inflater, R.layout.choosedoctor_view, container, false)
 
-        sharedPreferences =   (activity as AppCompatActivity).getSharedPreferences("dd", Context.MODE_PRIVATE)
+        sharedPreferences =   (activity as AppCompatActivity).getSharedPreferences(Constant.SHAREDPREFERENCENAME, Context.MODE_PRIVATE)
         val application = requireNotNull(this.activity).application
-        val viewModelFactory = HomeViewModelFactory(sharedPreferences, application)
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(HomeViewModel::class.java)
+        val viewModelFactory = ChooseDoctorViewModelFactory(sharedPreferences, application)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(ChooseDoctorViewModel::class.java)
         linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.onlinerecyclerview?.setLayoutManager(linearLayoutManager)
-
 
         val adapter = ChooseDoctorAdapter(OnClick { data, type, position ->
             Log.e("CHECKDATA","checkdata is called....called..called")
@@ -62,20 +61,20 @@ class ChooseDoctorView : Fragment() {
                    NavHostFragment.findNavController(this).navigate(action)
                    viewModel.complete()*/
 
-                if(sharedPreferences.getString(Constant.LOGINSIGNUPCHECK,"").equals("1"))
-                {
+                /*if(sharedPreferences.getString(Constant.LOGINSIGNUPCHECK,"").equals("1"))
+                {*/
                     Log.e("DOCTORLIST","doctorlist is...."+data.toString())
                     val action = ChooseDoctorViewDirections.actionChooseDoctorViewToDoctorProfileFragment()
                     action.doctorlist = data as DoctorList
                     NavHostFragment.findNavController(this).navigate(action)
                     viewModel.complete()
 
-                }
+               /* }
                 else
                 {
                     Toast.makeText(activity as AppCompatActivity,"Login first", Toast.LENGTH_SHORT).show()
                     (activity as HomeActivity).loginView()
-                }
+                }*/
                 /*    val action = HomeViewDirections.actionHomeToDoctorProfileFragment()
                     action.doctorlist = data as DoctorList
                     NavHostFragment.findNavController(this).navigate(action)

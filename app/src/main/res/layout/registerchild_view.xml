@@ -4,7 +4,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.softgates.instadoctor.registerchild.RegisterChildViewModel" />
+
+
     </data>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -26,14 +33,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/regisetyourchild"
-            android:fontFamily="@font/poppin_reg"
+            android:fontFamily="@font/poppin_semi_bold"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_marginStart="@dimen/twoenty"
-            android:textSize="@dimen/textsize_etn"
+            android:textSize="@dimen/textsize_twoenty"
             app:layout_constraintTop_toBottomOf="@+id/backbtn"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/thirty"
+            android:layout_marginTop="@dimen/twoenty"
             />
 
         <ScrollView
@@ -51,24 +58,92 @@
                 android:layout_marginTop="@dimen/ten">
 
 
-                <androidx.appcompat.widget.AppCompatImageView
+                <RelativeLayout
+                    android:id="@+id/malefemalelayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="@dimen/fourty">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="@dimen/fourty">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/maleicon"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/male_icon"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            />
+
+                       <androidx.appcompat.widget.AppCompatTextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="@string/male"
+                           android:textSize="@dimen/textsize_fourteen"
+                           android:textColor="@color/black"
+                           app:fontFamily="@font/poppin_semi_bold"
+                           android:layout_marginTop="@dimen/ten"
+                           app:layout_constraintStart_toStartOf="@+id/maleicon"
+                           app:layout_constraintEnd_toEndOf="@+id/maleicon"
+                           app:layout_constraintTop_toBottomOf="@+id/maleicon"
+                           />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="@dimen/fourty">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/femaleicon"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/female_icon"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/female"
+                            android:textSize="@dimen/textsize_fourteen"
+                            android:textColor="@color/black"
+                            app:fontFamily="@font/poppin_semi_bold"
+                            android:layout_marginTop="@dimen/ten"
+                            app:layout_constraintStart_toStartOf="@+id/femaleicon"
+                            app:layout_constraintEnd_toEndOf="@+id/femaleicon"
+                            app:layout_constraintTop_toBottomOf="@+id/femaleicon"
+                            />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </RelativeLayout>
+
+            <!--    <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/registerchildimg"
                     android:layout_width="wrap_content"
                     android:layout_height="200dp"
                     android:padding="@dimen/fifteen"
                     android:src="@drawable/registerchild"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    />
 
-
+                    />-->
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/nameedittxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/registerchildimg"
-                    android:layout_marginTop="@dimen/five"
+                    app:layout_constraintTop_toBottomOf="@+id/malefemalelayout"
+                    android:layout_marginTop="@dimen/fourty"
                     android:theme="@style/TextLabel"
                     android:fontFamily="@font/poppin_reg"
                     android:textSize="@dimen/textsize_sixteen"
@@ -79,6 +154,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppin_reg"
                         android:textSize="@dimen/textsize_sixteen"
+                        android:onTextChanged="@{viewModel.onTextChangedName}"
+                        android:text="@{viewModel.name}"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -92,19 +169,21 @@
                     android:text="@string/selectage"
                     android:fontFamily="@font/poppin_reg"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textsize_sixteen"
-                    android:layout_marginTop="@dimen/twoenty"
+                    android:textSize="@dimen/textsize_etn"
+                    android:layout_marginTop="@dimen/thirty"
                     />
 
-            <TextView
-                android:id="@+id/txtview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/selectagetxt"
-                app:layout_constraintStart_toStartOf="parent"
-
-                />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/yearstxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/years"
+                    app:layout_constraintTop_toBottomOf="@+id/selectagetxt"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:fontFamily="@font/poppin_semi_bold"
+                    android:textSize="@dimen/textsize_sixteen"
+                    />
 
                 <SeekBar
                     android:id="@+id/yearseekbar"
@@ -112,36 +191,65 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginTop="@dimen/twoenty"
+                    android:layout_marginTop="@dimen/ten"
                     android:tooltipText="11"
                     android:splitTrack="true"
+                    android:max="18"
+                    style="@style/seekbarstyle"
                     android:backgroundTint="@color/green"
                     android:thumbTint="@color/green"
+                    app:layout_constraintTop_toBottomOf="@+id/yearstxt" />
 
-                    app:layout_constraintTop_toBottomOf="@+id/selectagetxt" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/monthtxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/month"
+                    app:layout_constraintTop_toBottomOf="@+id/yearseekbar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:fontFamily="@font/poppin_semi_bold"
+                    android:layout_marginTop="@dimen/fifteen"
+                    android:textSize="@dimen/textsize_sixteen"
+                    />
 
                 <SeekBar
-                    android:id="@+id/month"
+                    android:id="@+id/monthseekbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginTop="@dimen/twoenty"
+                    android:layout_marginTop="@dimen/fifteen"
                     android:tooltipText="11"
                     android:splitTrack="true"
+                    android:max="12"
                     android:backgroundTint="@color/yellow"
                     android:thumbTint="@color/yellow"
-                    app:layout_constraintTop_toBottomOf="@+id/yearseekbar" />
+                    app:layout_constraintTop_toBottomOf="@+id/monthtxt" />
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/rangetxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/range"
+                    app:layout_constraintTop_toBottomOf="@+id/monthseekbar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:fontFamily="@font/poppin_semi_bold"
+                    android:layout_marginTop="@dimen/fifteen"
+                    android:textSize="@dimen/textsize_sixteen"
+                    />
 
                 <RelativeLayout
                     android:id="@+id/addyourchild"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    app:layout_constraintTop_toBottomOf="@+id/month"
+                    app:layout_constraintTop_toBottomOf="@+id/rangetxt"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:background="@drawable/btn_yellow_bg"
+                    android:background="@drawable/gradient_lightcreate_account"
                     android:layout_marginTop="@dimen/thirty"
+                    android:onClick="@{() -> viewModel.addchild()}"
                     android:layout_marginStart="@dimen/twoenty"
                     android:layout_marginEnd="@dimen/twoenty">
 
@@ -150,9 +258,9 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:text="@string/addyourchild"
-                        android:fontFamily="@font/poppin_reg"
+                        android:fontFamily="@font/poppin_semi_bold"
                         android:textSize="@dimen/textsize_etn"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/orange"
                         />
 
                 </RelativeLayout>

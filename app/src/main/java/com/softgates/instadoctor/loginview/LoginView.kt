@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -23,6 +24,7 @@ import com.softgates.instadoctor.createaccount.CreateAccountViewModel
 import com.softgates.instadoctor.createaccount.CreateAccountViewModelFactory
 import com.softgates.instadoctor.databinding.LoginViewBinding
 import com.softgates.instadoctor.util.ApiStatus
+import com.softgates.instadoctor.util.Constant
 import com.softgates.instadoctor.util.ProgressDialog
 import com.softgates.instadoctor.util.ValidationUtil
 
@@ -47,7 +49,7 @@ class LoginView : Fragment() {
             inflater, R.layout.login_view, container, false)
 
         sharedPreferences =
-            (activity as AppCompatActivity).getSharedPreferences("dd", Context.MODE_PRIVATE)
+            (activity as AppCompatActivity).getSharedPreferences(Constant.SHAREDPREFERENCENAME, Context.MODE_PRIVATE)
         val application = requireNotNull(this.activity).application
         val viewModelFactory = LoginViewModelFactory(sharedPreferences, application)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java)
@@ -121,6 +123,7 @@ class LoginView : Fragment() {
 
             }
         })
+
         binding.password.setOnFocusChangeListener(View.OnFocusChangeListener { view, hasFocus ->
             if (hasFocus) {
                 binding.passwordtxt.error = null

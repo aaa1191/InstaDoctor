@@ -69,7 +69,7 @@ class HomeActivity : AppCompatActivity()
             navController.addOnDestinationChangedListener { _, destination, _ ->
                 Log.e("HOMEVIEW","destination is......"+destination)
                 when (destination.id) {
-                    R.id.home ,R.id.profile -> binding.bottomNav.show()
+                    R.id.home ,R.id.profile,R.id.setting -> binding.bottomNav.show()
                     else -> binding.bottomNav.hide()
                 }
             }

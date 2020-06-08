@@ -63,6 +63,13 @@ class ProfileFragment : Fragment() {
         }
 
         binding.paymentmethod.setOnClickListener {
+            val action = ProfileFragmentDirections.actionProfileToAddPaymentView()
+            NavHostFragment.findNavController(this).navigate(action)
+        }
+
+        binding.employe.setOnClickListener {
+      //      val action = ProfileFragmentDirections.actionProfileToRegisterChildView()
+       //     NavHostFragment.findNavController(this).navigate(action)
         }
 
         return  binding.root

@@ -28,6 +28,7 @@
             app:argType="com.softgates.instadoctor.network.DoctorList"
             app:nullable="true"
             android:defaultValue="@null"/>
+
         <action
             android:id="@+id/action_doctorProfileFragment_to_paymentSummeryView"
             app:destination="@id/paymentSummeryView" />
@@ -56,6 +57,12 @@
         <action
             android:id="@+id/action_profile_to_seeDoctorView"
             app:destination="@id/seeDoctorView" />
+        <action
+            android:id="@+id/action_profile_to_registerChildView"
+            app:destination="@id/registerChildView" />
+        <action
+            android:id="@+id/action_profile_to_addPaymentView"
+            app:destination="@id/addPaymentView" />
     </fragment>
     <fragment
         android:id="@+id/termConditionFragment"
@@ -94,14 +101,17 @@
         <action
             android:id="@+id/action_whoVisitView_to_symptomView"
             app:destination="@id/symptomView" />
+        <action
+            android:id="@+id/action_whoVisitView_to_registerChildView2"
+            app:destination="@id/registerChildView" />
     </fragment>
     <fragment
         android:id="@+id/registerChildView"
         android:name="com.softgates.instadoctor.registerchild.RegisterChildView"
         android:label="RegisterChildView" >
         <action
-            android:id="@+id/action_registerChildView_to_feltWayView"
-            app:destination="@id/feltWayView" />
+            android:id="@+id/action_registerChildView_to_symptomView"
+            app:destination="@id/symptomView" />
     </fragment>
 
     <fragment
@@ -266,6 +276,10 @@
         android:id="@+id/shareReview_View"
         android:name="com.softgates.instadoctor.sharereview.ShareReview_View"
         android:label="ShareReview_View" />
+    <fragment
+        android:id="@+id/setting"
+        android:name="com.softgates.instadoctor.setting.SettingView"
+        android:label="SettingView" />
 
 
 </navigation>

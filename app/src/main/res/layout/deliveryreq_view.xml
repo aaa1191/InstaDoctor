@@ -4,6 +4,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.softgates.instadoctor.deliveryrequest.DeliveryRequestModel" />
+
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -21,7 +25,6 @@
             android:layout_marginTop="@dimen/twoentyfive"
             android:layout_marginStart="@dimen/twoenty"
             />
-
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/prescriptiontxt"
             android:layout_width="wrap_content"
@@ -78,7 +81,9 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@null" />
+                        android:background="@null"
+
+                        />
 
                 </androidx.cardview.widget.CardView>
 
@@ -110,7 +115,10 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@null" />
+                        android:background="@null"
+                        android:onTextChanged="@{viewModel.onTextChangedMobile}"
+                        android:text="@{viewModel.mobile}"
+                        />
 
                 </androidx.cardview.widget.CardView>
 
@@ -144,7 +152,10 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@null" />
+                        android:background="@null"
+                        android:onTextChanged="@{viewModel.onTextChangedAddress}"
+                        android:text="@{viewModel.address}"
+                        />
 
                 </androidx.cardview.widget.CardView>
 
@@ -160,7 +171,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/fulladdress"
                     app:layout_constraintStart_toStartOf="parent"
                     />
-
                 <View
                     android:id="@+id/line"
                     android:layout_width="match_parent"

@@ -4,14 +4,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.softgates.instadoctor.weightheightview.WeightHeightViewModel" />
+
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/homebg"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/twoenty">
+        android:paddingBottom="@dimen/twoenty"
+        android:paddingStart="@dimen/twoenty"
+        android:paddingEnd="@dimen/twoenty">
 
         <ImageView
             android:id="@+id/backbtn"
@@ -28,7 +34,7 @@
             android:id="@+id/feltwaytxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/howlongfeltthisway"
+            android:text="@string/whatweightheight"
             android:fontFamily="@font/poppin_reg"
             android:textColor="@color/black"
             app:fontFamily="@font/poppin_semi_bold"
@@ -41,60 +47,89 @@
 
 
 
-
-
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/daysss"
+            android:id="@+id/weighttxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="30 Days"
-            app:layout_constraintTop_toBottomOf="@+id/feltwaytxt"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="60dp"
+            app:layout_constraintTop_toBottomOf="@+id/feltwaytxt"
+            android:text="Weight"
+            android:fontFamily="@font/poppins_bold"
             android:textColor="@color/darkgreen"
-            android:fontFamily="@font/poppin_semi_bold"
             android:textSize="@dimen/textsize_twoentytwo"
-            android:paddingBottom="@dimen/ten"
+            android:layout_marginTop="@dimen/sixty"
+            android:layout_marginStart="@dimen/twoenty"
             />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/weightkgtxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kg"
+            app:layout_constraintTop_toBottomOf="@+id/weighttxt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:fontFamily="@font/poppin_semi_bold"
+            android:textSize="@dimen/textsize_sixteen"
+            android:textColor="@color/darkgreen"
+            />
 
-        <LinearLayout
+        <SeekBar
+            android:id="@+id/kgseekbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/ten"
+            android:tooltipText="11"
+            android:splitTrack="true"
+            android:max="200"
+            style="@style/seekbarstyle"
+            android:backgroundTint="@color/green"
+            android:thumbTint="@color/green"
+            app:layout_constraintTop_toBottomOf="@+id/weightkgtxt" />
 
-            <SeekBar
-                android:id="@+id/seekBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                app:layout_constraintTop_toBottomOf="@+id/height"
-                app:layout_constraintBottom_toTopOf="@+id/nextarrow"
-                android:layout_marginTop="@dimen/fourty"
-                android:layout_marginBottom="@dimen/eighty"
-                android:paddingStart="@dimen/fifty"
-                android:padding="@dimen/twoenty"
-                style="@style/seekbarstyle"
-                android:thumbTint="@color/darkgreen"
-                android:rotation="270"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/heighttxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/kgseekbar"
+            android:text="Weight"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/textsize_twoentytwo"
+            android:layout_marginTop="@dimen/thirty"
+            android:layout_marginStart="@dimen/twoenty"
+            />
 
-            <SeekBar
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                app:layout_constraintTop_toBottomOf="@+id/height"
-                app:layout_constraintBottom_toTopOf="@+id/nextarrow"
-                android:layout_marginTop="@dimen/fourty"
-                android:layout_marginBottom="@dimen/eighty"
-                android:paddingStart="@dimen/fifty"
-                android:padding="@dimen/twoenty"
-                style="@style/seekbarstyle"
-                android:thumbTint="@color/darkgreen"
-                android:rotation="270"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/cmtxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="cm"
+            app:layout_constraintTop_toBottomOf="@+id/heighttxt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:fontFamily="@font/poppin_semi_bold"
+            android:layout_marginTop="@dimen/fifteen"
+            android:textSize="@dimen/textsize_sixteen"
+            android:textColor="@color/orange"
+            />
 
-
-        </LinearLayout>
+        <SeekBar
+            android:id="@+id/cmseekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/fifteen"
+            android:tooltipText="11"
+            android:splitTrack="true"
+            android:max="220"
+            android:backgroundTint="@color/yellow"
+            android:thumbTint="@color/yellow"
+            app:layout_constraintTop_toBottomOf="@+id/cmtxt" />
 
 
         <RelativeLayout
@@ -104,6 +139,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:background="@drawable/gradient_lightcreate_account"
+            android:onClick="@{() -> viewModel.next()}"
             android:layout_marginTop="@dimen/twoenty"
             android:layout_marginStart="@dimen/fourty"
             android:layout_marginEnd="@dimen/fourty">
@@ -114,13 +150,11 @@
                 android:layout_centerInParent="true"
                 android:text="@string/next"
                 android:gravity="center"
-                android:fontFamily="@font/poppin_reg"
+                android:fontFamily="@font/poppin_semi_bold"
                 android:textSize="@dimen/textsize_etn"
                 android:textColor="@color/orange"
                 />
-
         </RelativeLayout>
-
 
         <!--
                 <RelativeLayout
@@ -143,8 +177,5 @@
                 </RelativeLayout>
         -->
 
-
-
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

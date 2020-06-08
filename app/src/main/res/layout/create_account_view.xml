@@ -308,6 +308,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/twoenty"
+        android:onClick="@{() -> viewModel.register()}"
+
         app:layout_constraintTop_toBottomOf="@+id/createaccount">
 
 

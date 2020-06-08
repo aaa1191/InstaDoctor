@@ -10,5 +10,5 @@ data class SymptomList (
     var symptom_name: String? = null,
 
     @Json(name="tick")
-    var tick: Int? = null
+    var tick: Int? = 0
 )

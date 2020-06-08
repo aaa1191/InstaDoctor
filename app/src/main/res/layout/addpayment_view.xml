@@ -21,7 +21,6 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/backbtn_back"
-                android:layout_marginStart="@dimen/twoenty"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="@dimen/thirty"
@@ -35,7 +34,6 @@
                 android:fontFamily="@font/poppin_semi_bold"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:layout_marginStart="@dimen/fifteen"
                 android:textSize="@dimen/textsize_etn"
                 app:layout_constraintTop_toBottomOf="@+id/backbtn"
                 app:layout_constraintStart_toStartOf="parent"
@@ -175,9 +173,9 @@
                     android:layout_centerInParent="true"
                     android:text="@string/addcreditcard"
                     android:textSize="@dimen/textsize_etn"
-                    android:paddingStart="@dimen/thirty"
-                    android:paddingEnd="@dimen/thirty"
-                    android:fontFamily="@font/poppin_reg"
+                    android:paddingStart="@dimen/fourty"
+                    android:paddingEnd="@dimen/fourty"
+                    android:fontFamily="@font/poppin_semi_bold"
                     android:textColor="@android:color/white"
                     />
 

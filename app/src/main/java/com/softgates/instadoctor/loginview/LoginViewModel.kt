@@ -49,7 +49,6 @@ class LoginViewModel (val sharedPreferences: SharedPreferences,
         _email.value="mk@gmail.com"
         _password.value="123456"
         _navigateActivity.value=0
-        Log.e("APIRESPONSE","wishlist api is called...")
     }
 
     fun complete() {
@@ -99,7 +98,7 @@ class LoginViewModel (val sharedPreferences: SharedPreferences,
             coroutineScope.launch {
                 // Get the Deferred object for our Retrofit request
                 Log.e("RESPONSE","email...."+email.value.toString()+"...pin...")
-                var getPropertiesDeferred = InstaDoctorApi.retrofitService.login("signin",email.value.toString(),password.value.toString(),"3eada8a873b9122ecc10872e8bd568f97c83ca43d36e3dc53db1367c9af8aedffee181aaa9359b22ed96abca65819b74342c90c8775d8dce32c0b9586d54d8d9","2")
+                var getPropertiesDeferred = InstaDoctorApi.retrofitService.login("signin",email.value.toString(),password.value.toString(),"2")
                 try {
                     val response = getPropertiesDeferred.await()
                     Log.e(Constant.APIRESPONSE,"registration api response is......"+response.toString())
@@ -112,6 +111,7 @@ class LoginViewModel (val sharedPreferences: SharedPreferences,
                         sharedPreferences.edit { putString(Constant.LOGINSIGNUPCHECK,"1") }
                         sharedPreferences.edit { putString(Constant.USERTOKEN, response.data!!.token.toString()) }
                         sharedPreferences.edit { putString(Constant.USEREMAIL, response.data!!.patient_email.toString()) }
+                        sharedPreferences.edit { putString(Constant.PATIENTID, response.data!!.patient_id.toString()) }
                         _navigateActivity.value=1
                         _message.value= response.message!!.toString()
                     }

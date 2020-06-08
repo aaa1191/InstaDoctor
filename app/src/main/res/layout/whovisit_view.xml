@@ -49,7 +49,7 @@
                 android:layout_marginTop="@dimen/fifty">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/namearrow"
+                    android:id="@+id/selfarrow"
                     android:layout_width="match_parent"
                     android:layout_height="85dp"
                     android:background="@drawable/visit_drawable"
@@ -103,11 +103,11 @@
                         android:layout_marginEnd="@dimen/five"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/livechatsupport"
+                    android:id="@+id/mychildarrow"
                     android:layout_width="match_parent"
                     android:layout_height="85dp"
                     android:background="@drawable/visit_drawable"
-                    app:layout_constraintTop_toBottomOf="@+id/namearrow"
+                    app:layout_constraintTop_toBottomOf="@+id/selfarrow"
                     android:layout_marginTop="@dimen/twoenty">
 
                     <ImageView
@@ -166,7 +166,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="85dp"
                     android:background="@drawable/visit_drawable"
-                    app:layout_constraintTop_toBottomOf="@+id/livechatsupport"
+                    app:layout_constraintTop_toBottomOf="@+id/mychildarrow"
                     android:layout_marginTop="@dimen/twoenty">
 
 

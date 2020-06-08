@@ -7,7 +7,7 @@
         <variable name="index" type="int" />
 
         <variable name="viewModel"
-            type="com.softgates.instadoctor.network.SymptomList"
+            type="com.softgates.instadoctor.network.AddValue"
             />
 
      <!--   <variable
@@ -26,6 +26,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="@dimen/twoenty"
             android:layout_marginEnd="@dimen/twoenty"
+            android:text="@{viewModel.addTxt}"
             />
 
 

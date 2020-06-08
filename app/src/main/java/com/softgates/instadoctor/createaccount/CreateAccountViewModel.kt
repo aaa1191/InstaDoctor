@@ -74,7 +74,6 @@ class CreateAccountViewModel (val sharedPreferences: SharedPreferences,
         _gender.value=""
         _termCondition.value=false
         _navigateActivity.value=0
-        Log.e("APIRESPONSE","wishlist api is called...")
     }
 
 
@@ -92,7 +91,6 @@ class CreateAccountViewModel (val sharedPreferences: SharedPreferences,
     {
         _setDate.value= dob.toString()
 
-        Log.e("DATEOFBIRTH","date of date....."+dob.toString())
     }
 
 

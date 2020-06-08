@@ -63,11 +63,11 @@ class CreateAccountView : Fragment() {
             dpd.show()
            // dpd.getDatePicker().setMinDate(c.timeInMillis)
         }
+
         viewModel.message.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-
              Toast.makeText(activity as AppCompatActivity,it.toString(), Toast.LENGTH_SHORT).show()
-
         })
+
         viewModel.status.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             when (it) {
                 ApiStatus.LOADING -> {

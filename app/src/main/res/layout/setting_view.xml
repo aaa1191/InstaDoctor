@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.softgates.instadoctor.home.HomeViewModel" />
+            type="com.softgates.instadoctor.setting.SettingViewModel" />
     </data>
     <!--  <androidx.core.widget.NestedScrollView
           android:layout_width="match_parent"
@@ -18,7 +18,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F7F7F7">
+        android:background="@color/homebg">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/instadoctorimg"
@@ -29,84 +29,79 @@
             app:layout_constraintTop_toTopOf="parent"
             android:text="@string/medicalhistory"
             app:fontFamily="@font/poppin_semi_bold"
-            android:textSize="@dimen/textsize_etn"
-            android:layout_marginTop="@dimen/ten"
+            android:textSize="@dimen/textsize_twoentytwo"
+            android:layout_marginTop="@dimen/fifteen"
+            android:textColor="@color/black"
             />
 
 
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/onlinedoctor"
+            android:id="@+id/prescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/prescriptions"
-            android:fontFamily="@font/poppin_reg"
+            android:fontFamily="@font/poppin_semi_bold"
             android:textColor="@color/black"
-            android:textSize="@dimen/textsize_sixteen"
-            android:layout_marginTop="@dimen/ten"
+            android:textSize="@dimen/textsize_etn"
+            android:layout_marginTop="@dimen/twoenty"
             app:layout_constraintTop_toBottomOf="@+id/instadoctorimg"
             android:layout_marginStart="@dimen/twoenty"
             app:layout_constraintStart_toStartOf="parent"
             />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/onlinerecyclerview"
+            android:id="@+id/prescriptionrecyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/onlinedoctor"
+            app:layout_constraintTop_toBottomOf="@+id/prescription"
             app:layout_constraintStart_toStartOf="parent"
             android:paddingBottom="@dimen/ten"
-            android:layout_marginTop="@dimen/fifteen"
             />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/offlinedoctor"
+            android:id="@+id/sessiontxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/offlinedoctors"
-            android:fontFamily="@font/poppin_reg"
+            android:text="@string/sessions"
+            android:fontFamily="@font/poppin_semi_bold"
             android:textColor="@color/black"
-            android:layout_marginTop="@dimen/five"
-            android:textSize="@dimen/textsize_sixteen"
-            app:layout_constraintTop_toBottomOf="@+id/onlinerecyclerview"
+            android:layout_marginTop="@dimen/twoenty"
+            android:textSize="@dimen/textsize_etn"
+            app:layout_constraintTop_toBottomOf="@+id/prescriptionrecyclerview"
             android:layout_marginStart="@dimen/twoenty"
             app:layout_constraintStart_toStartOf="parent"
             />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/offlinerecyclerview"
+            android:id="@+id/sessionrecyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/offlinedoctor"
+            app:layout_constraintTop_toBottomOf="@+id/sessiontxt"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/five"
-            android:visibility="gone"
             />
 
-        <RelativeLayout
-            android:id="@+id/loginbtn"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/chathistory"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/chathistory"
+            android:fontFamily="@font/poppin_semi_bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/twoenty"
+            android:textSize="@dimen/textsize_etn"
+            app:layout_constraintTop_toBottomOf="@+id/sessionrecyclerview"
+            android:layout_marginStart="@dimen/twoenty"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/gradient_seedoctor" android:layout_marginTop="@dimen/ten"
-            android:layout_marginBottom="@dimen/ten">
+            />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/startnow"
-                android:layout_centerInParent="true"
-                android:fontFamily="@font/poppin_reg"
-                android:textSize="@dimen/textsize_sixteen"
-                android:paddingStart="@dimen/eighty"
-                android:paddingEnd="@dimen/eighty"
-                android:textStyle="bold"
-                android:textColor="@color/darkgreen"
-                />
-
-        </RelativeLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chathistoryrecyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/chathistory"
+            app:layout_constraintStart_toStartOf="parent"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     <!--

@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.softgates.instadoctor.network.AddValue
 import com.softgates.instadoctor.network.SymptomList
 import com.softgates.instadoctor.util.ApiStatus
 import kotlinx.coroutines.CoroutineScope
@@ -30,21 +31,20 @@ class TakeMedicineViewModel(val sharedPreferences: SharedPreferences,
 
 
 
-    private val _addlist = MutableLiveData<List<SymptomList>>()
-    val addlist: LiveData<List<SymptomList>>
+    private val _addlist = MutableLiveData<List<AddValue>>()
+    val addlist: LiveData<List<AddValue>>
         get() = _addlist
 
-    private val getlist = ArrayList<SymptomList>()
+    private val getlist = ArrayList<AddValue>()
 
     private var _notifyItem = MutableLiveData<Int>()
     val notifyItem: LiveData<Int>
         get() = _notifyItem
 
+
     init {
-
-
-        getlist!!.add(SymptomList(1,"Cold",0))
-        getlist!!.add(SymptomList(2,"Cough",0))
+        getlist!!.add(AddValue("Medicine One"))
+        getlist!!.add(AddValue("Medicine Two"))
 //        getlist!!.add(SymptomList(3,"Headech",0))
 //        getlist!!.add(SymptomList(4,"Sore Throat",0))
 //        getlist!!.add(SymptomList(5,"Nasal Congestion",0))
@@ -52,6 +52,12 @@ class TakeMedicineViewModel(val sharedPreferences: SharedPreferences,
         _addlist.value = getlist
         Log.e("APIRESPONSE", "wishlist api is called..." )
         //   _symptomlist.value = doctorlist
+    }
+
+    fun addValue()
+    {
+        getlist!!.add(AddValue(""))
+        _notifyItem.value=getlist!!.size
     }
 
 

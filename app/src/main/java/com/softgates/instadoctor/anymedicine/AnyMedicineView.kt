@@ -1,16 +1,20 @@
 package com.softgates.instadoctor.anymedicine
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
 import com.softgates.instadoctor.databinding.AnymedicineViewBinding
+import com.softgates.instadoctor.util.Constant
 import com.softgates.instadoctor.whovisit.WhoVisitViewDirections
 
 class AnyMedicineView : Fragment() {
@@ -30,16 +34,19 @@ class AnyMedicineView : Fragment() {
         binding = DataBindingUtil.inflate<AnymedicineViewBinding>(
             inflater, R.layout.anymedicine_view, container, false)
 
+        sharedPreferences =   (activity as AppCompatActivity).getSharedPreferences(Constant.SHAREDPREFERENCENAME, Context.MODE_PRIVATE)
+
         binding.nomedicinebtn.setOnClickListener {
+            sharedPreferences.edit { putInt(Constant.MEDICATION,0) }
+
             val action = AnyMedicineViewDirections.actionAnyMedicineViewToAnyDrugAllergyView()
             NavHostFragment.findNavController(this).navigate(action)
         }
-
         binding.yesmedicinebtn.setOnClickListener {
+            sharedPreferences.edit { putInt(Constant.MEDICATION,1) }
             val action = AnyMedicineViewDirections.actionAnyMedicineViewToTakeMedicineView()
             NavHostFragment.findNavController(this).navigate(action)
         }
-
         return  binding.root
     }
 

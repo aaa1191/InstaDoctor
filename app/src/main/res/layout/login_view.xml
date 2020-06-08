@@ -134,6 +134,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/gradient_loginbtn"
         android:layout_marginStart="@dimen/fourtyfive"
+        android:onClick="@{() -> viewModel.login()}"
         android:layout_marginTop="@dimen/twoenty"
         android:layout_marginEnd="@dimen/fourtyfive">
 

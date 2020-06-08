@@ -3,6 +3,7 @@ package com.softgates.instadoctor.util
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.softgates.instadoctor.network.DoctorReviewListModel
 import com.softgates.instadoctor.network.GetDoctorDataModel
+import com.softgates.instadoctor.network.GetSymptomListModel
 import com.softgates.instadoctor.network.ResponseModel
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -52,28 +53,61 @@ interface InstaDoctorApiService {
 
     @GET("index.php")
     fun getDoctorList(
-        @Query("apiname") apiname: String,
-        @Query("token") device_type: String
+        @Query("apiname") apiname: String
     ): Deferred<GetDoctorDataModel>
 
-    @FormUrlEncoded
+    @GET("index.php")
+    fun getChooseDoctorList(
+        @Query("apiname") apiname: String,
+        @Query("symptoms") device_type: String
+    ): Deferred<GetDoctorDataModel>
+
+  /*  @FormUrlEncoded
     @POST("user/login")
     fun login(
-        @Field("email") catId: String,
-        @Field("password") min_price: String,
+        @Field("apiname") apiname: String,
+        @Field("email") email: String,
+        @Field("password") password: String,
         @Field("device_type") device_type: String,
         @Field("device_id") device_id: String
-    ): Deferred<ResponseModel>
+    ): Deferred<ResponseModel>*/
 
     @FormUrlEncoded
     @POST("index.php")
     fun login(
         @Field("apiname") apiname: String,
-        @Field("patient_email") email: String,
-        @Field("patient_password") password: String,
-        @Field("token") device_type: String,
-      //  @Field("device_id") device_id: String,
+        @Field("email") email: String,
+        @Field("password") password: String,
         @Field("role_id") type: String
+    ): Deferred<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("index.php")
+    fun addPatientDetail(
+        @Field("apiname") apiname: String,
+        @Field("token") token: String,
+        @Field("patient_id") patientid: String,
+        @Field("child_status") child_status: String,
+        @Field("child_id") child_id: String,
+        @Field("no_of_days") no_of_days: String,
+        @Field("medication") medication: String,
+        @Field("medication_names") medication_names: String,
+        @Field("allergy") allergy: String,
+        @Field("drug_allergy") drug_allergy: String,
+        @Field("weight") weight: String,
+        @Field("height") height: String
+    ): Deferred<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("index.php")
+    fun submitFeedback(
+        @Field("apiname") apiname: String,
+        @Field("token") token: String,
+        @Field("patient_id") patientid: String,
+        @Field("doc_id") doc_id: String,
+        @Field("review_stars") review_stars: String,
+        @Field("review_description") review_description: String,
+        @Field("today_date") today_date: String
     ): Deferred<ResponseModel>
 
     @GET("index.php")
@@ -83,11 +117,28 @@ interface InstaDoctorApiService {
     ): Deferred<ResponseModel>
 
     @GET("index.php")
+    fun registerChild(
+        @Query("apiname") apiname: String,
+        @Query("token") token: String,
+        @Query("child_name") child_name: String,
+        @Query("child_age_year") child_age_year: String,
+        @Query("child_age_month") child_age_month: String,
+        @Query("email") email: String,
+        @Query("date") date: String,
+        @Query("child_gender") child_gender: String
+    ): Deferred<ResponseModel>
+
+    @GET("index.php")
     fun doctorreview(
         @Query("apiname") apiname: String,
         @Query("doc_id") docid: String,
         @Query("token") token: String
     ): Deferred<DoctorReviewListModel>
+
+    @GET("index.php")
+    fun getSymptoms(
+        @Query("apiname") apiname: String
+    ): Deferred<GetSymptomListModel>
 
     @FormUrlEncoded
     @POST("index.php")
@@ -111,6 +162,14 @@ interface InstaDoctorApiService {
         @Field("device_type") device_type: String,
         @Field("device_id") device_id: String,
         @Field("role_id") type: String
+    ): Deferred<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("index.php")
+    fun getMedicalHistory(
+        @Field("apiname") apiname: String,
+        @Field("token") token: String,
+        @Field("patient_id") patient_id: String
     ): Deferred<ResponseModel>
 
 

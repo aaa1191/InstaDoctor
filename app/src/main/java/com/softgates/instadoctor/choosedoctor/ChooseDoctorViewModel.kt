@@ -21,16 +21,12 @@ class ChooseDoctorViewModel (val sharedPreferences: SharedPreferences,
                              application: Application
 ) : AndroidViewModel(application) {
 
-
     private val context = getApplication<Application>().applicationContext
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
-
-
     private val _status = MutableLiveData<ApiStatus>()
     val status: LiveData<ApiStatus?>
         get() = _status
-
     private val _message = MutableLiveData<String>()
     val message: LiveData<String?>
         get() = _message
@@ -66,17 +62,16 @@ class ChooseDoctorViewModel (val sharedPreferences: SharedPreferences,
         }
         else
         {
-            var token=sharedPreferences.getString(Constant.USERTOKEN,"")
-            Log.e(Constant.APIRESPONSE,"getdoctorlist token response is......"+token.toString())
+            var symptomname=sharedPreferences.getString(Constant.SYMPTOMNAME,"")
+            Log.e("TOKENLISTAPI","tokenlistapi token response is......"+symptomname.toString())
 
             _status.value = ApiStatus.LOADING
             coroutineScope.launch {
                 // Get the Deferred object for our Retrofit request
-                var getPropertiesDeferred = InstaDoctorApi.retrofitService.getDoctorList("get_doctor",token.toString())
+                var getPropertiesDeferred = InstaDoctorApi.retrofitService.getChooseDoctorList("get_doctor",symptomname.toString())
                 try {
                     val response = getPropertiesDeferred.await()
                     Log.e(Constant.APIRESPONSE,"getdoctorlist api response is......"+response.toString())
-
                     if(response.status == Constant.SUCCEESSSTATUSTWOHUNDRED)
                     {
                         Log.e(Constant.APIRESPONSE,"getdoctorlist api response success one one one is......")

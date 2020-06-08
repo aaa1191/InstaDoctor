@@ -11,6 +11,9 @@ data class Data(
     @Json(name="patient_email")
     var patient_email: String? = null,
 
+    @Json(name="child_id")
+    var child_id: Int? = null,
+
     @Json(name="token")
     var token: String? = null
 )

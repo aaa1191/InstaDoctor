@@ -7,19 +7,31 @@
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/homebg">
+
+        <ImageView
+            android:id="@+id/backbtn"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/backbtn_back"
+            android:layout_marginTop="@dimen/twoenty"
+            android:layout_marginStart="@dimen/twoenty"
+            />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/termconditiontxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/termconditionsymbol"
-            android:fontFamily="@font/poppin_reg"
+            android:fontFamily="@font/poppin_semi_bold"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:layout_marginStart="@dimen/fifteen"
-            android:textSize="@dimen/textsize_etn"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="@dimen/twoenty"
+            android:textSize="@dimen/textsize_twoenty"
+            app:layout_constraintTop_toBottomOf="@+id/backbtn"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="@dimen/twoenty"
             />
@@ -32,7 +44,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingStart="@dimen/twoenty"
-    android:layout_marginTop="@dimen/ten"
+    android:layout_marginTop="@dimen/five"
     android:paddingEnd="@dimen/twoenty"
     android:paddingBottom="@dimen/twoenty"
     >
@@ -46,17 +58,16 @@
         app:cardCornerRadius="@dimen/five"
         android:layout_marginTop="@dimen/twoenty">
 
+
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/termsofuse"
-            android:layout_marginStart="@dimen/fifteen"
             android:layout_gravity="center|left"
-            android:textColor="@color/black"
+            android:layout_marginStart="@dimen/fifteen"
             android:fontFamily="@font/poppin_reg"
-            android:textSize="@dimen/textsize_sixteen"
-            />
-
+            android:text="@string/termsofuse"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textsize_fourteen" />
 
         <ImageView
             android:id="@+id/termuse"
@@ -89,7 +100,7 @@
             android:text="@string/informedconsent"
             android:textColor="@color/black"
             android:fontFamily="@font/poppin_reg"
-            android:textSize="@dimen/textsize_sixteen" />
+            android:textSize="@dimen/textsize_fourteen" />
 
 
         <ImageView
@@ -105,7 +116,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/healthinformation"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/termconditioncardsize"
         app:cardBackgroundColor="@color/gray"
         app:cardCornerRadius="@dimen/five"
         app:layout_constraintTop_toBottomOf="@+id/informedconsent"
@@ -120,7 +131,7 @@
             android:text="@string/healthinformation"
             android:textColor="@color/black"
             android:fontFamily="@font/poppin_reg"
-            android:textSize="@dimen/textsize_sixteen" />
+            android:textSize="@dimen/textsize_fourteen" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -137,7 +148,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/programagreement"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/termconditioncardsize"
         app:cardBackgroundColor="@color/gray"
         app:cardCornerRadius="@dimen/five"
         app:layout_constraintTop_toBottomOf="@+id/healthinformation"
@@ -150,7 +161,7 @@
             android:layout_marginStart="@dimen/fifteen"
             android:layout_gravity="center|left"
             android:textColor="@color/black"
-            android:textSize="@dimen/textsize_sixteen"
+            android:textSize="@dimen/textsize_fourteen"
             />
 
 
@@ -182,7 +193,7 @@
             android:layout_marginStart="@dimen/fifteen"
             android:text="@string/appprivacypolicy"
             android:textColor="@color/black"
-            android:textSize="@dimen/textsize_sixteen" />
+            android:textSize="@dimen/textsize_fourteen" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -213,7 +224,7 @@
             android:layout_gravity="center|left"
             android:textColor="@color/black"
             android:fontFamily="@font/poppin_reg"
-            android:textSize="@dimen/textsize_sixteen"
+            android:textSize="@dimen/textsize_fourteen"
             />
 
         <ImageView
@@ -232,17 +243,19 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:src="@drawable/termcondition"
-        android:layout_marginTop="@dimen/twoenty"
+        android:layout_marginTop="@dimen/fourty"
         app:layout_constraintTop_toBottomOf="@+id/visitpromotion"
         app:layout_constraintStart_toStartOf="parent"
+        android:padding="@dimen/ten"
         />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:src="@drawable/termconditioninstadoctor"
-        android:layout_marginTop="@dimen/twoenty"
-        android:layout_marginStart="@dimen/ten"
+        android:layout_marginTop="@dimen/fourty"
+        android:layout_marginStart="@dimen/fifteen"
+        android:padding="@dimen/ten"
         app:layout_constraintTop_toBottomOf="@+id/visitpromotion"
         app:layout_constraintEnd_toEndOf="parent"
         />

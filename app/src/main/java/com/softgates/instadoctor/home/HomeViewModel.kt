@@ -73,7 +73,7 @@ class HomeViewModel (val sharedPreferences: SharedPreferences,
             _status.value = ApiStatus.LOADING
             coroutineScope.launch {
                 // Get the Deferred object for our Retrofit request
-                var getPropertiesDeferred = InstaDoctorApi.retrofitService.getDoctorList("get_doctor",token.toString())
+                var getPropertiesDeferred = InstaDoctorApi.retrofitService.getDoctorList("get_doctor")
                 try {
                     val response = getPropertiesDeferred.await()
                     Log.e(Constant.APIRESPONSE,"getdoctorlist api response is......"+response.toString())

@@ -45,7 +45,7 @@ class HomeView : Fragment() {
         binding = DataBindingUtil.inflate<HomeViewBinding>(
             inflater, R.layout.home_view, container, false)
 
-        sharedPreferences =   (activity as AppCompatActivity).getSharedPreferences("dd", Context.MODE_PRIVATE)
+        sharedPreferences =   (activity as AppCompatActivity).getSharedPreferences(Constant.SHAREDPREFERENCENAME, Context.MODE_PRIVATE)
         val application = requireNotNull(this.activity).application
         val viewModelFactory = HomeViewModelFactory(sharedPreferences, application)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(HomeViewModel::class.java)

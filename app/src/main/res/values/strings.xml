@@ -50,8 +50,8 @@
     <string name="termcondition">Terms and Conditions</string>
     <string name="informedconsent">Informed Consent</string>
     <string name="termconditionsymbol"><![CDATA[Terms & Conditions]]></string>
-    <string name="healthinformation">Use of Health Information \nAgreement</string>
-    <string name="memberofeducationprogram">Member Education \nProgram Agreement</string>
+    <string name="healthinformation">Use of Health Information Agreement</string>
+    <string name="memberofeducationprogram">Member Education Program Agreement</string>
     <string name="appprivacypolicy">App Privacy Policy</string>
     <string name="freevisitpromotion">Free Visit Promotion</string>
     <string name="gethelpquickly">Get help Quickly</string>
@@ -158,6 +158,12 @@
     <string name="fulladdress">Full address:</string>
     <string name="medicalhistory">Medicalhistory</string>
     <string name="prescriptions">Prescriptions</string>
+    <string name="sessions">Sessions</string>
+    <string name="chathistory">Chat history</string>
+    <string name="years">Years</string>
+    <string name="month">Months</string>
+    <string name="range">Range: 01-18</string>
+    <string name="whatweightheight"><![CDATA[What is your weight \n& height?]]></string>
 
 
 </resources>
