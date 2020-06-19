@@ -57,6 +57,7 @@ class FeltWayView : Fragment() {
 
         }
 
+
         binding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
 
             override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {

@@ -169,7 +169,6 @@
             android:textColor="@color/darkgray"
             android:layout_marginTop="@dimen/ten"
             />
-
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/email"
             android:layout_width="wrap_content"
@@ -189,14 +188,13 @@
             android:id="@+id/emailedittext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="adam.m@gmail.com"
+            android:text=""
             app:layout_constraintTop_toBottomOf="@+id/email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:drawableEnd="@drawable/edit_icon"
             android:drawablePadding="@dimen/five"
             android:gravity="left"
-            android:editable="false"
             android:backgroundTint="@color/darkgray"
             android:textColor="@color/darkgray"
             android:layout_marginTop="@dimen/ten"

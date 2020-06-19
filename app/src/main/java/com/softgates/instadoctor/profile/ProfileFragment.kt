@@ -58,8 +58,8 @@ class ProfileFragment : Fragment() {
         }
 
         binding.aboutinstadoctor.setOnClickListener {
-            val action = ProfileFragmentDirections.actionProfileToSeeDoctorView()
-            NavHostFragment.findNavController(this).navigate(action)
+//            val action = ProfileFragmentDirections.actionProfileToSeeDoctorView()
+//            NavHostFragment.findNavController(this).navigate(action)
         }
 
         binding.paymentmethod.setOnClickListener {

@@ -11,6 +11,7 @@ import com.softgates.instadoctor.network.SymptomList
 import com.softgates.instadoctor.util.ApiStatus
 import com.softgates.instadoctor.util.Constant
 import com.softgates.instadoctor.util.InstaDoctorApi
+import com.softgates.instadoctor.util.ValidationUtil
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -86,6 +87,15 @@ class DeliveryRequestModel (val sharedPreferences: SharedPreferences,
         else
         {
             _address.value=""
+        }
+    }
+
+    fun login()
+    {
+        when {
+            _mobile.value!!.isEmpty() -> _message.value="The mobile field is required."
+          //  !ValidationUtil.isEmailValid(_email.value.toString()) ->_message.value="The Email address is not valid"
+            else -> getSymtomApi()
         }
     }
 

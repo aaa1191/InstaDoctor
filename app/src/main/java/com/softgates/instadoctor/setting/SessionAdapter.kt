@@ -44,7 +44,7 @@ class OnClicks(val clickListener: (marsProperty: SessionList, type:Int, index:In
 
 class completeListDiffCallbacks : DiffUtil.ItemCallback<SessionList>() {
     override fun areItemsTheSame(oldItem: SessionList, newItem: SessionList): Boolean {
-        return oldItem.id == newItem.id
+        return oldItem.app_id == newItem.app_id
     }
     override fun areContentsTheSame(oldItem: SessionList, newItem: SessionList): Boolean {
         return oldItem == newItem

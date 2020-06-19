@@ -113,6 +113,7 @@
         android:hint="@string/city">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cityedittxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppin_reg"
@@ -158,6 +159,7 @@
                 android:hint="@string/state">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/stateedittxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppin_reg"
@@ -195,6 +197,7 @@
                 android:hint="@string/zipcode">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/zipcodeditxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppin_reg"

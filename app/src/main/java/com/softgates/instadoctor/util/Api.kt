@@ -1,10 +1,7 @@
 package com.softgates.instadoctor.util
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.softgates.instadoctor.network.DoctorReviewListModel
-import com.softgates.instadoctor.network.GetDoctorDataModel
-import com.softgates.instadoctor.network.GetSymptomListModel
-import com.softgates.instadoctor.network.ResponseModel
+import com.softgates.instadoctor.network.*
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.Deferred
@@ -62,6 +59,27 @@ interface InstaDoctorApiService {
         @Query("symptoms") device_type: String
     ): Deferred<GetDoctorDataModel>
 
+    @GET("index.php")
+    fun MyChildList(
+        @Query("apiname") apiname: String,
+        @Query("patient_id") device_type: String
+    ): Deferred<MyChildListModel>
+
+
+    @GET("index.php")
+    fun availability(
+        @Query("apiname") apiname: String,
+        @Query("token") token: String,
+        @Query("doc_id") doc_id: String
+    ): Deferred<GetScheduleModel>
+
+
+    @GET("index.php")
+    fun MyPrescriptionList(
+        @Query("apiname") apiname: String,
+        @Query("app_id") device_type: String
+    ): Deferred<PrescriptionListModel>
+
   /*  @FormUrlEncoded
     @POST("user/login")
     fun login(
@@ -95,7 +113,8 @@ interface InstaDoctorApiService {
         @Field("allergy") allergy: String,
         @Field("drug_allergy") drug_allergy: String,
         @Field("weight") weight: String,
-        @Field("height") height: String
+        @Field("height") height: String,
+        @Field("app_id") app_id: String
     ): Deferred<ResponseModel>
 
     @FormUrlEncoded
@@ -114,6 +133,21 @@ interface InstaDoctorApiService {
     fun forgetpassword(
         @Query("apiname") apiname: String,
         @Query("email") email: String
+    ): Deferred<ResponseModel>
+
+    @GET("index.php")
+    fun contactinformation(
+            @Query("apiname") apiname: String,
+        @Query("token") token: String,
+        @Query("old_email") old_email: String,
+        @Query("email") email: String,
+        @Query("phone") phone: String,
+        @Query("address") address: String,
+        @Query("address2") address2: String,
+        @Query("city") city: String,
+        @Query("state") state: String,
+        @Query("zipcode") zipcode: String,
+        @Query("password") password: String
     ): Deferred<ResponseModel>
 
     @GET("index.php")
@@ -170,7 +204,7 @@ interface InstaDoctorApiService {
         @Field("apiname") apiname: String,
         @Field("token") token: String,
         @Field("patient_id") patient_id: String
-    ): Deferred<ResponseModel>
+    ): Deferred<GetMedicaHistoryModel>
 
 
     companion object {

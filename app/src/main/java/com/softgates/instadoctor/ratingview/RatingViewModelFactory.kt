@@ -11,8 +11,8 @@ class RatingViewModelFactory (val sharedPreferences: SharedPreferences,
 ) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(RecoverPasswordViewModel::class.java)) {
-            return RecoverPasswordViewModel(sharedPreferences,application) as T
+        if (modelClass.isAssignableFrom(RatingViewModel::class.java)) {
+            return RatingViewModel(sharedPreferences,application) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

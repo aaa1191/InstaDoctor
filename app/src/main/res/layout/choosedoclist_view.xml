@@ -33,19 +33,22 @@
         >
 
          <androidx.constraintlayout.widget.ConstraintLayout
+             android:id="@+id/backgroundlayout"
              android:layout_width="80dp"
              android:layout_height="73dp"
              app:layout_constraintTop_toTopOf="parent"
              app:layout_constraintEnd_toEndOf="parent"
-             android:background="@drawable/choosedoc_green_dr">
+             app:background="@{viewModel.doc_online_status}"
+             >
 
 
              <androidx.appcompat.widget.AppCompatTextView
                  android:id="@+id/onlinestatustxt"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
-                 app:statustxt="@{viewModel.doc_online_status}"
+                 app:backtxt="@{viewModel.doc_online_status}"
                  android:textSize="@dimen/textsize_twl"
+                 app:fontFamily="@font/poppin_semi_bold"
                  app:layout_constraintTop_toTopOf="parent"
                  app:layout_constraintEnd_toEndOf="parent"
                  app:layout_constraintStart_toStartOf="parent"
@@ -113,16 +116,39 @@
             android:text="@{viewModel.doc_education}"
         -->
 
+<!--
+        app:layout_constraintEnd_toStartOf="@+id/price"
+-->
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/profession"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="15dp"
             android:layout_marginStart="@dimen/fifteen"
-            android:gravity="top"
+            android:gravity="top|start"
             android:text="@{viewModel.doc_education}"
             android:layout_marginTop="0dp"
+            android:textAlignment="textStart"
             android:textSize="@dimen/textsize_twl"
+            app:layout_constraintHorizontal_weight="3"
             app:layout_constraintStart_toEndOf="@+id/imageview"
+            app:layout_constraintTop_toBottomOf="@+id/username"
+            app:layout_constraintEnd_toStartOf="@+id/price"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/price"
+            android:layout_width="0dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="@dimen/five"
+            android:gravity="top|end"
+            app:layout_constraintHorizontal_weight="1.5"
+            app:layout_constraintStart_toEndOf="@+id/profession"
+            android:text="@{`AED `+viewModel.doc_fee}"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="@dimen/five"
+            android:textSize="@dimen/textsize_twl"
+            app:layout_constraintEnd_toStartOf="@+id/backgroundlayout"
             app:layout_constraintTop_toBottomOf="@+id/username" />
 
         <androidx.appcompat.widget.AppCompatRatingBar

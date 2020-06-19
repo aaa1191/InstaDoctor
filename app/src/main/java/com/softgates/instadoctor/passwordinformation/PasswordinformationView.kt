@@ -18,6 +18,7 @@ import com.softgates.instadoctor.databinding.RecoverpasswordViewBinding
 import com.softgates.instadoctor.recoverpassword.RecoverPasswordViewModel
 import com.softgates.instadoctor.recoverpassword.RecoverPasswordViewModelFactory
 import com.softgates.instadoctor.util.ApiStatus
+import com.softgates.instadoctor.util.Constant
 import com.softgates.instadoctor.util.ProgressDialog
 
 class PasswordinformationView : Fragment() {
@@ -38,7 +39,7 @@ class PasswordinformationView : Fragment() {
         binding = DataBindingUtil.inflate<PasswodinformationViewBinding>(
             inflater, R.layout.passwodinformation_view, container, false)
         sharedPreferences =
-            (activity as AppCompatActivity).getSharedPreferences("dd", Context.MODE_PRIVATE)
+            (activity as AppCompatActivity).getSharedPreferences(Constant.SHAREDPREFERENCENAME, Context.MODE_PRIVATE)
         val application = requireNotNull(this.activity).application
         val viewModelFactory = PasswordInformationViewModelFactory(sharedPreferences, application)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(PasswordInformationViewModel::class.java)

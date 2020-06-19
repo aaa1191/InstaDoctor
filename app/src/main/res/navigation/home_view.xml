@@ -6,7 +6,7 @@
     <fragment
         android:id="@+id/home"
         android:name="com.softgates.instadoctor.home.HomeView"
-        android:label="HomeView" >
+        android:label="HomeView">
 
        <!-- <action
             android:id="@+id/action_home_to_doctorProfileFragment"
@@ -104,6 +104,9 @@
         <action
             android:id="@+id/action_whoVisitView_to_registerChildView2"
             app:destination="@id/registerChildView" />
+        <action
+            android:id="@+id/action_whoVisitView_to_myChildView"
+            app:destination="@id/myChildView" />
     </fragment>
     <fragment
         android:id="@+id/registerChildView"
@@ -238,6 +241,9 @@
         <action
             android:id="@+id/action_joinSessionView_to_videoCallView"
             app:destination="@id/videoCallView" />
+        <action
+            android:id="@+id/action_joinSessionView_to_videoCalling"
+            app:destination="@id/videoCalling" />
     </fragment>
     <fragment
         android:id="@+id/videoCallView"
@@ -280,6 +286,21 @@
         android:id="@+id/setting"
         android:name="com.softgates.instadoctor.setting.SettingView"
         android:label="SettingView" />
+    <fragment
+        android:id="@+id/myChildView"
+        android:name="com.softgates.instadoctor.mychild.MyChildView"
+        android:label="MyChildView" >
+        <action
+            android:id="@+id/action_myChildView_to_registerChildView"
+            app:destination="@id/registerChildView" />
+        <action
+            android:id="@+id/action_myChildView_to_symptomView"
+            app:destination="@id/symptomView" />
+    </fragment>
+    <activity
+        android:id="@+id/videoCalling"
+        android:name="com.softgates.instadoctor.demo.VideoCalling"
+        android:label="VideoCalling" />
 
 
 </navigation>

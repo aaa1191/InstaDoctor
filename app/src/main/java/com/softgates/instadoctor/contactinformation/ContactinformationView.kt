@@ -27,11 +27,15 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.textfield.TextInputEditText
 import com.softgates.instadoctor.R
+import com.softgates.instadoctor.activity.LoginActivity
 import com.softgates.instadoctor.databinding.ContactinformationViewBinding
 import com.softgates.instadoctor.databinding.RecoverpasswordViewBinding
 import com.softgates.instadoctor.takemedicine.TakeMedicineViewModel
 import com.softgates.instadoctor.takemedicine.TakeMedicineViewModelFactory
+import com.softgates.instadoctor.util.ApiStatus
 import com.softgates.instadoctor.util.Constant
+import com.softgates.instadoctor.util.ProgressDialog
+import com.softgates.instadoctor.util.ValidationUtil
 import java.io.File
 
 class ContactinformationView : Fragment() {
@@ -52,10 +56,12 @@ class ContactinformationView : Fragment() {
     private val OPERATION_CAPTURE_PHOTO = 1
     private val OPERATION_CHOOSE_PHOTO = 2
 
-
-
-
-
+    var address:String =""
+    var addresstwo:String =""
+    var city:String =""
+    var state:String =""
+    var zipcode:String =""
+    private lateinit var loader: ProgressDialog
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -76,6 +82,9 @@ class ContactinformationView : Fragment() {
             showDialog()
         }
 
+        binding.emailedittext.setText(sharedPreferences.getString(Constant.USEREMAIL,""))
+        binding.phoneedittext.setText(sharedPreferences.getString(Constant.USERPHONE,""))
+
         binding.editaddress.setOnClickListener {
             updateAddressDialog()
         }
@@ -87,10 +96,9 @@ class ContactinformationView : Fragment() {
 
         binding.savecontactinformation.setOnClickListener {
            // it.text.clear()
-        //    updateEmailDialog()
-
+             updateEmailDialog()
             //check permission at runtime
-            val checkSelfPermission = ContextCompat.checkSelfPermission(context as AppCompatActivity,
+         /*   val checkSelfPermission = ContextCompat.checkSelfPermission(context as AppCompatActivity,
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
             if (checkSelfPermission != PackageManager.PERMISSION_GRANTED){
                 //Requests permissions to be granted to this application at runtime
@@ -99,11 +107,32 @@ class ContactinformationView : Fragment() {
             }
             else{
                 openGallery()
-            }
+            }*/
         }
+
+        viewModel.message.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            Toast.makeText(activity as AppCompatActivity,it.toString(), Toast.LENGTH_SHORT).show()
+        })
+
+
+
+        viewModel.status.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            when (it) {
+                ApiStatus.LOADING -> {
+                    loader.setLoading(true)
+                }
+                ApiStatus.ERROR -> {
+                    loader.setLoading(false)
+                }
+                ApiStatus.DONE -> {
+                    loader.setLoading(false)
+                }
+            }
+        })
 
         return  binding.root
     }
+
 
     fun EditText.onRightDrawableClicked(onClicked: (view: EditText) -> Unit) {
         this.setOnTouchListener { v, event ->
@@ -122,6 +151,7 @@ class ContactinformationView : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        loader = ProgressDialog(view.context)
     }
 
     fun showDialog() {
@@ -151,14 +181,29 @@ class ContactinformationView : Fragment() {
             ViewGroup.LayoutParams.MATCH_PARENT);
 
         val addressone: TextInputEditText = dialog.findViewById(R.id.addrssone) as TextInputEditText
-        val addresstwo: TextInputEditText = dialog.findViewById(R.id.addressedittxt) as TextInputEditText
+        val addresstwotxt: TextInputEditText = dialog.findViewById(R.id.addressedittxt) as TextInputEditText
+        val citytxt: TextInputEditText = dialog.findViewById(R.id.cityedittxt) as TextInputEditText
+        val statetxt: TextInputEditText = dialog.findViewById(R.id.stateedittxt) as TextInputEditText
+        val zipcodetxt: TextInputEditText = dialog.findViewById(R.id.zipcodeditxt) as TextInputEditText
         val save: RelativeLayout = dialog.findViewById(R.id.save) as RelativeLayout
+
+        addressone.setText(sharedPreferences.getString(Constant.USERADDRESSONE,""))
+        addresstwotxt.setText(sharedPreferences.getString(Constant.USERADDRESSTWO,""))
+        citytxt.setText(sharedPreferences.getString(Constant.USERCITY,""))
+        statetxt.setText(sharedPreferences.getString(Constant.USERSTATE,""))
+        zipcodetxt.setText(sharedPreferences.getString(Constant.USERZIPCODE,""))
 
         save.setOnClickListener {
             if(addressone.text.toString().equals(""))
             {
                 Toast.makeText(context,"Address is required",Toast.LENGTH_SHORT).show()
             }
+            address = addressone.text.toString()
+            addresstwo = addresstwotxt.text.toString()
+            city = citytxt.text.toString()
+            state = statetxt.text.toString()
+            zipcode = zipcodetxt.text.toString()
+            dialog.hide()
         }
 
         //IFSALEOW
@@ -173,11 +218,37 @@ class ContactinformationView : Fragment() {
         dialog.getWindow()!!.setLayout(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.MATCH_PARENT);
+
+        val password: TextInputEditText = dialog.findViewById(R.id.passwordedittxt) as TextInputEditText
+        val verifypassword: RelativeLayout = dialog.findViewById(R.id.verifypassword) as RelativeLayout
+
+        verifypassword.setOnClickListener {
+
+            if(binding.emailedittext.text.toString().isEmpty())
+            {
+                Toast.makeText(context,"Email field is required",Toast.LENGTH_SHORT).show()
+            }
+            else if(!ValidationUtil.isEmailValid(binding.emailedittext.text.toString()))
+            {
+                Toast.makeText(context,"The Email address is not valid",Toast.LENGTH_SHORT).show()
+            }
+            else if(binding.phoneedittext.text.toString().isEmpty())
+            {
+                Toast.makeText(context,"Phone field is required",Toast.LENGTH_SHORT).show()
+            }
+            else if(password.text.toString().isEmpty())
+            {
+                Toast.makeText(context,"Password field is required",Toast.LENGTH_SHORT).show()
+            }
+            else
+            {
+                viewModel.contactinformationApi(address.toString(),addresstwo.toString(),city.toString(),state.toString(),zipcode.toString(),binding.emailedittext.text.toString(),binding.phoneedittext.text.toString(),password.text.toString())
+                dialog.hide()
+            }
+        }
         //IFSALEOW
         dialog.show()
     }
-
-
 //    //image uploadmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 //    private fun initializeWidgets() {
 //        btnCapture = findViewById(R.id.btnCapture)

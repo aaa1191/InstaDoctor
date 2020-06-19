@@ -90,6 +90,7 @@
             android:textColor="@color/black"
             android:layout_marginTop="@dimen/twoenty"
             android:textSize="@dimen/textsize_etn"
+            android:visibility="invisible"
             app:layout_constraintTop_toBottomOf="@+id/sessionrecyclerview"
             android:layout_marginStart="@dimen/twoenty"
             app:layout_constraintStart_toStartOf="parent"

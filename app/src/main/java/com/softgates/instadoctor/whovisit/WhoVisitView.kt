@@ -39,6 +39,7 @@ class WhoVisitView : Fragment() {
         binding.childregister.setOnClickListener {
 
         }
+
         binding.selfarrow.setOnClickListener {
             sharedPreferences.edit { putInt(Constant.CHILDSTATUS,0) }
             val action = WhoVisitViewDirections.actionWhoVisitViewToSymptomView()
@@ -46,7 +47,7 @@ class WhoVisitView : Fragment() {
         }
         binding.mychildarrow.setOnClickListener {
             sharedPreferences.edit { putInt(Constant.CHILDSTATUS,1) }
-            val action = WhoVisitViewDirections.actionWhoVisitViewToRegisterChildView()
+            val action = WhoVisitViewDirections.actionWhoVisitViewToMyChildView()
             NavHostFragment.findNavController(this).navigate(action)
         }
         return  binding.root

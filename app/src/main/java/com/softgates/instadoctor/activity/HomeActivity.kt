@@ -25,7 +25,6 @@ class HomeActivity : AppCompatActivity()
 {
     lateinit var sharedPreferences: SharedPreferences
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding: HomeactivityViewBinding = DataBindingUtil.setContentView(
@@ -37,7 +36,6 @@ class HomeActivity : AppCompatActivity()
         val navHostFragment = nav_host as NavHostFragment
         val inflater = navHostFragment.navController.navInflater
         val graph = inflater.inflate(R.navigation.home_view)
-
 
         binding.linearlayout.bindLayoutFullscreen(false,false)
         binding.bottomNav.visibility= View.VISIBLE

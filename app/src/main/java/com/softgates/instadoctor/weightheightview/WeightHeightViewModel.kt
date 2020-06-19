@@ -125,7 +125,7 @@ class WeightHeightViewModel (val sharedPreferences: SharedPreferences,
             coroutineScope.launch {
                 // Get the Deferred object for our Retrofit request
                 //Log.e("RESPONSE","email...."+email.value.toString()+"...pin...")
-                var getPropertiesDeferred = InstaDoctorApi.retrofitService.addPatientDetail("submit_patient_details",token.toString(),patientid.toString(),childstatus.toString(),childid.toString(),noofdays.toString(),medication.toString(),medicationName.toString(),allergy.toString(),allergyname.toString(),kg.value.toString(),cm.value.toString())
+                var getPropertiesDeferred = InstaDoctorApi.retrofitService.addPatientDetail("submit_patient_details",token.toString(),patientid.toString(),childstatus.toString(),childid.toString(),noofdays.toString(),medication.toString(),medicationName.toString(),allergy.toString(),allergyname.toString(),kg.value.toString(),cm.value.toString(),"1")
                 try {
                     val response = getPropertiesDeferred.await()
                     Log.e(Constant.APIRESPONSE,"registration api response is......"+response.toString())
@@ -138,6 +138,8 @@ class WeightHeightViewModel (val sharedPreferences: SharedPreferences,
                     }
                     else
                     {
+                        _navigateActivity.value=1
+
                         _message.value= response.message!!.toString()
                     }
                     _status.value = ApiStatus.DONE

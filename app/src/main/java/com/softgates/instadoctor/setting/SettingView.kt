@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
 import com.softgates.instadoctor.databinding.SettingViewBinding
 import com.softgates.instadoctor.util.ApiStatus
+import com.softgates.instadoctor.util.Constant
 import com.softgates.instadoctor.util.ProgressDialog
 
 class SettingView  : Fragment() {
@@ -37,7 +38,7 @@ class SettingView  : Fragment() {
         binding = DataBindingUtil.inflate<SettingViewBinding>(
             inflater, R.layout.setting_view, container, false)
         val application = requireNotNull(this.activity).application
-        sharedPreferences = (activity as AppCompatActivity).getSharedPreferences("DD", Context.MODE_PRIVATE)
+        sharedPreferences = (activity as AppCompatActivity).getSharedPreferences(Constant.SHAREDPREFERENCENAME, Context.MODE_PRIVATE)
         val viewModelFactory =  SettingViewModelFactory(sharedPreferences,application)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(SettingViewModel::class.java)
         binding.viewModel = viewModel

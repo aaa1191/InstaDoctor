@@ -44,7 +44,7 @@ class OnClickss(val clickListener: (marsProperty: PrescriptionList, type:Int, in
 
 class prescriptionListDiffCallback : DiffUtil.ItemCallback<PrescriptionList>() {
     override fun areItemsTheSame(oldItem: PrescriptionList, newItem: PrescriptionList): Boolean {
-        return oldItem.id == newItem.id
+        return oldItem.app_id == newItem.app_id
     }
     override fun areContentsTheSame(oldItem: PrescriptionList, newItem: PrescriptionList): Boolean {
         return oldItem == newItem

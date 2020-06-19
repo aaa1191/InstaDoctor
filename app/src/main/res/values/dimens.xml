@@ -59,4 +59,11 @@
     <dimen name="sixtyfive">65dp</dimen>
     <dimen name="timetextsize">12sp</dimen>
 
+    <!-- zoom size-->
+    <dimen name="size_video_item_margin">5dp</dimen>
+    <dimen name="size_video_item">100dp</dimen>
+    <dimen name="video_bottom_margin">17dp</dimen>
+    <dimen name="chat_bottom_margin">13dp</dimen>
+    <dimen name="toolbar_bottom_margin">148dp</dimen>
+
 </resources>

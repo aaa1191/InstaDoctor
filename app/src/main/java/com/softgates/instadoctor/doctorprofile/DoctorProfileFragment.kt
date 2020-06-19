@@ -64,6 +64,7 @@ class DoctorProfileFragment : Fragment() {
         }
 
         binding.book.setOnClickListener {
+            sharedPreferences.edit { putString(com.softgates.instadoctor.util.Constant.DOCID,doctorlist.id) }
             val action = DoctorProfileFragmentDirections.actionDoctorProfileFragmentToScheduleAppointmentView()
             NavHostFragment.findNavController(this).navigate(action)
         }
@@ -76,6 +77,5 @@ class DoctorProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
-
 
 }

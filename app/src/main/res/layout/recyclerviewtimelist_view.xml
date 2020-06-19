@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="android.view.View"/>
+        <variable name="index" type="int" />
+
+        <variable name="viewModel"
+            type="com.softgates.instadoctor.network.ScheduleList"
+            />
+
+        <variable
+            name="clickListener"
+            type="com.softgates.instadoctor.scheduleappointment.OnClicks" />
+
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/ten">
+
+    <RelativeLayout
+        android:id="@+id/ten"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="@dimen/margintime"
+        android:padding="@dimen/fifteen"
+        android:background="@drawable/time_drawable">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.time}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/timetextsize"
+            app:fontFamily="@font/poppin_reg"
+            android:layout_centerInParent="true"
+            />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

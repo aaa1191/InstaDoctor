@@ -33,7 +33,7 @@ class JoinSessionView : Fragment() {
 
         binding.nextarrow.setOnClickListener {
 
-            val action = JoinSessionViewDirections.actionJoinSessionViewToVideoCallView()
+            val action = JoinSessionViewDirections.actionJoinSessionViewToVideoCalling()
             NavHostFragment.findNavController(this).navigate(action)
 
         }

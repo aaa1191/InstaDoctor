@@ -12,12 +12,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
+import com.softgates.instadoctor.activity.LoginActivity
 import com.softgates.instadoctor.databinding.RatingviewModelBinding
 import com.softgates.instadoctor.util.ApiStatus
+import com.softgates.instadoctor.util.Constant
 import com.softgates.instadoctor.util.ProgressDialog
 
 
@@ -41,7 +44,7 @@ class Rating_View : Fragment() {
             inflater, R.layout.ratingview_model, container, false)
 
         sharedPreferences =
-            (activity as AppCompatActivity).getSharedPreferences("dd", Context.MODE_PRIVATE)
+            (activity as AppCompatActivity).getSharedPreferences(Constant.SHAREDPREFERENCENAME, Context.MODE_PRIVATE)
         val application = requireNotNull(this.activity).application
         val viewModelFactory = RatingViewModelFactory(sharedPreferences, application)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(RatingViewModel::class.java)
@@ -72,9 +75,24 @@ class Rating_View : Fragment() {
         })
 
         binding.submit.setOnClickListener {
+
+        }
+
+        binding.skip.setOnClickListener {
             val action = Rating_ViewDirections.actionRatingViewModelToPrescriptionView()
             NavHostFragment.findNavController(this).navigate(action)
+
         }
+
+        viewModel.navigateActivity.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                if (it == 1) {
+                    val action = Rating_ViewDirections.actionRatingViewModelToPrescriptionView()
+                    NavHostFragment.findNavController(this).navigate(action)                }
+            }
+
+        })
+        binding.viewModel = viewModel
        return  binding.root
     }
 

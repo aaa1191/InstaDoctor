@@ -3,9 +3,11 @@ package com.softgates.myapplication.util
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -58,6 +60,20 @@ fun bindImageFromUrl(view: CardView, tick: String?) {
     }
 }
 
+@BindingAdapter("visible")
+fun visible(view: ConstraintLayout, visible: String?) {
+    if (!visible.isNullOrEmpty()) {
+        if(visible.equals("1"))
+        {
+            view.visibility = View.VISIBLE
+        }
+        else
+        {
+            view.visibility = View.GONE
+        }
+    }
+}
+
 @BindingAdapter("statuscolor")
 fun bindstatuscolor(view: View, statusType: String?) {
     Log.e("STATUSTYPE","addlImage...."+statusType)
@@ -75,6 +91,27 @@ fun bindstatuscolor(view: View, statusType: String?) {
     {
         view.setBackgroundResource(R.drawable.offline_dr)
      //   view.setBackgroundColor(ContextCompat.getColor(view.context, R.color.red))
+    }
+    //context.resources.getString(R.string.nointernet)
+}
+
+@BindingAdapter("background")
+fun bindbackground(view: View, statusType: String?) {
+    Log.e("STATUSTYPE","addlImage...."+statusType)
+    if(statusType.equals("1"))
+    {
+        //  view.setBackgroundColor(ContextCompat.getColor(view.context, R.color.green))
+        view.setBackgroundResource(R.drawable.choosedoc_green_dr)
+    }
+    else if(statusType.equals("2"))
+    {
+        //   view.setBackgroundColor(ContextCompat.getColor(view.context, R.color.yellow))
+        view.setBackgroundResource(R.drawable.choosedoc_yellow)
+    }
+    else if(statusType.equals("0"))
+    {
+        view.setBackgroundResource(R.drawable.choosedoc_red)
+        //   view.setBackgroundColor(ContextCompat.getColor(view.context, R.color.red))
     }
     //context.resources.getString(R.string.nointernet)
 }
@@ -100,6 +137,30 @@ fun bindstatustxt(view: TextView, statusType: String?) {
     //context.resources.getString(R.string.nointernet)
 }
 
+@BindingAdapter("backtxt")
+fun bindbackground(view: TextView, statusType: String?) {
+    Log.e("STATUSTYPE","addlImage...."+statusType)
+    if(statusType.equals("1"))
+    {
+        //  view.setBackgroundColor(ContextCompat.getColor(view.context, R.color.green))
+        view.text ="Meet Now"
+        view.setTextColor(ContextCompat.getColor(view.context, R.color.darkgreen))
+    }
+    else if(statusType.equals("2"))
+    {
+        //   view.setBackgroundColor(ContextCompat.getColor(view.context, R.color.yellow))
+        view.text ="Join Queue"
+        view.setTextColor(ContextCompat.getColor(view.context, R.color.yellow))
+    }
+    else if(statusType.equals("0"))
+    {
+        view.text ="BOOK"
+        view.setTextColor(ContextCompat.getColor(view.context, R.color.red))
+
+        //   view.setBackgroundColor(ContextCompat.getColor(view.context, R.color.red))
+    }
+    //context.resources.getString(R.string.nointernet)
+}
 /*
 @BindingAdapter(
     "marginLeftSystemWindowInsets",

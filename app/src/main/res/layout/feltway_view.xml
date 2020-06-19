@@ -42,7 +42,7 @@
             android:id="@+id/days"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0 Days"
+            android:text="5 Days"
             app:layout_constraintTop_toBottomOf="@+id/feltwaytxt"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,6 +65,7 @@
             android:paddingStart="@dimen/fifty"
             android:padding="@dimen/twoenty"
             android:max="30"
+            android:progress="5"
             style="@style/seekbarstyle"
             android:thumbTint="@color/darkgreen"
             android:rotation="270"/>

@@ -54,22 +54,21 @@ class SettingViewModel (val sharedPreferences: SharedPreferences,
 
     init {
         Log.e("APIRESPONSE", "wishlist api is called...")
-        getSesionlist!!.add(SessionList("", "We People"))
-        getSesionlist!!.add(SessionList("", "We People"))
-        getChatlist!!.add(ChatList("", "We People"))
-        getChatlist!!.add(ChatList("", "We People"))
-        getPrescriptionlist!!.add(PrescriptionList("", "We People"))
-        getPrescriptionlist!!.add(PrescriptionList("", "We People"))
+//        getSesionlist!!.add(SessionList("", "We People"))
+//        getSesionlist!!.add(SessionList("", "We People"))
+//        getChatlist!!.add(ChatList("", "We People"))
+//        getChatlist!!.add(ChatList("", "We People"))
+//        getPrescriptionlist!!.add(PrescriptionList("", "We People"))
+//        getPrescriptionlist!!.add(PrescriptionList("", "We People"))
         _Chatlist.value = getChatlist
-        _Sessionlist.value = getSesionlist
-        _Prescriptionlist.value = getPrescriptionlist
+
+        getdoctorListApi()
+//        _Sessionlist.value = getSesionlist
+//        _Prescriptionlist.value = getPrescriptionlist
     }
 
     fun getdoctorListApi()
     {
-
-        var token=sharedPreferences.getString(Constant.USERTOKEN,"")
-        var patientid=sharedPreferences.getString(Constant.PATIENTID,"")
 
         if(!Constant.connected(context))
         {
@@ -77,7 +76,10 @@ class SettingViewModel (val sharedPreferences: SharedPreferences,
         }
         else
         {
+            var token=sharedPreferences.getString(Constant.USERTOKEN,"")
+            var patientid=sharedPreferences.getString(Constant.PATIENTID,"")
             var symptomname=sharedPreferences.getString(Constant.SYMPTOMNAME,"")
+
             Log.e("TOKENLISTAPI","tokenlistapi token response is......"+symptomname.toString())
 
             _status.value = ApiStatus.LOADING
@@ -92,7 +94,8 @@ class SettingViewModel (val sharedPreferences: SharedPreferences,
                         Log.e(Constant.APIRESPONSE,"getdoctorlist api response success one one one is......")
                         // _message.value= response.message
                         //  sharedPreferences.edit { putInt("COUNT",0) }
-                       // _GetOnlinelist.value=  response.data!! as MutableList<DoctorList>
+                        _Prescriptionlist.value=  response.data!!.prescription_detail as MutableList<PrescriptionList>
+                        _Sessionlist.value=  response.data!!.session_details as MutableList<SessionList>
                         //   _GetOfflinelist.value=  response.data!!.get(0).offline_doctor_array as MutableList<DoctorList>
                         //   _message.value= response.message!!.toString()
                     }

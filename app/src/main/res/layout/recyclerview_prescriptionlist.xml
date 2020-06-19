@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="android.view.View"/>
+        <variable name="index" type="int" />
+
+        <variable name="viewModel"
+            type="com.softgates.instadoctor.network.PrescriptionList"
+            />
+
+        <variable
+            name="clickListener"
+            type="com.softgates.instadoctor.prescription.OnClicks" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ten">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainlayout"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/gray"
+        app:layout_constraintTop_toBottomOf="@+id/selfarrow"
+        android:layout_marginTop="@dimen/twoenty">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.medicine_name+``+viewModel.medicine_dosage+``+viewModel.medicine_type}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/ten"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/rightarrow_yellow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:onClick="@{() -> clickListener.onClick(viewModel,index)}"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="@dimen/five"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/orange"
+            android:paddingBottom="@dimen/ten"
+            android:layout_marginTop="@dimen/twoenty"
+            app:visible="@{viewModel.visibility.toString()}"
+            app:layout_constraintTop_toBottomOf="@+id/mainlayout">
+
+            <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dosage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dosage"
+            app:fontFamily="@font/poppin_reg"
+            android:textSize="@dimen/textsize_fourteen"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginStart="@dimen/ten"
+            android:textColor="@color/black"
+            />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/dosagetxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.medicine_dosage}"
+                app:fontFamily="@font/poppin_reg"
+                android:textSize="@dimen/textsize_fourteen"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginEnd="@dimen/thirty"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/type"
+                app:fontFamily="@font/poppin_reg"
+                android:textSize="@dimen/textsize_fourteen"
+                app:layout_constraintTop_toBottomOf="@+id/dosage"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginStart="@dimen/ten"
+                android:textColor="@color/black"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/typetxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.medicine_type}"
+                app:fontFamily="@font/poppin_reg"
+                android:textSize="@dimen/textsize_fourteen"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@+id/dosagetxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginEnd="@dimen/thirty"
+                />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/courseperiod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/courseperiod"
+                app:fontFamily="@font/poppin_reg"
+                android:textSize="@dimen/textsize_fourteen"
+                app:layout_constraintTop_toBottomOf="@+id/type"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginStart="@dimen/ten"
+                android:textColor="@color/black"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/courseperiodtxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.course_period}"
+                app:fontFamily="@font/poppin_reg"
+                android:textSize="@dimen/textsize_fourteen"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@+id/typetxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginEnd="@dimen/thirty"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/servingperday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/servingperday"
+                app:fontFamily="@font/poppin_reg"
+                android:textSize="@dimen/textsize_fourteen"
+                app:layout_constraintTop_toBottomOf="@+id/courseperiod"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginStart="@dimen/ten"
+                android:textColor="@color/black"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/servingperdaytxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.serving}"
+                android:textColor="@color/black"
+                app:fontFamily="@font/poppin_reg"
+                android:textSize="@dimen/textsize_fourteen"
+                app:layout_constraintTop_toBottomOf="@+id/courseperiodtxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginEnd="@dimen/thirty"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/comments"
+                app:fontFamily="@font/poppin_reg"
+                android:textSize="@dimen/textsize_fourteen"
+                app:layout_constraintTop_toBottomOf="@+id/servingperday"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginStart="@dimen/ten"
+                android:textColor="@color/black"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/commentstxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.comments}"
+                app:fontFamily="@font/poppin_reg"
+                android:textSize="@dimen/textsize_fourteen"
+                app:layout_constraintTop_toBottomOf="@+id/comments"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginStart="@dimen/ten"
+                android:textColor="@color/black"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

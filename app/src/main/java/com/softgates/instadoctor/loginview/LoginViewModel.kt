@@ -102,16 +102,21 @@ class LoginViewModel (val sharedPreferences: SharedPreferences,
                 try {
                     val response = getPropertiesDeferred.await()
                     Log.e(Constant.APIRESPONSE,"registration api response is......"+response.toString())
-
                     if(response.status == Constant.SUCCEESSSTATUSTWOHUNDRED)
                     {
                         Log.e(Constant.APIRESPONSE,"registration api response success one one one is......")
                         // _message.value= response.message
-                        //  sharedPreferences.edit { putInt("COUNT",0) }
                         sharedPreferences.edit { putString(Constant.LOGINSIGNUPCHECK,"1") }
                         sharedPreferences.edit { putString(Constant.USERTOKEN, response.data!!.token.toString()) }
                         sharedPreferences.edit { putString(Constant.USEREMAIL, response.data!!.patient_email.toString()) }
                         sharedPreferences.edit { putString(Constant.PATIENTID, response.data!!.patient_id.toString()) }
+                        sharedPreferences.edit { putString(Constant.USERPHONE, response.data!!.phone.toString()) }
+                        sharedPreferences.edit { putString(Constant.USERADDRESSONE, response.data!!.address.toString()) }
+                        sharedPreferences.edit { putString(Constant.USERADDRESSTWO, response.data!!.address2.toString()) }
+                        sharedPreferences.edit { putString(Constant.USERCITY, response.data!!.city.toString()) }
+                        sharedPreferences.edit { putString(Constant.USERSTATE, response.data!!.state.toString()) }
+                        sharedPreferences.edit { putString(Constant.USERZIPCODE, response.data!!.zipcode.toString()) }
+
                         _navigateActivity.value=1
                         _message.value= response.message!!.toString()
                     }

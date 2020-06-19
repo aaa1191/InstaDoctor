@@ -43,9 +43,9 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="William John"
+                android:text="@{`By Dr `+viewModel.doc_name}"
                 android:layout_marginStart="@dimen/twoenty"
-                app:fontFamily="@font/poppin_semi_bold"
+                app:fontFamily="@font/poppin_reg"
                 android:textSize="@dimen/textsize_fourteen"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -55,11 +55,11 @@
                 android:id="@+id/datetext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="15 May 2020"
+                android:text="@{viewModel.pre_date}"
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/twoenty"
                 app:fontFamily="@font/poppin_reg"
-                android:textSize="@dimen/textsize_sixteen"
+                android:textSize="@dimen/textsize_fourteen"
                 android:textColor="@color/darkgreen"
                 app:layout_constraintEnd_toStartOf="@+id/rightarrow"
                 app:layout_constraintTop_toTopOf="parent"
@@ -73,17 +73,10 @@
                 android:layout_gravity="center_vertical|end"
                 android:src="@drawable/rightarrow_lightblue"
                 android:layout_marginEnd="@dimen/ten"
-                android:text="Schedule"
-                app:fontFamily="@font/poppin_reg"
-                android:textSize="@dimen/textsize_sixteen"
-                android:textColor="@color/darkgreen"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 />
             </androidx.constraintlayout.widget.ConstraintLayout>
-
         </androidx.cardview.widget.CardView>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

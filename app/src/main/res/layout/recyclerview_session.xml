@@ -36,21 +36,21 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="William John"
+                android:text="@{viewModel.doc_name}"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/twoenty"
-                app:fontFamily="@font/poppin_semi_bold"
-                android:textSize="@dimen/textsize_sixteen"
+                app:fontFamily="@font/poppin_reg"
+                android:textSize="@dimen/textsize_fourteen"
                 android:textColor="@color/black"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10.30 AM"
+                android:text="@{viewModel.app_time}"
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/twoenty"
                 app:fontFamily="@font/poppin_reg"
-                android:textSize="@dimen/textsize_sixteen"
+                android:textSize="@dimen/textsize_fourteen"
                 android:textColor="@color/darkgreen"/>
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -58,9 +58,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|end"
                 android:layout_marginEnd="@dimen/ten"
-                android:text="Schedule"
+                android:text="@{viewModel.status}"
                 app:fontFamily="@font/poppin_reg"
-                android:textSize="@dimen/textsize_sixteen"
+                android:textSize="@dimen/textsize_fourteen"
                 android:textColor="@color/darkgreen"
                 />
 

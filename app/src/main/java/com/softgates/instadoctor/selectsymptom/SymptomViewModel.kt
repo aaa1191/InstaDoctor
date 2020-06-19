@@ -60,6 +60,8 @@ class SymptomViewModel (val sharedPreferences: SharedPreferences,
         getSymtomApi()
     }
 
+
+
     fun addClick(product: SymptomList,type:Int,index:Int)
     {
         Log.e("UPDATETICK","update tick is called......"+ _GetSymptomlist.value!!.get(index).tick)

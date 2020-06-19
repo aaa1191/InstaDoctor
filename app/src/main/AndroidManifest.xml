@@ -7,18 +7,19 @@
     <dist:module dist:instant="true" />
 
     <application
+        android:name="androidx.multidex.MultiDexApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".activity.SplashActivity"
             android:theme="@style/splashNoactionbar"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -33,11 +34,21 @@
             android:theme="@style/blackNoactionbar"
             />
 
-
         <activity android:name=".activity.HomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/blackNoactionbar"
+            />
+
+        <activity android:name=".activity.DemoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/homeNoactionbar"
             />
+
+         <activity android:name=".demo.VideoCalling"
+            android:screenOrientation="portrait"
+            android:theme="@style/homeNoactionbar"
+            />
+
 
         <provider
             android:authorities="${applicationId}.fileprovider"
@@ -48,6 +59,17 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+        <activity
+            android:name=".zoom.ui.APIUserStartJoinMeetingActivity"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name"
+            android:theme="@style/ZMTheme.MainWindow">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
     </application>
 

@@ -32,10 +32,6 @@ class RatingViewModel (val sharedPreferences: SharedPreferences,
     val status: LiveData<ApiStatus?>
         get() = _status
 
-
-
-
-
     private val _msg = MutableLiveData<String>()
     val msg : LiveData<String?>
         get() = _msg
@@ -51,6 +47,7 @@ class RatingViewModel (val sharedPreferences: SharedPreferences,
 
     init {
         _msg.value=""
+        _rating.value="0"
         _navigateActivity.value=0
         Log.e("APIRESPONSE","wishlist api is called...")
     }
@@ -79,8 +76,7 @@ class RatingViewModel (val sharedPreferences: SharedPreferences,
     fun submit()
     {
         when {
-            _msg.value!!.isEmpty() -> _message.value="The email field is required."
-            !ValidationUtil.isEmailValid(_msg.value.toString()) ->_message.value="The Email address is not valid"
+            _msg.value!!.isEmpty() -> _message.value="The message field is required."
             else -> submitFeedbackApi()
         }
     }
@@ -97,7 +93,12 @@ class RatingViewModel (val sharedPreferences: SharedPreferences,
             var patientid=sharedPreferences.getString(Constant.PATIENTID,"")
             var docid=sharedPreferences.getString(Constant.DOCID,"")
 
+               Log.e(Constant.APIRESPONSE,"submitfeedback token response is......"+token.toString())
+               Log.e(Constant.APIRESPONSE,"submitfeedback patientid response is......"+patientid.toString())
+               Log.e(Constant.APIRESPONSE,"submitfeedback docid response is......"+docid.toString())
                Log.e(Constant.APIRESPONSE,"submitfeedback rating response is......"+rating.value.toString())
+               Log.e(Constant.APIRESPONSE,"submitfeedback msg response is......"+msg.value.toString())
+
           //  Log.e(Constant.APIRESPONSE,"addPatientDetail cm response is......"+cm.value.toString())
             _status.value = ApiStatus.LOADING
             coroutineScope.launch {
@@ -111,10 +112,10 @@ class RatingViewModel (val sharedPreferences: SharedPreferences,
                     if(response.status == Constant.SUCCEESSSTATUSTWOHUNDRED)
                     {
                         Log.e(Constant.APIRESPONSE,"registration api response success one one one is......")
+                        _message.value= response.message!!.toString()
 
                         // _message.value= response.message
                         _navigateActivity.value=1
-                        _message.value= response.message!!.toString()
                     }
                     else
                     {

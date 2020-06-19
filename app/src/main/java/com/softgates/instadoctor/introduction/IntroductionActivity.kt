@@ -79,8 +79,8 @@ class IntroductionActivity : AppCompatActivity()
         })
 
         binding.skip.setOnClickListener {
-            val inten = Intent(this@IntroductionActivity, HomeActivity::class.java)
         //    val inten = Intent(this@IntroductionActivity, HomeActivity::class.java)
+            val inten = Intent(this@IntroductionActivity, HomeActivity::class.java)
             startActivity(inten)
             finish()
         }
@@ -102,7 +102,6 @@ class IntroductionActivity : AppCompatActivity()
                 startActivity(inten)
                 finish()
             }
-
         }
     }
 

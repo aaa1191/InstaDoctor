@@ -22,6 +22,7 @@ class SplashActivity  : AppCompatActivity()
         Glide.with(this).load(R.drawable.splash).into(splashimgview);
         Handler().postDelayed({
 //            val inten = Intent(this@SplashActivity, HomeActivity::class.java)
+//            val inten = Intent(this@SplashActivity, DemoActivity::class.java)
             val inten = Intent(this@SplashActivity, IntroductionActivity::class.java)
             startActivity(inten)
             finish()

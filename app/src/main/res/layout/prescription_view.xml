@@ -4,6 +4,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.softgates.instadoctor.prescription.PrescriptionViewModel" />
+
     </data>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -44,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/twoenty"
-                android:text="Date: 21 Jan, 2020"
+                android:text="@{viewModel.date}"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textsize_sixteen"
                 app:fontFamily="@font/poppin_reg"
@@ -54,7 +58,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="By: Dr. Willaim "
+                android:text="@{`By: Dr.`+viewModel.docname}"
                 app:fontFamily="@font/poppin_reg"
                 android:textSize="@dimen/textsize_sixteen"
                 android:layout_marginTop="@dimen/twoenty"
@@ -62,6 +66,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/backbtn"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginStart="@dimen/fourty"
+                />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/prescriptionrecyclerview"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/datetxt"
+                app:layout_constraintBottom_toTopOf="@+id/deliverymedicine"
                 />
 
 
