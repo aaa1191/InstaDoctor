@@ -3,6 +3,7 @@ package com.softgates.instadoctor.passwordinformation
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
+import com.softgates.instadoctor.activity.HomeActivity
 import com.softgates.instadoctor.databinding.PasswodinformationViewBinding
 import com.softgates.instadoctor.databinding.RecoverpasswordViewBinding
 import com.softgates.instadoctor.recoverpassword.RecoverPasswordViewModel
@@ -59,6 +61,16 @@ class PasswordinformationView : Fragment() {
                 }
             }
         })
+
+        binding.backbtn.setOnClickListener {
+            Log.e("ONBACKPRESSED","onbackpressed is called")
+            (activity as HomeActivity).onbackpressed()
+        }
+
+        binding.cancelbtn.setOnClickListener {
+            (activity as HomeActivity).onbackpressed()
+        }
+
         binding.viewModel = viewModel
         return  binding.root
     }

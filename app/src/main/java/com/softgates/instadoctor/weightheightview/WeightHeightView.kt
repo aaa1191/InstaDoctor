@@ -1,5 +1,4 @@
 package com.softgates.instadoctor.weightheightview
-
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -17,14 +16,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
-import com.softgates.instadoctor.activity.LoginActivity
-import com.softgates.instadoctor.databinding.FeltwayViewBinding
-import com.softgates.instadoctor.databinding.WeightheightViewBinding
+import com.softgates.instadoctor.activity.HomeActivity
 import com.softgates.instadoctor.databinding.WeightheightViewsBinding
-import com.softgates.instadoctor.feltway.FeltWayViewDirections
-import com.softgates.instadoctor.registerchild.RegisterChildViewModel
-import com.softgates.instadoctor.registerchild.RegisterChildViewModelFactory
-import com.softgates.instadoctor.takemedicine.TakeMedicineViewModel
 import com.softgates.instadoctor.util.ApiStatus
 import com.softgates.instadoctor.util.Constant
 import com.softgates.instadoctor.util.ProgressDialog
@@ -53,10 +46,10 @@ class WeightHeightView  : Fragment() {
         val viewModelFactory = WeightHeightViewModelFactory(sharedPreferences, application)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(WeightHeightViewModel::class.java)
 
-      /*  binding.nextarrow.setOnClickListener {
+      /*
+      binding.nextarrow.setOnClickListener {
 
         }*/
-
 
         binding.kgseekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
 
@@ -120,6 +113,11 @@ class WeightHeightView  : Fragment() {
                     NavHostFragment.findNavController(this).navigate(action)                }
             }
         })
+
+        binding.backbtn.setOnClickListener {
+            Log.e("ONBACKPRESSED","onbackpressed is called")
+            (activity as HomeActivity).onbackpressed()
+        }
         binding.viewModel=viewModel
         return  binding.root
     }

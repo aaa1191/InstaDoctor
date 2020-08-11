@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.RatingBar.OnRatingBarChangeListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -17,6 +19,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
+import com.softgates.instadoctor.activity.HomeActivity
 import com.softgates.instadoctor.activity.LoginActivity
 import com.softgates.instadoctor.databinding.RatingviewModelBinding
 import com.softgates.instadoctor.util.ApiStatus
@@ -42,9 +45,9 @@ class Rating_View : Fragment() {
         //   vi = inflater.inflate(R.layout.fragment_registration_first,container,false)
         binding = DataBindingUtil.inflate<RatingviewModelBinding>(
             inflater, R.layout.ratingview_model, container, false)
-
         sharedPreferences =
             (activity as AppCompatActivity).getSharedPreferences(Constant.SHAREDPREFERENCENAME, Context.MODE_PRIVATE)
+        sharedPreferences.edit { putBoolean(Constant.VIDEODISCONNECT,false)}
         val application = requireNotNull(this.activity).application
         val viewModelFactory = RatingViewModelFactory(sharedPreferences, application)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(RatingViewModel::class.java)
@@ -74,6 +77,11 @@ class Rating_View : Fragment() {
             }
         })
 
+        binding.backbtn.setOnClickListener {
+            Log.e("ONBACKPRESSED","onbackpressed is called")
+            (activity as HomeActivity).onbackpressed()
+        }
+
         binding.submit.setOnClickListener {
 
         }
@@ -81,16 +89,25 @@ class Rating_View : Fragment() {
         binding.skip.setOnClickListener {
             val action = Rating_ViewDirections.actionRatingViewModelToPrescriptionView()
             NavHostFragment.findNavController(this).navigate(action)
-
         }
+        sharedPreferences.edit { putBoolean(com.softgates.instadoctor.util.Constant.DELIVERYBUTTONVISIBLE,false)}
 
+        if(!sharedPreferences.getBoolean(Constant.RATINGBUTTONVISIBLE,false))
+        {
+            binding.submit.isEnabled = true
+        }
+        else
+        {
+            binding.submit.isEnabled = false
+        }
         viewModel.navigateActivity.observe(viewLifecycleOwner, Observer {
             it?.let {
                 if (it == 1) {
+                    sharedPreferences.edit { putBoolean(Constant.RATINGBUTTONVISIBLE,true)}
+                    viewModel.complete()
                     val action = Rating_ViewDirections.actionRatingViewModelToPrescriptionView()
                     NavHostFragment.findNavController(this).navigate(action)                }
             }
-
         })
         binding.viewModel = viewModel
        return  binding.root

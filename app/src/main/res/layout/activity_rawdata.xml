@@ -5,7 +5,6 @@
     android:background="@color/zm_black"
     android:orientation="vertical">
 
-
     <us.zoom.sdksample.inmeetingfunction.customizedmeetingui.rawdata.RawDataRender
         android:id="@+id/big_video"
         android:layout_width="match_parent"
@@ -20,7 +19,6 @@
         android:text="Connect ..."
         android:textColor="@color/zm_white"
         android:textSize="16sp" />
-
 
     <LinearLayout
         android:id="@+id/video_list_contain"

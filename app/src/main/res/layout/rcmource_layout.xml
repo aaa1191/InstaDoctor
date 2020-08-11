@@ -4,14 +4,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.softgates.instadoctor.zoom.inmeetingfunction.customizedmeetingui.view.share.RCFloatView
+    <com.softgates.instadoctor.demoo.inmeetingfunction.customizedmeetingui.view.share.RCFloatView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/rc_float"
         android:layout_gravity="bottom">
-    </com.softgates.instadoctor.zoom.inmeetingfunction.customizedmeetingui.view.share.RCFloatView>>
+    </com.softgates.instadoctor.demoo.inmeetingfunction.customizedmeetingui.view.share.RCFloatView>>
 
-    <com.softgates.instadoctor.zoom.inmeetingfunction.customizedmeetingui.view.share.RCMouseView
+    <com.softgates.instadoctor.demoo.inmeetingfunction.customizedmeetingui.view.share.RCMouseView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/rc_mouse"

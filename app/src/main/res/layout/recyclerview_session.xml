@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|end"
                 android:layout_marginEnd="@dimen/ten"
-                android:text="@{viewModel.status}"
+                app:session="@{viewModel.status}"
                 app:fontFamily="@font/poppin_reg"
                 android:textSize="@dimen/textsize_fourteen"
                 android:textColor="@color/darkgreen"

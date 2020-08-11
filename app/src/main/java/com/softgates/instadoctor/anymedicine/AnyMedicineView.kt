@@ -3,6 +3,7 @@ package com.softgates.instadoctor.anymedicine
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
+import com.softgates.instadoctor.activity.HomeActivity
 import com.softgates.instadoctor.databinding.AnymedicineViewBinding
 import com.softgates.instadoctor.util.Constant
 import com.softgates.instadoctor.whovisit.WhoVisitViewDirections
@@ -47,6 +49,12 @@ class AnyMedicineView : Fragment() {
             val action = AnyMedicineViewDirections.actionAnyMedicineViewToTakeMedicineView()
             NavHostFragment.findNavController(this).navigate(action)
         }
+
+        binding.backbtn.setOnClickListener {
+            Log.e("ONBACKPRESSED","onbackpressed is called")
+            (activity as HomeActivity).onbackpressed()
+        }
+
         return  binding.root
     }
 

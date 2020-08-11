@@ -53,6 +53,7 @@ class RatingViewModel (val sharedPreferences: SharedPreferences,
     }
 
     fun complete() {
+        _navigateActivity.value=0
 
     }
 

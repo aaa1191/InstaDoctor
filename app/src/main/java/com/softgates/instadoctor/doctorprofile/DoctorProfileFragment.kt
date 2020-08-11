@@ -57,14 +57,25 @@ class DoctorProfileFragment : Fragment() {
             adapter.notifyDataSetChanged()
         })
 
+        binding.backbtn.setOnClickListener {
+            Log.e("ONBACKPRESSED","onbackpressed is called")
+            (activity as HomeActivity).onbackpressed()
+        }
+
         binding.meetupbtn.setOnClickListener {
             sharedPreferences.edit { putString(com.softgates.instadoctor.util.Constant.DOCID,doctorlist.id) }
+            sharedPreferences.edit { putString(com.softgates.instadoctor.util.Constant.DOCNAME,doctorlist.doc_name) }
+            sharedPreferences.edit { putString(com.softgates.instadoctor.util.Constant.DOCPROFILE,doctorlist.doc_image_link) }
+            sharedPreferences.edit { putString(com.softgates.instadoctor.util.Constant.MEETINGTYPE,com.softgates.instadoctor.util.Constant.MEET) }
             val action = DoctorProfileFragmentDirections.actionDoctorProfileFragmentToPaymentSummeryView()
             NavHostFragment.findNavController(this).navigate(action)
         }
 
         binding.book.setOnClickListener {
             sharedPreferences.edit { putString(com.softgates.instadoctor.util.Constant.DOCID,doctorlist.id) }
+            sharedPreferences.edit { putString(com.softgates.instadoctor.util.Constant.DOCPROFILE,doctorlist.doc_image_link) }
+            sharedPreferences.edit { putString(com.softgates.instadoctor.util.Constant.DOCNAME,doctorlist.doc_name) }
+            sharedPreferences.edit { putString(com.softgates.instadoctor.util.Constant.MEETINGTYPE,com.softgates.instadoctor.util.Constant.BOOK) }
             val action = DoctorProfileFragmentDirections.actionDoctorProfileFragmentToScheduleAppointmentView()
             NavHostFragment.findNavController(this).navigate(action)
         }

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.softgates.instadoctor.R
 import com.softgates.instadoctor.introduction.IntroductionActivity
+import com.softgates.instadoctor.twillo.LoginActivity
 import kotlinx.android.synthetic.main.splash_view.*
 
 class SplashActivity  : AppCompatActivity()
@@ -21,9 +22,10 @@ class SplashActivity  : AppCompatActivity()
 
         Glide.with(this).load(R.drawable.splash).into(splashimgview);
         Handler().postDelayed({
-//            val inten = Intent(this@SplashActivity, HomeActivity::class.java)
+      //      val inten = Intent(this@SplashActivity, HomeActivity::class.java)
 //            val inten = Intent(this@SplashActivity, DemoActivity::class.java)
-            val inten = Intent(this@SplashActivity, IntroductionActivity::class.java)
+//            val inten = Intent(this@SplashActivity, LoginActivity::class.java)
+           val inten = Intent(this@SplashActivity, IntroductionActivity::class.java)
             startActivity(inten)
             finish()
 //            val inten = Intent(this@SplashActivity, Activity_Login::class.java)

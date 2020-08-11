@@ -24,7 +24,7 @@ class PrescriptionAdapter (private val onClickListener: OnClickss ) :  ListAdapt
         fun bind(item: PrescriptionList, clickListener: OnClickss, position:Int) {
             binding.viewModel = item
             binding.index = position
-            //   binding.clickListener = clickListener
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
         companion object {

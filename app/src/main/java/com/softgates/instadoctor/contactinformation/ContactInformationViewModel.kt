@@ -12,6 +12,7 @@ import com.softgates.instadoctor.network.AddValue
 import com.softgates.instadoctor.util.ApiStatus
 import com.softgates.instadoctor.util.Constant
 import com.softgates.instadoctor.util.InstaDoctorApi
+import com.softgates.instadoctor.util.ValidationUtil
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -53,6 +54,13 @@ class ContactInformationViewModel (val sharedPreferences: SharedPreferences,
         _addlist.value = getlist
         Log.e("APIRESPONSE", "wishlist api is called..." )
         //   _symptomlist.value = doctorlist
+    }
+
+
+    fun login()
+    {
+        Log.e("CONTACTINFORMATIONAPI","address img img information api is.....")
+
     }
 
     fun addValue()

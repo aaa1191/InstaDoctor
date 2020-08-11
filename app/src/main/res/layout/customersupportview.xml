@@ -162,6 +162,7 @@
                     </LinearLayout>
 
                     <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/chat"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:src="@drawable/rightarrow_lightblue"
@@ -215,7 +216,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppin_reg"
-                            android:text="(900)997-0900"
+                            android:text="+971 508800842"
                             app:fontFamily="@font/poppin_reg"
                             android:textColor="@color/black"
                             android:textSize="@dimen/textsize_fourteen" />
@@ -224,6 +225,7 @@
                     </LinearLayout>
 
                     <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/phonecalling"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:src="@drawable/rightarrow_lightblue"

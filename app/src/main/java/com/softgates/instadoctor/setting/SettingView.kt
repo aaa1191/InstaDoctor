@@ -8,12 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
 import com.softgates.instadoctor.databinding.SettingViewBinding
+import com.softgates.instadoctor.feltway.FeltWayViewDirections
 import com.softgates.instadoctor.util.ApiStatus
 import com.softgates.instadoctor.util.Constant
 import com.softgates.instadoctor.util.ProgressDialog
@@ -58,7 +61,12 @@ class SettingView  : Fragment() {
         })
 
         val prescriptionadapter = PrescriptionAdapter(OnClickss { data, type, position ->
-
+            if(type==1)
+            {
+                sharedPreferences.edit { putString(Constant.APPID, data.app_id!!.toString()) }
+                val action = SettingViewDirections.actionSettingToPrescriptionView()
+                NavHostFragment.findNavController(this).navigate(action)
+            }
         })
 
         viewModel.Chatlist.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
@@ -70,6 +78,7 @@ class SettingView  : Fragment() {
             sessionadapter.submitList(it)
             sessionadapter.notifyDataSetChanged()
         })
+
         viewModel.Prescriptionlist.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             prescriptionadapter.submitList(it)
             prescriptionadapter.notifyDataSetChanged()

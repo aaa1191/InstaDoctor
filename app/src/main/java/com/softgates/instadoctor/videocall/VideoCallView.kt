@@ -6,13 +6,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
 import com.softgates.instadoctor.databinding.VideocallViewBinding
-import com.softgates.instadoctor.zoom.initsdk.InitAuthSDKHelper
 import us.zoom.sdk.ZoomSDK
 
 class VideoCallView : Fragment() {

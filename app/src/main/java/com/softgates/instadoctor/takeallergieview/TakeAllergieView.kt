@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
+import com.softgates.instadoctor.activity.HomeActivity
 import com.softgates.instadoctor.databinding.TakeallergieViewBinding
 import com.softgates.instadoctor.databinding.TakemedicineViewBinding
 import com.softgates.instadoctor.takemedicine.*
@@ -43,6 +44,10 @@ class TakeAllergieView : Fragment() {
         val viewModelFactory = TakeAllergieViewModelFactory(sharedPreferences, application)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(TakeAllergieViewModel::class.java)
 
+        binding.backbtn.setOnClickListener {
+            Log.e("ONBACKPRESSED","onbackpressed is called")
+            (activity as HomeActivity).onbackpressed()
+        }
 
         binding.next.setOnClickListener {
             var addAllergyName:String=""

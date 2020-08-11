@@ -61,7 +61,7 @@
             android:fontFamily="@font/poppin_semi_bold"
             android:text="William Jones"
             android:textColor="@color/black"
-            android:textSize="@dimen/textsize_twl"
+            android:textSize="@dimen/textsize_sixteen"
             android:textStyle="normal"/>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -74,6 +74,7 @@
             android:text="@string/vieweditprofile"
             android:textColor="@color/darkgreen"
             android:textSize="@dimen/textsize_twl"
+            android:visibility="invisible"
             android:textStyle="normal"/>
 
         <ProgressBar
@@ -87,6 +88,7 @@
             app:layout_constraintTop_toBottomOf="@+id/vieweditprofile"
             app:layout_constraintStart_toStartOf="parent"
             android:max="100"
+            android:visibility="invisible"
             android:minHeight="10dp"
             android:minWidth="200dp"
             android:progress="20"
@@ -102,6 +104,7 @@
             android:text="61% complete"
             android:textColor="@color/black"
             android:textSize="@dimen/textsize_twl"
+            android:visibility="invisible"
             android:textStyle="normal"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -114,6 +117,7 @@
         app:cardBackgroundColor="@color/gray"
         app:cardCornerRadius="@dimen/ten"
         android:elevation="0dp"
+        android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@+id/userinforlayout"
         android:layout_marginTop="@dimen/ten"
         >
@@ -151,7 +155,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/profiletablayout"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="150dp"
         app:cardBackgroundColor="@color/gray"
         app:cardCornerRadius="@dimen/ten"
         android:elevation="0dp"
@@ -206,11 +210,13 @@
                 app:textAllCaps="true" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/insurance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/fifteen"
                 android:text="@string/insurance"
                 android:textSize="@dimen/textsize_profilesubtext"
+                android:visibility="gone"
                 android:fontFamily="@font/poppin_semi_bold"
                 android:textColor="@color/darkgray"
                 app:layout_constraintStart_toStartOf="parent"
@@ -224,6 +230,7 @@
                 android:layout_marginTop="@dimen/fifteen"
                 android:text="@string/employer"
                 android:textSize="@dimen/textsize_profilesubtext"
+                android:visibility="gone"
                 android:fontFamily="@font/poppin_semi_bold"
                 android:textColor="@color/darkgray"
                 app:layout_constraintStart_toStartOf="parent"
@@ -247,7 +254,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="190dp"
+        android:layout_height="230dp"
         app:cardBackgroundColor="@color/gray"
         app:cardCornerRadius="@dimen/ten"
         android:elevation="0dp"
@@ -306,6 +313,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/fifteen"
                 android:text="@string/termcondition"
+                android:textSize="@dimen/textsize_profilesubtext"
+                android:fontFamily="@font/poppin_semi_bold"
+                android:textColor="@color/darkgray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:textAllCaps="true" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/privacypolicy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fifteen"
+                android:text="@string/privacypolicy"
                 android:textSize="@dimen/textsize_profilesubtext"
                 android:fontFamily="@font/poppin_semi_bold"
                 android:textColor="@color/darkgray"

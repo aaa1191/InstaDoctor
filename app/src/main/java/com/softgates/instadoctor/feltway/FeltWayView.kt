@@ -16,9 +16,12 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
+import com.softgates.instadoctor.activity.HomeActivity
 import com.softgates.instadoctor.databinding.FeltwayViewBinding
 import com.softgates.instadoctor.databinding.WhovisitViewBinding
 import com.softgates.instadoctor.registerchild.RegisterChildViewDirections
+import com.softgates.instadoctor.selectsymptom.OnClick
+import com.softgates.instadoctor.selectsymptom.SymptomAdapter
 import com.softgates.instadoctor.util.Constant
 import com.softgates.instadoctor.whovisit.WhoVisitViewDirections
 
@@ -56,6 +59,12 @@ class FeltWayView : Fragment() {
             }
 
         }
+
+        binding.backbtn.setOnClickListener {
+            Log.e("ONBACKPRESSED","onbackpressed is called")
+            (activity as HomeActivity).onbackpressed()
+        }
+
 
 
         binding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {

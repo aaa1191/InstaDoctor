@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
+import com.softgates.instadoctor.activity.HomeActivity
 import com.softgates.instadoctor.anymedicine.AnyMedicineViewDirections
 import com.softgates.instadoctor.databinding.AnymedicineViewBinding
 import com.softgates.instadoctor.databinding.TakemedicineViewBinding
@@ -72,6 +73,10 @@ class TakeMedicineView : Fragment() {
         val adapter = TakeMedicineAdapter(OnClick { data, type, position ->
 
         })
+        binding.backbtn.setOnClickListener {
+            Log.e("ONBACKPRESSED","onbackpressed is called")
+            (activity as HomeActivity).onbackpressed()
+        }
 
         viewModel.addlist.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             adapter.submitList(it)

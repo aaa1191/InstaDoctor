@@ -1,5 +1,4 @@
 package com.softgates.instadoctor.mychild
-
 import android.app.Application
 import android.content.SharedPreferences
 import android.util.Log
@@ -7,8 +6,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.softgates.instadoctor.R
-import com.softgates.instadoctor.network.DoctorList
-import com.softgates.instadoctor.network.HomeList
 import com.softgates.instadoctor.network.MyChildList
 import com.softgates.instadoctor.util.ApiStatus
 import com.softgates.instadoctor.util.Constant

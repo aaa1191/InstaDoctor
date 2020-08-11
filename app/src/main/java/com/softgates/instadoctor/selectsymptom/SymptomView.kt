@@ -17,8 +17,11 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
+import com.softgates.instadoctor.activity.HomeActivity
 import com.softgates.instadoctor.databinding.SymptomViewBinding
+import com.softgates.instadoctor.util.ApiStatus
 import com.softgates.instadoctor.util.Constant
+import com.softgates.instadoctor.util.ProgressDialog
 import com.softgates.instadoctor.whovisit.WhoVisitViewDirections
 
 class SymptomView : Fragment() {
@@ -29,6 +32,7 @@ class SymptomView : Fragment() {
     lateinit var linearLayoutManager: LinearLayoutManager
     lateinit var sharedPreferences: SharedPreferences
     private lateinit var viewModel : SymptomViewModel
+    private lateinit var loader: ProgressDialog
 
 
     override fun onCreateView(
@@ -53,6 +57,11 @@ class SymptomView : Fragment() {
                 viewModel.addClick(data,1,position)
             }
         })
+
+        binding.backbtn.setOnClickListener {
+            Log.e("ONBACKPRESSED","onbackpressed is called")
+            (activity as HomeActivity).onbackpressed()
+        }
 
         viewModel.notifyItem.observe(viewLifecycleOwner, Observer {
             binding.searchrecyclerview.adapter?.notifyItemChanged(it)
@@ -93,11 +102,28 @@ class SymptomView : Fragment() {
             }
             Log.e("FINALPRODUCTPRICE","FinalSymptomname is......."+symptomName.toString())
         }
+
+
+        viewModel.status.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            when (it) {
+                ApiStatus.LOADING -> {
+                    loader.setLoading(true)
+                }
+                ApiStatus.ERROR -> {
+                    loader.setLoading(false)
+                }
+                ApiStatus.DONE -> {
+                    loader.setLoading(false)
+                }
+            }
+        })
         return  binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        loader = ProgressDialog(view.context)
     }
+
 
 }

@@ -17,6 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:src="@drawable/backbtn_back"
         android:layout_marginTop="@dimen/twoentyfive"
+        android:visibility="gone"
         android:layout_marginStart="@dimen/twoenty"
         />
 

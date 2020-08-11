@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/commonlib" />
             <option value="$PROJECT_DIR$/mobilertc" />
+            <option value="$PROJECT_DIR$/paytabs_sdk-v4.0.1" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

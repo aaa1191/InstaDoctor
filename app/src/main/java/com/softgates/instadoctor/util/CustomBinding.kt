@@ -2,10 +2,7 @@ package com.softgates.myapplication.util
 
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.RatingBar
-import android.widget.TextView
+import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -60,6 +57,20 @@ fun bindImageFromUrl(view: CardView, tick: String?) {
     }
 }
 
+@BindingAdapter("selectTime")
+fun bindImageFromUrl(view: RelativeLayout, tick: String?) {
+    if (!tick.isNullOrEmpty()) {
+        if(tick.equals("1"))
+        {
+            view.setBackgroundResource(R.drawable.time_selected_drawable)
+        }
+        else
+        {
+            view.setBackgroundResource(R.drawable.time_drawable)
+        }
+    }
+}
+
 @BindingAdapter("visible")
 fun visible(view: ConstraintLayout, visible: String?) {
     if (!visible.isNullOrEmpty()) {
@@ -72,6 +83,25 @@ fun visible(view: ConstraintLayout, visible: String?) {
             view.visibility = View.GONE
         }
     }
+}
+
+@BindingAdapter("session")
+fun bindsessiontext(view: TextView, statusType: String?) {
+    Log.e("STATUSTYPE","addlImage...."+statusType)
+    if(statusType.equals("Scheduled"))
+    {
+        //  view.setBackgroundColor(ContextCompat.getColor(view.context, R.color.green))
+        view.setText(statusType.toString())
+        view.setTextColor(ContextCompat.getColor(view.context, R.color.orange))
+    }
+    else
+    {
+        view.setText(statusType.toString())
+        view.setTextColor(ContextCompat.getColor(view.context, R.color.orange))
+
+    }
+
+    //context.resources.getString(R.string.nointernet)
 }
 
 @BindingAdapter("statuscolor")

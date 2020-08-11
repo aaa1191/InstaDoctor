@@ -42,7 +42,7 @@ class ChooseDoctorAdapter (private val onClickListener: OnClick ) :  ListAdapter
 
 class OnClick(val clickListener: (marsProperty: DoctorList, type:Int, index:Int) -> Unit) {
     fun onView(marsProperty: DoctorList, index:Int) = clickListener(marsProperty,1,index)
-    fun onDesc(marsProperty: DoctorList, index:Int) = clickListener(marsProperty,2,index)
+    fun ontype(marsProperty: DoctorList, index:Int) = clickListener(marsProperty,2,index)
 }
 
 class completeListDiffCallback : DiffUtil.ItemCallback<DoctorList>() {

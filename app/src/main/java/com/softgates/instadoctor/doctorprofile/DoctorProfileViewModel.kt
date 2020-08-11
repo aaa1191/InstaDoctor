@@ -58,8 +58,8 @@ class DoctorProfileViewModel (val sharedPreferences: SharedPreferences,
         else
         {
             _status.value = ApiStatus.LOADING
-         //   var token=sharedPreferences.getString(Constant.USERTOKEN,"")
-            var token="e9ac614fc80c9ffcd84d022d309243f1a50e956599a6172a84ecfb2fec45ac330b2dce40f5eb2ac8cf0003fb8391984033fd29ad42c0062efb5d62385369c0aa"
+           var token=sharedPreferences.getString(Constant.USERTOKEN,"")
+         //   var token="e9ac614fc80c9ffcd84d022d309243f1a50e956599a6172a84ecfb2fec45ac330b2dce40f5eb2ac8cf0003fb8391984033fd29ad42c0062efb5d62385369c0aa"
             Log.e(Constant.APIRESPONSE,"getdoctorlist token response is......"+token.toString())
 
             coroutineScope.launch {

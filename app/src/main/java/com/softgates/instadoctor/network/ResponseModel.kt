@@ -18,6 +18,4 @@ data class ResponseModel(
     @Json(name="data")
     var data: Data? = null
 
-
-
 )

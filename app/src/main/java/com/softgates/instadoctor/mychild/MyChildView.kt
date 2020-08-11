@@ -1,5 +1,4 @@
 package com.softgates.instadoctor.mychild
-
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -15,13 +14,9 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
+import com.softgates.instadoctor.activity.HomeActivity
 import com.softgates.instadoctor.databinding.MychildViewBinding
 import com.softgates.instadoctor.databinding.PaymentsummeryViewBinding
-import com.softgates.instadoctor.paymentsummery.PaymentSummeryViewDirections
-import com.softgates.instadoctor.setting.ChatAdapter
-import com.softgates.instadoctor.setting.OnClick
-import com.softgates.instadoctor.setting.SettingViewModel
-import com.softgates.instadoctor.setting.SettingViewModelFactory
 import com.softgates.instadoctor.util.Constant
 
 class MyChildView : Fragment() {
@@ -68,6 +63,11 @@ class MyChildView : Fragment() {
 
             val action = MyChildViewDirections.actionMyChildViewToRegisterChildView()
             NavHostFragment.findNavController(this).navigate(action)
+        }
+
+        binding.backbtn.setOnClickListener {
+            Log.e("ONBACKPRESSED","onbackpressed is called")
+            (activity as HomeActivity).onbackpressed()
         }
 
         /* binding.paymentbtn.setOnClickListener {

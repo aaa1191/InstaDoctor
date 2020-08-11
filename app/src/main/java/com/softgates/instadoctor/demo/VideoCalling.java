@@ -12,18 +12,17 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.softgates.instadoctor.R;
-import com.softgates.instadoctor.zoom.initsdk.InitAuthSDKCallback;
-import com.softgates.instadoctor.zoom.initsdk.InitAuthSDKHelper;
-import com.softgates.instadoctor.zoom.startjoinmeeting.UserLoginCallback;
-import com.softgates.instadoctor.zoom.ui.APIUserStartJoinMeetingActivity;
+import com.softgates.instadoctor.util.ProgressDialog;
+import com.softgates.instadoctor.demoo.initsdk.InitAuthSDKCallback;
+import com.softgates.instadoctor.demoo.initsdk.InitAuthSDKHelper;
+import com.softgates.instadoctor.demoo.startjoinmeeting.UserLoginCallback;
+import com.softgates.instadoctor.demoo.ui.APIUserStartJoinMeetingActivity;
 
 import java.util.List;
 
 import us.zoom.sdk.InMeetingNotificationHandle;
 import us.zoom.sdk.JoinMeetingParams;
 import us.zoom.sdk.MeetingInviteMenuItem;
-import us.zoom.sdk.MeetingServiceListener;
-import us.zoom.sdk.MeetingStatus;
 import us.zoom.sdk.ZoomApiError;
 import us.zoom.sdk.ZoomAuthenticationError;
 import us.zoom.sdk.ZoomError;
@@ -42,10 +41,12 @@ public class VideoCalling  extends Activity implements InitAuthSDKCallback
     private EditText numberEdit;
     private EditText nameEdit;
     private ZoomSDK mZoomSDK;
+    ProgressDialog progressDialogClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        progressDialogClass = new  ProgressDialog(VideoCalling.this);
 
         mZoomSDK = ZoomSDK.getInstance();
         if (mZoomSDK.isLoggedIn()) {
@@ -248,6 +249,52 @@ public class VideoCalling  extends Activity implements InitAuthSDKCallback
         }
     }
 
+    public void zoomApi()
+    {
+        Intent intent = new Intent(VideoCalling.this, APIUserStartJoinMeetingActivity.class);
+  //      intent.putExtra("mylist", (ArrayList<ZoomData>) response.body().getZoomData());
+        startActivity(intent);
+
+     /*   progressDialogClass.setLoading(true);
+
+        Log.e("ZOOMAPI","Zoom api r is called.");
+
+        // hashMap.put("user_password",password_edittext.getText().toString());
+        ApiInterface requestInterface = Util.zoomApi();
+        Call<ZoomResponse> call = requestInterface.getZoom();
+        call.enqueue(new Callback<ZoomResponse>() {
+            @Override
+            public void onResponse(Call<ZoomResponse> call, retrofit2.Response<ZoomResponse> response) {
+                progressDialogClass.setLoading(false);
+
+                Log.e("ZOOMAPI","Zoom api response is called."+response.body().getStatus());
+                Log.e("ZOOMAPI","Zoom api response is called."+response.body().getmessage());
+                Log.e("ZOOMAPI","Zoom api response id id id is called."+response.body().getZoomData().get(0).getId());
+                Log.e("ZOOMAPI","Zoom api response passward passward is called."+response.body().getZoomData().get(0).getPassword());
+
+                if(response.body().getStatus()==200)
+                {
+                    //   startData(myList);
+                    // Intent intent = new Intent(ApiActivity.this, CustomMarkerClusteringDemoSampleActivity.class);
+                   Intent intent = new Intent(VideoCalling.this, APIUserStartJoinMeetingActivity.class);
+                    intent.putExtra("mylist", (ArrayList<ZoomData>) response.body().getZoomData());
+                    startActivity(intent);
+
+                }
+                else
+                {
+                    Toast.makeText(VideoCalling.this,"No Data Found",Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<ZoomResponse> call, Throwable t) {
+                Log.e("ZOOMAPI","Zoom api response error is called."+t.getMessage().toString());
+
+                progressDialogClass.setLoading(false);
+            }
+        });*/
+    }
+
     private void showEmailLoginActivity() {
         //mk      Intent intent = new Intent(this, EmailUserLoginActivity.class);
         //mk      startActivity(intent);
@@ -259,8 +306,10 @@ public class VideoCalling  extends Activity implements InitAuthSDKCallback
     }
 
     private void showAPIUserActivity() {
-             Intent intent = new Intent(this, APIUserStartJoinMeetingActivity.class);
-             startActivity(intent);
+
+        zoomApi();
+           //  Intent intent = new Intent(this, APIUserStartJoinMeetingActivity.class);
+        //     startActivity(intent);
     }
 
     private void showEmailLoginUserStartJoinActivity() {

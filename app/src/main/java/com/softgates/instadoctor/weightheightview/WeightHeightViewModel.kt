@@ -44,8 +44,8 @@ class WeightHeightViewModel (val sharedPreferences: SharedPreferences,
         get() = _cm
 
     init {
-        _kg.value=0
-        _cm.value=0
+        _kg.value=25
+        _cm.value=80
         _navigateActivity.value=0
     }
 
@@ -85,10 +85,14 @@ class WeightHeightViewModel (val sharedPreferences: SharedPreferences,
         {
             var token=sharedPreferences.getString(Constant.USERTOKEN,"")
             var patientid=sharedPreferences.getString(Constant.PATIENTID,"")
+            var docid=sharedPreferences.getString(Constant.DOCID,"")
             var childstatus=sharedPreferences.getInt(Constant.CHILDSTATUS,0)
             var noofdays=sharedPreferences.getString(Constant.FELTDAYS,"")
             var medication=sharedPreferences.getInt(Constant.MEDICATION,0)
             var allergy=sharedPreferences.getInt(Constant.ALLERGY,0)
+            var symptomname=sharedPreferences.getString(Constant.SYMPTOMNAME,"")
+            var appid=sharedPreferences.getString(Constant.APPID,"")
+
             var childid:String=""
             var medicationName:String=""
             var allergyname:String=""
@@ -121,11 +125,12 @@ class WeightHeightViewModel (val sharedPreferences: SharedPreferences,
 
 
             Log.e(Constant.APIRESPONSE,"getdoctorlist token response is......"+token.toString())
+            Log.e(Constant.APIRESPONSE,"getdoctorlist app id response is......"+appid.toString())
             _status.value = ApiStatus.LOADING
             coroutineScope.launch {
                 // Get the Deferred object for our Retrofit request
                 //Log.e("RESPONSE","email...."+email.value.toString()+"...pin...")
-                var getPropertiesDeferred = InstaDoctorApi.retrofitService.addPatientDetail("submit_patient_details",token.toString(),patientid.toString(),childstatus.toString(),childid.toString(),noofdays.toString(),medication.toString(),medicationName.toString(),allergy.toString(),allergyname.toString(),kg.value.toString(),cm.value.toString(),"1")
+                var getPropertiesDeferred = InstaDoctorApi.retrofitService.addPatientDetail("submit_patient_details",token.toString(),patientid.toString(),childstatus.toString(),childid.toString(),noofdays.toString(),medication.toString(),medicationName.toString(),allergy.toString(),allergyname.toString(),kg.value.toString(),cm.value.toString(),appid.toString(),symptomname.toString())
                 try {
                     val response = getPropertiesDeferred.await()
                     Log.e(Constant.APIRESPONSE,"registration api response is......"+response.toString())

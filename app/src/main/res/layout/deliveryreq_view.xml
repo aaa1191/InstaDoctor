@@ -78,11 +78,28 @@
                     android:outlineSpotShadowColor="@android:color/white"
                     >
 
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/circle_tic"
+                        android:layout_gravity="center|left"
+                        android:layout_marginStart="@dimen/ten"
+                        />
+
+                      <androidx.appcompat.widget.AppCompatTextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="Dubai"
+                          android:textColor="@color/black"
+                          android:fontFamily="@font/poppin_reg"
+                          android:layout_gravity="left|center"
+                          android:layout_marginStart="@dimen/fourty"
+                          />
+
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
-
                         />
 
                 </androidx.cardview.widget.CardView>
@@ -116,6 +133,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
+                        android:inputType="phone"
+                        android:paddingStart="@dimen/six"
                         android:onTextChanged="@{viewModel.onTextChangedMobile}"
                         android:text="@{viewModel.mobile}"
                         />
@@ -145,14 +164,15 @@
                     android:layout_marginTop="@dimen/six"
                     app:cardCornerRadius="@dimen/five"
                     android:elevation="0dp"
-                    android:outlineSpotShadowColor="@android:color/white"
-
-                    >
+                    android:outlineSpotShadowColor="@android:color/white">
 
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
+                        android:gravity="top"
+                        android:layout_gravity="top"
+                        android:padding="@dimen/ten"
                         android:onTextChanged="@{viewModel.onTextChangedAddress}"
                         android:text="@{viewModel.address}"
                         />
@@ -192,6 +212,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:background="@drawable/gradient_lightcreate_account"
                     android:layout_marginTop="@dimen/thirty"
+                    android:onClick="@{()-> viewModel.submit()}"
                     android:layout_marginStart="@dimen/twoenty"
                     android:layout_marginEnd="@dimen/twoenty">
 
@@ -205,6 +226,7 @@
                         android:textSize="@dimen/textsize_etn"
                         android:textColor="@color/orange"
                         />
+
                 </RelativeLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

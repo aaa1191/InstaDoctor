@@ -28,6 +28,8 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginEnd="@dimen/margintime"
         android:padding="@dimen/fifteen"
+        android:onClick="@{() -> clickListener.onClick(viewModel,index)}"
+        app:selectTime="@{viewModel.tick.toString()}"
         android:background="@drawable/time_drawable">
 
         <androidx.appcompat.widget.AppCompatTextView

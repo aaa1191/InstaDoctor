@@ -19,6 +19,7 @@ import com.softgates.instadoctor.R
 import com.softgates.instadoctor.activity.LoginActivity
 import com.softgates.instadoctor.databinding.CreateAccountViewBinding
 import com.softgates.instadoctor.util.ApiStatus
+import com.softgates.instadoctor.util.Constant
 import com.softgates.instadoctor.util.ProgressDialog
 import com.softgates.instadoctor.util.ValidationUtil
 import java.util.*
@@ -48,7 +49,7 @@ class CreateAccountView : Fragment() {
         binding = DataBindingUtil.inflate<CreateAccountViewBinding>(
             inflater, R.layout.create_account_view, container, false)
         sharedPreferences =
-            (activity as AppCompatActivity).getSharedPreferences("dd", Context.MODE_PRIVATE)
+            (activity as AppCompatActivity).getSharedPreferences(Constant.SHAREDPREFERENCENAME, Context.MODE_PRIVATE)
         val application = requireNotNull(this.activity).application
         val viewModelFactory = CreateAccountViewModelFactory(sharedPreferences, application)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(CreateAccountViewModel::class.java)
@@ -96,18 +97,18 @@ class CreateAccountView : Fragment() {
 
         binding.malebtn.setOnClickListener {
 
-            binding.malebtn.setCardBackgroundColor(resources.getColor(R.color.gray))
-            binding.female.setCardBackgroundColor(resources.getColor(R.color.yellow))
-            binding.maletxt.setTextColor(resources.getColor(R.color.yellow))
-            binding.femaletxt.setTextColor(resources.getColor(android.R.color.white))
+            binding.female.setCardBackgroundColor(resources.getColor(R.color.gray))
+            binding.malebtn.setCardBackgroundColor(resources.getColor(R.color.yellow))
+            binding.femaletxt.setTextColor(resources.getColor(R.color.yellow))
+            binding.maletxt.setTextColor(resources.getColor(android.R.color.white))
             viewModel.setGender("Male")
         }
 
         binding.female.setOnClickListener {
-            binding.female.setCardBackgroundColor(resources.getColor(R.color.gray))
-            binding.malebtn.setCardBackgroundColor(resources.getColor(R.color.yellow))
-            binding.maletxt.setTextColor(resources.getColor(android.R.color.white))
-            binding.femaletxt.setTextColor(resources.getColor(R.color.yellow))
+            binding.malebtn.setCardBackgroundColor(resources.getColor(R.color.gray))
+            binding.female.setCardBackgroundColor(resources.getColor(R.color.yellow))
+            binding.femaletxt.setTextColor(resources.getColor(android.R.color.white))
+            binding.maletxt.setTextColor(resources.getColor(R.color.yellow))
             viewModel.setGender("Female")
         }
 

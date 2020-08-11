@@ -58,7 +58,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{`By: Dr.`+viewModel.docname}"
+                android:text="@{viewModel.docname}"
                 app:fontFamily="@font/poppin_reg"
                 android:textSize="@dimen/textsize_sixteen"
                 android:layout_marginTop="@dimen/twoenty"

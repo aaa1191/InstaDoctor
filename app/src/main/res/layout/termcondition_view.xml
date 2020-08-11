@@ -104,6 +104,8 @@
 
 
         <ImageView
+            android:id="@+id/informedconsentarrow"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center"
@@ -134,6 +136,7 @@
             android:textSize="@dimen/textsize_fourteen" />
 
         <ImageView
+            android:id="@+id/healthinformationagreementarrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/rightarrow_yellow"
@@ -166,6 +169,7 @@
 
 
         <ImageView
+            android:id="@+id/programagreementarrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/rightarrow_yellow"
@@ -196,6 +200,7 @@
             android:textSize="@dimen/textsize_fourteen" />
 
         <ImageView
+            android:id="@+id/privacypolicyarrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/rightarrow_yellow"

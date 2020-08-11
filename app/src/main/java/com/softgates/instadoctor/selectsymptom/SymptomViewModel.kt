@@ -36,7 +36,6 @@ class SymptomViewModel (val sharedPreferences: SharedPreferences,
     private val _symptomlist = MutableLiveData<List<SymptomList>>()
     val symptomlist: LiveData<List<SymptomList>>
         get() = _symptomlist
-
     private val getlist = ArrayList<SymptomList>()
 
     private var _notifyItem = MutableLiveData<Int>()

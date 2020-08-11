@@ -44,7 +44,6 @@ class HomeView : Fragment() {
         //   vi = inflater.inflate(R.layout.fragment_registration_first,container,false)
         binding = DataBindingUtil.inflate<HomeViewBinding>(
             inflater, R.layout.home_view, container, false)
-
         sharedPreferences =   (activity as AppCompatActivity).getSharedPreferences(Constant.SHAREDPREFERENCENAME, Context.MODE_PRIVATE)
         val application = requireNotNull(this.activity).application
         val viewModelFactory = HomeViewModelFactory(sharedPreferences, application)
@@ -53,9 +52,7 @@ class HomeView : Fragment() {
         offlinelinearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.onlinerecyclerview?.setLayoutManager(linearLayoutManager)
         binding.offlinerecyclerview?.setLayoutManager(offlinelinearLayoutManager)
-
         Log.e("DOCTORLIST","sharedpreference value is called....."+sharedPreferences.getString(Constant.LOGINSIGNUPCHECK,"0"))
-
         val adapter = HomeAdapter(OnClick { data, type, position ->
             Log.e("CHECKDATA","checkdata is called....called..called")
             if(type==1)
@@ -64,7 +61,6 @@ class HomeView : Fragment() {
                 action.doctorlist = data as DoctorList
                 NavHostFragment.findNavController(this).navigate(action)
                 viewModel.complete()*/
-
                /* if(sharedPreferences.getString(Constant.LOGINSIGNUPCHECK,"").equals("1"))
                 {
                     Log.e("DOCTORLIST","doctorlist is...."+data.toString())
@@ -76,9 +72,10 @@ class HomeView : Fragment() {
                 else
                 {
                     Toast.makeText(activity as AppCompatActivity,"Login first", Toast.LENGTH_SHORT).show()
-
                     (activity as HomeActivity).loginView()
-                }*/
+
+                }
+                */
             /*    val action = HomeViewDirections.actionHomeToDoctorProfileFragment()
                 action.doctorlist = data as DoctorList
                 NavHostFragment.findNavController(this).navigate(action)
@@ -86,15 +83,11 @@ class HomeView : Fragment() {
             }
         })
 
-
         viewModel.GetOnlinelist.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             adapter.submitList(it)
             adapter.notifyDataSetChanged()
         })
-
-
         binding.onlinerecyclerview?.adapter = adapter
-
         viewModel.message.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             Toast.makeText(activity as AppCompatActivity,it.toString(), Toast.LENGTH_SHORT).show()
         })

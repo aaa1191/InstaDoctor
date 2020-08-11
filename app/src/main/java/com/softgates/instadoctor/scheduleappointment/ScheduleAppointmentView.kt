@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.databinding.DataBindingUtil
@@ -16,6 +17,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
+import com.softgates.instadoctor.activity.HomeActivity
 import com.softgates.instadoctor.activity.LoginActivity
 import com.softgates.instadoctor.databinding.ScheduleappointmentViewBinding
 import com.softgates.instadoctor.mychild.MyChildAdapter
@@ -58,11 +60,36 @@ class ScheduleAppointmentView : Fragment() {
         val viewModelFactory =  ScheduleAppointmentModelFactory(sharedPreferences,application)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(ScheduleAppointmentModel::class.java)
 
-
+        binding.backbtn.setOnClickListener {
+            Log.e("ONBACKPRESSED","onbackpressed is called")
+            (activity as HomeActivity).onbackpressed()
+        }
 
         binding.schedulbtn.setOnClickListener {
-            val action = ScheduleAppointmentViewDirections.actionScheduleAppointmentViewToPaymentSummeryView()
-            NavHostFragment.findNavController(this).navigate(action)
+
+            var time:String=""
+
+            for(i in viewModel.Timelist.value!!.indices)
+            {
+                if(viewModel.Timelist.value!!.get(i).tick==1)
+                {
+                    time = viewModel.Timelist.value!!.get(i).time.toString()
+                    Log.e("SELECTTICKTIME","select time is called...."+viewModel.Timelist.value!!.get(i).time)
+                }
+            }
+            if(time.isEmpty())
+            {
+                Toast.makeText(context,"Select time for schedule", Toast.LENGTH_SHORT).show()
+            }
+            else
+            {
+                sharedPreferences.edit { putString(Constant.BOOKINGDATE,"1") }
+                sharedPreferences.edit { putString(Constant.BOOKINGTIME,time.toString()) }
+                val action = ScheduleAppointmentViewDirections.actionScheduleAppointmentViewToPaymentSummeryView()
+                NavHostFragment.findNavController(this).navigate(action)
+            }
+
+
         }
 
   //     val c = Calendar.getInstance()
@@ -85,7 +112,9 @@ class ScheduleAppointmentView : Fragment() {
 
             Log.e("SELECTEDDATE","initial date is....."+dayOfWeek)
 
-            //setDays(dayOfWeek)
+            Log.e("SELECTEDDATECLICK","select date calender click listener....."+dayOfWeek)
+
+            setDays(dayOfWeek)
           /*  if(dayOfWeek==Calendar.MONDAY)
             {
                 Log.e("SELECTEDDATE","select date MONDAY....."+dayOfWeek)
@@ -120,6 +149,7 @@ class ScheduleAppointmentView : Fragment() {
         viewModel.notifyItem.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             it?.let {
                 if (it == 1) {
+                    Log.e("SELECTEDDATECLICK","select date notifyItem click listener....."+dayOfWeek)
                     setDays(dayOfWeek)
                 }
                 }
@@ -134,14 +164,18 @@ class ScheduleAppointmentView : Fragment() {
         binding.availibilityrecyclerview?.setLayoutManager(linearLayoutManager)
 
         val mychildadapter = ScheduleAppointmentAdapter(com.softgates.instadoctor.scheduleappointment.OnClicks { data, type, position ->
-
-
+            viewModel.selectTime(data,position)
         })
 
         viewModel.Timelist.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            Log.e("FINALSELECTDAYS","NOTIFY ITEM IN ANDROID.."+it.size)
             mychildadapter.submitList(it)
             mychildadapter.notifyDataSetChanged()
         })
+
+        viewModel.notifyRecyclerviewItem.observe(viewLifecycleOwner,androidx.lifecycle.Observer {
+            binding.availibilityrecyclerview.adapter?.notifyItemChanged(it)
+       })
 
         binding.availibilityrecyclerview?.adapter = mychildadapter
 

@@ -80,7 +80,9 @@ class SettingViewModel (val sharedPreferences: SharedPreferences,
             var patientid=sharedPreferences.getString(Constant.PATIENTID,"")
             var symptomname=sharedPreferences.getString(Constant.SYMPTOMNAME,"")
 
-            Log.e("TOKENLISTAPI","tokenlistapi token response is......"+symptomname.toString())
+            Log.e("TOKENLISTAPI","tokenlistapi token response is......"+token.toString())
+            Log.e("TOKENLISTAPI","patientid token response is......"+patientid.toString())
+          //  Log.e("TOKENLISTAPI","tokenlistapi token response is......"+symptomname.toString())
 
             _status.value = ApiStatus.LOADING
             coroutineScope.launch {
@@ -91,9 +93,10 @@ class SettingViewModel (val sharedPreferences: SharedPreferences,
                     Log.e(Constant.APIRESPONSE,"getdoctorlist api response is......"+response.toString())
                     if(response.status == Constant.SUCCEESSSTATUSTWOHUNDRED)
                     {
-                        Log.e(Constant.APIRESPONSE,"getdoctorlist api response success one one one is......")
+                        Log.e(Constant.APIRESPONSE,"getmedicalhistory api response success one one one is......")
                         // _message.value= response.message
                         //  sharedPreferences.edit { putInt("COUNT",0) }
+                        if(response.data!!.prescription_detail!=null)
                         _Prescriptionlist.value=  response.data!!.prescription_detail as MutableList<PrescriptionList>
                         _Sessionlist.value=  response.data!!.session_details as MutableList<SessionList>
                         //   _GetOfflinelist.value=  response.data!!.get(0).offline_doctor_array as MutableList<DoctorList>
@@ -107,7 +110,7 @@ class SettingViewModel (val sharedPreferences: SharedPreferences,
                 } catch (e: Exception) {
                     _status.value = ApiStatus.ERROR
                     _message.value= "Api Failure "+e.message
-                    Log.e(Constant.APIRESPONSE,"getdoctorlist api failure is......"+e.toString())
+                    Log.e(Constant.APIRESPONSE,"getmedicalhistory api failure is......"+e.toString())
                 }
             }
         }

@@ -60,6 +60,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/twoenty"
+        android:theme="@style/RatingBar"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -88,12 +89,12 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@null"
-            android:text="@{viewModel.msg}"
-            android:padding="@dimen/ten"
             android:onTextChanged="@{viewModel.onTextChangedMsg}"
-            />
+            android:padding="@dimen/ten"
+            android:gravity="top"
+            android:text="@{viewModel.msg}" />
 
     </androidx.cardview.widget.CardView>
 

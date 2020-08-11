@@ -10,6 +10,7 @@ import com.softgates.instadoctor.R
 import com.softgates.instadoctor.network.AvailabilityList
 import com.softgates.instadoctor.network.MyChildList
 import com.softgates.instadoctor.network.ScheduleList
+import com.softgates.instadoctor.network.SymptomList
 import com.softgates.instadoctor.util.ApiStatus
 import com.softgates.instadoctor.util.Constant
 import com.softgates.instadoctor.util.InstaDoctorApi
@@ -60,20 +61,19 @@ class ScheduleAppointmentModel (val sharedPreferences: SharedPreferences,
     val notifyItem: LiveData<Int>
         get() = _notifyItem
 
+    private var _notifyRecyclerviewItem = MutableLiveData<Int>()
+    val notifyRecyclerviewItem: LiveData<Int>
+        get() = _notifyRecyclerviewItem
+
     init {
         Log.e("APIRESPONSE","wishlist api is called...")
        // availabilityApi()
-
         val input: String = "sun,mon,tue"
         println("=== String into List ===")
         var result: List<String> = input.split(",").map { it.trim() }
-
         var timeam:String="12PM"
         timeam = timeam.replace("PM","")
-
         Log.e("FINALTIME","timeam value value timeam pm pm pm pm pm....."+timeam.toString())
-
-
         getVerblist!!.add(MyChildList("dffdffdfd","dfdfdfd"))
         //    getVerblist!!.add(MyChildList("dfdf","dfdfd"))
         //     _mychildlist.value = getVerblist
@@ -92,9 +92,35 @@ class ScheduleAppointmentModel (val sharedPreferences: SharedPreferences,
         availabilityApi()
     }
 
+    fun selectTime(product: ScheduleList, index:Int)
+    {
+
+       for(i in _timelist.value!!.indices)
+       {
+           if(_timelist.value!!.get(i).tick == 1)
+           {
+               _timelist.value!!.get(i).tick=0
+           }
+       }
+
+        Log.e("UPDATETICK","update tick is called......"+ _timelist.value!!.get(index).tick)
+        if(_timelist.value!!.get(index).tick==0)
+        {
+            _timelist.value!!.get(index).tick=1
+        }
+        else{
+            _timelist.value!!.get(index).tick=0
+        }
+        _timelist.value=  _timelist.value
+        _notifyRecyclerviewItem.value=index
+    }
+
+
     fun complete() {
 
     }
+
+
 
     fun availabilityApi()
     {
@@ -118,10 +144,10 @@ class ScheduleAppointmentModel (val sharedPreferences: SharedPreferences,
                 var getPropertiesDeferred = InstaDoctorApi.retrofitService.availability("get_availablity",token.toString(),docid.toString())
                 try {
                     val response = getPropertiesDeferred.await()
-                    Log.e(Constant.APIRESPONSE,"MYCHILDLIST api response is......"+response.toString())
+                    Log.e(Constant.APIRESPONSE,"availabilityApi api response is......"+response.toString())
                     if(response.status == Constant.SUCCEESSSTATUSTWOHUNDRED)
                     {
-                        Log.e(Constant.APIRESPONSE,"getdoctorlist api response success one one one is......")
+                        Log.e(Constant.APIRESPONSE,"availabilityApi api response success one one one is......")
                         // _message.value= response.message
                         //  sharedPreferences.edit { putInt("COUNT",0) }
                         _myavailabilitylist.value=  response.data!! as MutableList<AvailabilityList>
@@ -130,7 +156,6 @@ class ScheduleAppointmentModel (val sharedPreferences: SharedPreferences,
                         {
                             _notifyItem.value=1
                         }
-
 /*
                             for (data in _myavailabilitylist.value!!.indices) {
                                  val activedays: String =
@@ -179,7 +204,7 @@ class ScheduleAppointmentModel (val sharedPreferences: SharedPreferences,
                 } catch (e: Exception) {
                     _status.value = ApiStatus.ERROR
                     _message.value= "Api Failure "+e.message
-                    Log.e(Constant.APIRESPONSE,"getdoctorlist api failure is......"+e.toString())
+                    Log.e(Constant.APIRESPONSE,"availabilityApi api failure is......"+e.toString())
                 }
             }
         }
@@ -188,22 +213,24 @@ class ScheduleAppointmentModel (val sharedPreferences: SharedPreferences,
 
     fun  setDays(days:String)
     {
+     //   Log.e("FINALSELECTDAYS","days is called...."+days.toString())
         timelist.clear()
+        if(_myavailabilitylist.value!=null)
         for (data in _myavailabilitylist.value!!.indices) {
             val activedays: String =
                 _myavailabilitylist.value!!.get(data).active_days!!
-            Log.e("CALENDERDATA","active days....."+activedays.toString())
+         //   Log.e("FINALSELECTDAYS","active days....."+activedays.toString())
             var resultactivedays: List<String> =
                 activedays.split(",").map { it.trim() }
             resultactivedays.forEach {
 
-                Log.e("CALENDERDATA","it equals....."+it.toString()+"...match days.."+days)
+                Log.e("FINALSELECTDAYS","it equals....."+it.toString()+"...match days.."+days)
 
-                if (it.equals(days)) {
+                if (it.equals(days,true)) {
                     var startTime:String=_myavailabilitylist.value!!.get(data).start_time!!
                     var endtime:String=_myavailabilitylist.value!!.get(data).end_time!!
-                    Log.e("CALENDERDATA","startTime startTime....."+startTime.toString())
-                    Log.e("CALENDERDATA","endtime endtime....."+endtime.toString())
+                    Log.e("FINALSELECTDAYS","startTime startTime....."+startTime.toString())
+                    Log.e("FINALSELECTDAYS","endtime endtime....."+endtime.toString())
                     val sdf1: DateFormat = SimpleDateFormat("hh:mm aa")
                     try {
                         val startdate = sdf1.parse(startTime)
@@ -214,6 +241,8 @@ class ScheduleAppointmentModel (val sharedPreferences: SharedPreferences,
                         val calendar = GregorianCalendar.getInstance()
                         calendar.time = startdate
                         if (calendar.time.before(enddate)) {
+                            Log.e("FINALSELECTDAYS","add add time....."+sdf.format(calendar.time))
+
                             timelist.add(ScheduleList(sdf.format(calendar.time)))
                             println("Initial time:  $times")
                             while (calendar.time.before(enddate)) {
@@ -225,7 +254,6 @@ class ScheduleAppointmentModel (val sharedPreferences: SharedPreferences,
                     } catch (e: java.lang.Exception) {
                         e.printStackTrace()
                     }
-
                 }
         }
 

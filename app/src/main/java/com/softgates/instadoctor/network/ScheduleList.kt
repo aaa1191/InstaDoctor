@@ -5,6 +5,9 @@ import com.squareup.moshi.Json
 data class ScheduleList(
 
     @Json(name="time")
-    var time: String? = null
+    var time: String? = null,
+
+    @Json(name="tick")
+    var tick: Int? = 0
 
 )

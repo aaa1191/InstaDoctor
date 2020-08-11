@@ -52,6 +52,8 @@ class PrescriptionViewModel (val sharedPreferences: SharedPreferences,
 
     init {
         Log.e("APIRESPONSE","wishlist api is called...")
+        _docname.value=""
+        _notifyItem.value=0
         //     getVerblist!!.add(MyChildList("dffdffdfd","dfdfdfd"))
         //    getVerblist!!.add(MyChildList("dfdf","dfdfd"))
         //     _mychildlist.value = getVerblist
@@ -85,13 +87,13 @@ class PrescriptionViewModel (val sharedPreferences: SharedPreferences,
         }
         else
         {
-            var patiendid=sharedPreferences.getString(Constant.PATIENTID,"")
-            Log.e("MYCHILDLIST","tokenlistapi token response is......"+patiendid.toString())
+            var appid=sharedPreferences.getString(Constant.APPID,"")
+            Log.e("MYCHILDLIST","tokenlistapi token response is......"+appid.toString())
 
             _status.value = ApiStatus.LOADING
             coroutineScope.launch {
                 // Get the Deferred object for our Retrofit request
-                var getPropertiesDeferred = InstaDoctorApi.retrofitService.MyPrescriptionList("get_prescription","5")
+                var getPropertiesDeferred = InstaDoctorApi.retrofitService.MyPrescriptionList("get_prescription",appid.toString())
                 try {
                     val response = getPropertiesDeferred.await()
                     Log.e(Constant.APIRESPONSE,"MYCHILDLIST api response is......"+response.toString())
@@ -101,13 +103,24 @@ class PrescriptionViewModel (val sharedPreferences: SharedPreferences,
                         // _message.value= response.message
                         //  sharedPreferences.edit { putInt("COUNT",0) }
                         _prescriptionlist.value=  response.data!! as MutableList<PrescriptionList>
-                        _docname.value= _prescriptionlist.value!!.get(0).doc_name
-                        _date.value= _prescriptionlist.value!!.get(0).pre_date
+                        if( _prescriptionlist.value!!.size>0)
+                        {
+                            _docname.value= "By: Dr."+_prescriptionlist.value!!.get(0).doc_name
+                            _date.value= _prescriptionlist.value!!.get(0).pre_date
+                            _notifyItem.value=1
+
+                        }
+                        else
+                        {
+                            _docname.value=""
+                        }
+
                         //   _GetOfflinelist.value=  response.data!!.get(0).offline_doctor_array as MutableList<DoctorList>
                         //   _message.value= response.message!!.toString()
                     }
                     else
                     {
+                        _docname.value=""
                         _message.value= response.message!!.toString()
                     }
                     _status.value = ApiStatus.DONE

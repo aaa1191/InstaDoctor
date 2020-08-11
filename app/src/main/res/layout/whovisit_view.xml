@@ -77,10 +77,11 @@
                         android:layout_marginStart="@dimen/twoenty">
 
                         <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/patientname"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_bold"
-                            android:text="Mr. Adam.m"
+                            android:text=""
                             android:textColor="@color/black"
                             android:textSize="@dimen/textsize_etn"
                              />
@@ -205,6 +206,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
+                        android:visibility="gone"
                         android:layout_marginEnd="@dimen/five"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

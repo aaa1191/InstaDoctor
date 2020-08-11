@@ -17,6 +17,7 @@
         android:background="@android:color/white">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/backbtn"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/backbtn_back"

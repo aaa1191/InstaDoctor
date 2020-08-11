@@ -7,6 +7,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.Deferred
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.*
 import retrofit2.http.GET
@@ -16,7 +17,8 @@ import java.util.concurrent.TimeUnit
 
 
 //private const val BASE_URL = "http://18.218.168.60/hotshelf/api/"
-private const val BASE_URL = "https://unclefluffy.com/instadoctor/test/assets/api/"
+private const val BASE_URL = "https://instadoctor.ae/api/"
+//private const val BASE_URL = "https://unclefluffy.com/instadoctor/test/assets/api/"
 //private const val FINALBASE_URL = "https://flatnvilla.com/flat-villa/api/"
 
 enum class ApiStatus { LOADING, ERROR, DONE }
@@ -33,11 +35,11 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
-/*private val finalretrofit = Retrofit.Builder()
-    .addConverterFactory(MoshiConverterFactory.create(moshi))
+private val zoomretrofit = Retrofit.Builder()
+    .addConverterFactory(GsonConverterFactory.create())
     .addCallAdapterFactory(CoroutineCallAdapterFactory())
-    .baseUrl(FINALBASE_URL)
-    .build()*/
+    .baseUrl(BASE_URL)
+    .build()
 
 /**
  * A public interface that exposes the [getProperties] method
@@ -114,7 +116,8 @@ interface InstaDoctorApiService {
         @Field("drug_allergy") drug_allergy: String,
         @Field("weight") weight: String,
         @Field("height") height: String,
-        @Field("app_id") app_id: String
+        @Field("app_id") app_id: String,
+        @Field("symptoms") symptoms: String
     ): Deferred<ResponseModel>
 
     @FormUrlEncoded
@@ -128,6 +131,29 @@ interface InstaDoctorApiService {
         @Field("review_description") review_description: String,
         @Field("today_date") today_date: String
     ): Deferred<ResponseModel>
+
+    @FormUrlEncoded
+    @POST("index.php")
+    fun createAppointment(
+        @Field("apiname") apiname: String,
+        @Field("token") token: String,
+        @Field("app_date") app_date: String,
+        @Field("app_time") app_time: String,
+        @Field("doc_id") doc_id: String,
+        @Field("patient_id") patient_id: String,
+        @Field("booking_date") booking_date: String,
+        @Field("child_status") child_status: String,
+        @Field("child_id") child_id: String,
+        @Field("meeting_type") meeting_type: String,
+        @Field("order_id") order_id: String
+    ): Deferred<CreateAppointmentModel>
+
+    @GET("index.php")
+    fun getTransaction(
+        @Query("apiname") apiname: String,
+        @Query("token") token: String,
+        @Query("doctor_id") doc_id: String
+    ): Deferred<GetTransaction>
 
     @GET("index.php")
     fun forgetpassword(
@@ -160,7 +186,7 @@ interface InstaDoctorApiService {
         @Query("email") email: String,
         @Query("date") date: String,
         @Query("child_gender") child_gender: String
-    ): Deferred<ResponseModel>
+    ): Deferred<RegisterChildModel>
 
     @GET("index.php")
     fun doctorreview(
@@ -173,6 +199,19 @@ interface InstaDoctorApiService {
     fun getSymptoms(
         @Query("apiname") apiname: String
     ): Deferred<GetSymptomListModel>
+
+    @GET("index.php")
+    fun getDeliveryAddress(
+        @Query("apiname") apiname: String,
+        @Query("token") token: String,
+        @Query("app_id") app_id: String,
+        @Query("patient_id") patient_id: String,
+        @Query("emirate") emirate: String,
+        @Query("mobile") mobile: String,
+        @Query("address") address: String,
+        @Query("date") date: String,
+        @Query("time") time: String
+    ): Deferred<ResponseModel>
 
     @FormUrlEncoded
     @POST("index.php")
@@ -223,11 +262,32 @@ interface InstaDoctorApiService {
                 .build().create(InstaDoctorApiService::class.java)
             // .baseUrl("https://androidwave.com")
         }
+
+        fun getZoomService(): InstaDoctorApiService {
+            val okHttpClient = OkHttpClient.Builder()
+                .connectTimeout(2, TimeUnit.MINUTES)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .writeTimeout(60, TimeUnit.SECONDS)
+                .build()
+            return Retrofit.Builder()
+//                .baseUrl("http://18.218.168.60/hotshelf/api/")
+                .baseUrl("https://www.hotshelf.com/dev/api/")
+                .addConverterFactory(MoshiConverterFactory.create())
+                .client(okHttpClient)
+                .addCallAdapterFactory(CoroutineCallAdapterFactory())
+                .build().create(InstaDoctorApiService::class.java)
+            // .baseUrl("https://androidwave.com")
+        }
     }
+
+
 }
 
 
 object InstaDoctorApi {
     val retrofitService: InstaDoctorApiService by lazy { retrofit.create(InstaDoctorApiService::class.java) }
+}
+object ZoomApi {
+    val retrofitService: InstaDoctorApiService by lazy { zoomretrofit.create(InstaDoctorApiService::class.java) }
 }
 

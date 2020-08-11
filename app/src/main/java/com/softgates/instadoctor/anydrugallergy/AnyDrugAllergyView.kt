@@ -3,6 +3,7 @@ package com.softgates.instadoctor.anydrugallergy
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
+import com.softgates.instadoctor.activity.HomeActivity
 import com.softgates.instadoctor.anymedicine.AnyMedicineViewDirections
 import com.softgates.instadoctor.databinding.AnydrugalergyViewBinding
 import com.softgates.instadoctor.databinding.AnymedicineViewBinding
@@ -43,6 +45,12 @@ class AnyDrugAllergyView : Fragment() {
             val action = AnyDrugAllergyViewDirections.actionAnyDrugAllergyViewToWeightHeightView()
             NavHostFragment.findNavController(this).navigate(action)
         }
+
+        binding.backbtn.setOnClickListener {
+            Log.e("ONBACKPRESSED","onbackpressed is called")
+            (activity as HomeActivity).onbackpressed()
+        }
+
 
         binding.yesmedicinebtn.setOnClickListener {
             sharedPreferences.edit { putInt(Constant.ALLERGY,1) }

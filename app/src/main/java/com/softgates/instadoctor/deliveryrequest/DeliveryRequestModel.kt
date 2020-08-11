@@ -16,6 +16,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class DeliveryRequestModel (val sharedPreferences: SharedPreferences,
                             application: Application
@@ -55,6 +58,10 @@ class DeliveryRequestModel (val sharedPreferences: SharedPreferences,
     val address : LiveData<String?>
         get() = _address
 
+    private val _navigateActivity = MutableLiveData<Int>()
+    val navigateActivity : LiveData<Int?>
+        get() = _navigateActivity
+
     init {
         getlist!!.add(SymptomList(1, "Cold", 0))
         getlist!!.add(SymptomList(2, "Cough", 0))
@@ -62,10 +69,12 @@ class DeliveryRequestModel (val sharedPreferences: SharedPreferences,
         getlist!!.add(SymptomList(4, "Sore Throat", 0))
         getlist!!.add(SymptomList(5, "Nasal Congestion", 0))
         getlist!!.add(SymptomList(6, "Rash", 0))
+        _mobile.value = ""
+        _address.value = ""
         _symptomlist.value = getlist
+        _navigateActivity.value=0
         Log.e("APIRESPONSE", "wishlist api is called...")
         //   _symptomlist.value = doctorlist
-        getSymtomApi()
     }
 
     fun onTextChangedMobile(s: CharSequence, start: Int, before: Int, count: Int) {
@@ -90,13 +99,19 @@ class DeliveryRequestModel (val sharedPreferences: SharedPreferences,
         }
     }
 
-    fun login()
+    fun submit()
     {
         when {
             _mobile.value!!.isEmpty() -> _message.value="The mobile field is required."
+            _address.value!!.isEmpty() -> _message.value="The address field is required."
           //  !ValidationUtil.isEmailValid(_email.value.toString()) ->_message.value="The Email address is not valid"
-            else -> getSymtomApi()
+            else -> deliveryAddressModel()
         }
+    }
+
+    fun complete() {
+        _navigateActivity.value=0
+
     }
 
     fun addClick(product: SymptomList, type: Int, index: Int) {
@@ -110,7 +125,7 @@ class DeliveryRequestModel (val sharedPreferences: SharedPreferences,
         _notifyItem.value = index
     }
 
-    fun getSymtomApi() {
+    fun deliveryAddressModel() {
         if (!Constant.connected(context)) {
             _message.value = context.resources.getString(R.string.nointernet)
         } else {
@@ -118,8 +133,26 @@ class DeliveryRequestModel (val sharedPreferences: SharedPreferences,
             //   var token=sharedPreferences.getString(Constant.USERTOKEN,"")
             coroutineScope.launch {
                 // Get the Deferred object for our Retrofit request
+
+                var token=sharedPreferences.getString(Constant.USERTOKEN,"")
+                var patientid=sharedPreferences.getString(Constant.PATIENTID,"")
+                var appid=sharedPreferences.getString(Constant.APPID,"")
+                Log.e("MYCHILDLIST","tokenlistapi token response is......"+appid.toString())
+
+                var currenttime:String=""
+                var currentdate:String=""
+                TimeZone.setDefault(TimeZone.getTimeZone("Asia/Dubai"));
+                val calendar = Calendar.getInstance()
+                calendar.time = Date()
+                val date = SimpleDateFormat("yyyy-MM-dd")
+                val time = SimpleDateFormat("hh:mm:a")
+                Log.e("Los angeles time   ","date is...."+ date.format(calendar.time))
+                Log.e("Los angeles time   ","time is...."+ time.format(calendar.time))
+                currentdate=date.format(calendar.time)
+                currenttime=time.format(calendar.time)
+
                 var getPropertiesDeferred =
-                    InstaDoctorApi.retrofitService.getSymptoms("get_symptoms")
+                    InstaDoctorApi.retrofitService.getDeliveryAddress("add_delivery",token.toString(),appid.toString(),patientid.toString(),"Dubai",_mobile.value.toString(),_address.value.toString(),currentdate.toString(),currenttime.toString())
                 try {
                     val response = getPropertiesDeferred.await()
                     Log.e(
@@ -132,7 +165,8 @@ class DeliveryRequestModel (val sharedPreferences: SharedPreferences,
                             "registration api response success one one one is......"
                         )
                         // _message.value= response.message
-                        _GetSymptomlist.value = response.data!! as MutableList<SymptomList>
+                        _navigateActivity.value=1
+
                         _message.value = response.message!!.toString()
                     } else {
                         _message.value = response.message!!.toString()

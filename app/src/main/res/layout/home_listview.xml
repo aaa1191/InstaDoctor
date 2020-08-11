@@ -77,7 +77,7 @@
         android:textSize="@dimen/textsize_fourteen"
         android:textStyle="bold"
         android:gravity="center"
-        android:text="Dr. Ravi Kapoor"
+        android:text="@{`Dr. `+viewModel.doc_name}"
         app:layout_constraintStart_toEndOf="@+id/imageview"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -117,7 +117,7 @@
         android:layout_height="15dp"
         android:layout_marginStart="@dimen/fifteen"
         android:gravity="top"
-        android:text="MBBS,MSE,Surgoen"
+        android:text="@{viewModel.doc_education}"
         android:layout_marginTop="0dp"
         android:textSize="@dimen/textsize_twl"
         app:layout_constraintStart_toEndOf="@+id/imageview"
@@ -129,6 +129,7 @@
         android:layout_height="wrap_content"
         android:numStars="5"
         app:setRating="@{viewModel.avg_rating}"
+        android:theme="@style/RatingBar"
         style = "?android:attr/ratingBarStyleSmall"
         android:layout_marginStart="@dimen/fifteen"
         app:layout_constraintTop_toBottomOf="@+id/profession"

@@ -28,7 +28,7 @@
                 android:layout_height="match_parent"
                 android:visibility="gone" />
 
-            <com.softgates.instadoctor.zoom.inmeetingfunction.customizedmeetingui.view.share.AnnotateToolbar
+            <com.softgates.instadoctor.demoo.inmeetingfunction.customizedmeetingui.view.share.AnnotateToolbar
                 android:id="@+id/drawingView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
         </FrameLayout>
 
 
-        <com.softgates.instadoctor.zoom.inmeetingfunction.customizedmeetingui.view.VideoListLayout
+        <com.softgates.instadoctor.demoo.inmeetingfunction.customizedmeetingui.view.VideoListLayout
             android:id="@+id/videoListLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
                 android:clipChildren="true"
                 android:clipToPadding="true"
                 android:focusable="false" />
-        </com.softgates.instadoctor.zoom.inmeetingfunction.customizedmeetingui.view.VideoListLayout>
+        </com.softgates.instadoctor.demoo.inmeetingfunction.customizedmeetingui.view.VideoListLayout>
     </RelativeLayout>
 
     <Button
@@ -112,13 +112,13 @@
         android:background="#00000000"></FrameLayout>
 
 
-    <com.softgates.instadoctor.zoom.inmeetingfunction.customizedmeetingui.view.MeetingOptionBar
+    <com.softgates.instadoctor.demoo.inmeetingfunction.customizedmeetingui.view.MeetingOptionBar
         android:id="@+id/meeting_option_contain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="invisible">
 
-    </com.softgates.instadoctor.zoom.inmeetingfunction.customizedmeetingui.view.MeetingOptionBar>>
+    </com.softgates.instadoctor.demoo.inmeetingfunction.customizedmeetingui.view.MeetingOptionBar>>
 
 
 </FrameLayout>

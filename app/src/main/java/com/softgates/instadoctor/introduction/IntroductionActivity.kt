@@ -16,10 +16,12 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.ViewPager
 import com.softgates.instadoctor.R
 import com.softgates.instadoctor.activity.HomeActivity
-import com.softgates.instadoctor.activity.LoginActivity
 import com.softgates.instadoctor.databinding.IntroductionActivityViewBinding
 import com.softgates.instadoctor.network.PropertiesImages
 import kotlinx.android.synthetic.main.introduction_activity_view.*
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 class IntroductionActivity : AppCompatActivity()
 {
@@ -32,6 +34,16 @@ class IntroductionActivity : AppCompatActivity()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        TimeZone.setDefault(TimeZone.getTimeZone("Asia/Dubai"));
+        val calendar = Calendar.getInstance()
+        calendar.time = Date()
+        val date = SimpleDateFormat("yyyy-MM-dd")
+        val time = SimpleDateFormat("hh:mm:a")
+        Log.e("Los angeles time   ","date is...."+ date.format(calendar.time))
+        Log.e("Los angeles time   ","time is...."+ time.format(calendar.time))
+
+
 
         val binding: IntroductionActivityViewBinding = DataBindingUtil.setContentView(
             this, R.layout.introduction_activity_view)

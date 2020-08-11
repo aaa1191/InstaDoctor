@@ -1,2 +1,2 @@
-package com.softgates.instadoctor.joinsession
+package com.softgates.doctor.joinsession
 

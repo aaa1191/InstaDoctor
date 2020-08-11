@@ -12,7 +12,7 @@
 
         <variable
             name="clickListener"
-            type="com.softgates.instadoctor.doctorprofile.OnClick" />
+            type="com.softgates.instadoctor.setting.OnClickss" />
 
     </data>
 
@@ -75,6 +75,7 @@
                 android:layout_marginEnd="@dimen/ten"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:onClick="@{() -> clickListener.onRenew(viewModel,index)}"
                 />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

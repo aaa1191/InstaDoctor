@@ -63,6 +63,9 @@
         <action
             android:id="@+id/action_profile_to_addPaymentView"
             app:destination="@id/addPaymentView" />
+        <action
+            android:id="@+id/action_profile_to_webView"
+            app:destination="@id/webView" />
     </fragment>
     <fragment
         android:id="@+id/termConditionFragment"
@@ -74,6 +77,9 @@
         <action
             android:id="@+id/action_termConditionFragment_to_whoVisitView"
             app:destination="@id/whoVisitView" />
+        <action
+            android:id="@+id/action_termConditionFragment_to_webView"
+            app:destination="@id/webView" />
     </fragment>
     <fragment
         android:id="@+id/customerSupportView"
@@ -178,6 +184,18 @@
         android:label="ThankuScreenView" />
 
     <fragment
+        android:id="@+id/webView"
+        android:name="com.softgates.instadoctor.util.WebViewFragment"
+        android:label="WebView"
+        >
+
+    <argument
+        android:name="title"
+        app:argType="string"/>
+
+    </fragment>
+
+    <fragment
         android:id="@+id/addPaymentView"
         android:name="com.softgates.instadoctor.addpayment.AddPaymentView"
         android:label="AddPaymentView" />
@@ -212,6 +230,12 @@
         <action
             android:id="@+id/action_chooseDoctorView_to_doctorProfileFragment"
             app:destination="@id/doctorProfileFragment" />
+        <action
+            android:id="@+id/action_chooseDoctorView_to_paymentSummeryView"
+            app:destination="@id/paymentSummeryView" />
+        <action
+            android:id="@+id/action_chooseDoctorView_to_scheduleAppointmentView"
+            app:destination="@id/scheduleAppointmentView" />
     </fragment>
     <fragment
         android:id="@+id/paymentSummeryView"
@@ -285,7 +309,11 @@
     <fragment
         android:id="@+id/setting"
         android:name="com.softgates.instadoctor.setting.SettingView"
-        android:label="SettingView" />
+        android:label="SettingView" >
+        <action
+            android:id="@+id/action_setting_to_prescription_View"
+            app:destination="@id/prescription_View" />
+    </fragment>
     <fragment
         android:id="@+id/myChildView"
         android:name="com.softgates.instadoctor.mychild.MyChildView"

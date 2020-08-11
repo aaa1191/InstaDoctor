@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -80,22 +81,53 @@ class ChooseDoctorView : Fragment() {
                     NavHostFragment.findNavController(this).navigate(action)
                     viewModel.complete()*/
             }
-        })
+            else if (type==2)
+            {
+                if(data.doc_online_status!!.equals("1"))
+                {
+                    sharedPreferences.edit { putString(com.softgates.instadoctor.util.Constant.DOCID,data.id.toString()) }
+                    sharedPreferences.edit { putString(com.softgates.instadoctor.util.Constant.DOCNAME,data.doc_name.toString()) }
+                    sharedPreferences.edit { putString(com.softgates.instadoctor.util.Constant.MEETINGTYPE,com.softgates.instadoctor.util.Constant.MEET) }
 
+                    val action = ChooseDoctorViewDirections.actionChooseDoctorViewToPaymentSummeryView()
+                    NavHostFragment.findNavController(this).navigate(action)
+                    viewModel.complete()
+                }
+               else if(data.doc_online_status!!.equals("0"))
+                {
+                    sharedPreferences.edit { putString(com.softgates.instadoctor.util.Constant.DOCID,data.id.toString()) }
+                    sharedPreferences.edit { putString(com.softgates.instadoctor.util.Constant.DOCNAME,data.doc_name.toString()) }
+                    sharedPreferences.edit { putString(com.softgates.instadoctor.util.Constant.MEETINGTYPE,com.softgates.instadoctor.util.Constant.BOOK) }
+                    val action = ChooseDoctorViewDirections.actionChooseDoctorViewToScheduleAppointmentView()
+                    NavHostFragment.findNavController(this).navigate(action)
+                    viewModel.complete()
+                }
+                else
+                {
+                    Log.e("DOCTORLIST","doctorlist is...."+data.toString())
+                    val action = ChooseDoctorViewDirections.actionChooseDoctorViewToDoctorProfileFragment()
+                    action.doctorlist = data as DoctorList
+                    NavHostFragment.findNavController(this).navigate(action)
+                    viewModel.complete()
+                }
+            }
+        })
 
         viewModel.GetOnlinelist.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             adapter.submitList(it)
             adapter.notifyDataSetChanged()
         })
 
-
-
+        binding.backbtn.setOnClickListener {
+            Log.e("ONBACKPRESSED","onbackpressed is called")
+            (activity as HomeActivity).onbackpressed()
+        }
 
         binding.onlinerecyclerview?.adapter = adapter
-
         viewModel.message.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             Toast.makeText(activity as AppCompatActivity,it.toString(), Toast.LENGTH_SHORT).show()
         })
+
         viewModel.status.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             when (it) {
                 ApiStatus.LOADING -> {

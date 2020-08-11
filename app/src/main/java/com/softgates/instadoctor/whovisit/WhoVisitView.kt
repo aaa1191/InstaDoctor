@@ -1,8 +1,8 @@
 package com.softgates.instadoctor.whovisit
-
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +13,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
+import com.softgates.instadoctor.activity.HomeActivity
 import com.softgates.instadoctor.databinding.TermuseViewBinding
 import com.softgates.instadoctor.databinding.WhovisitViewBinding
-import com.softgates.instadoctor.termcondition.TermConditionFragmentDirections
 import com.softgates.instadoctor.util.Constant
 
 class WhoVisitView : Fragment() {
@@ -36,6 +36,17 @@ class WhoVisitView : Fragment() {
             inflater, R.layout.whovisit_view, container, false)
         sharedPreferences =   (activity as AppCompatActivity).getSharedPreferences(Constant.SHAREDPREFERENCENAME, Context.MODE_PRIVATE)
 
+        if(sharedPreferences.getString(Constant.PATIENTGENDER,"").equals("Female"))
+        {
+            binding.imgone.setImageResource(R.drawable.female_icon)
+            binding.patientname.setText("Mrs. "+sharedPreferences.getString(Constant.PATIENTNAME,""))
+        }
+        else
+        {
+            binding.imgone.setImageResource(R.drawable.male_icon)
+            binding.patientname.setText("Mr. "+sharedPreferences.getString(Constant.PATIENTNAME,""))
+        }
+
         binding.childregister.setOnClickListener {
 
         }
@@ -47,8 +58,25 @@ class WhoVisitView : Fragment() {
         }
         binding.mychildarrow.setOnClickListener {
             sharedPreferences.edit { putInt(Constant.CHILDSTATUS,1) }
-            val action = WhoVisitViewDirections.actionWhoVisitViewToMyChildView()
-            NavHostFragment.findNavController(this).navigate(action)
+
+            Log.e("NOOFPATIENT","no of patient....."+sharedPreferences.getInt(Constant.NOOFPATIENTCHILD,0))
+            if(sharedPreferences.getInt(Constant.NOOFPATIENTCHILD,0)==0)
+            {
+                val action = WhoVisitViewDirections.actionWhoVisitViewToRegisterChildView2()
+                NavHostFragment.findNavController(this).navigate(action)
+
+            }
+            else
+            {
+                val action = WhoVisitViewDirections.actionWhoVisitViewToMyChildView()
+                NavHostFragment.findNavController(this).navigate(action)
+            }
+
+        }
+
+        binding.backbtn.setOnClickListener {
+            Log.e("ONBACKPRESSED","onbackpressed is called")
+            (activity as HomeActivity).onbackpressed()
         }
         return  binding.root
     }

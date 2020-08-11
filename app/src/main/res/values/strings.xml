@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">InstaDoctor</string>
+    <string name="app_name">Patient</string>
     <string name="emailaddress">Email Address</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
@@ -21,7 +21,7 @@
     <string name="dateofbirth">Date of birth</string>
     <string name="resetyourpswordtxt">Please enter your email address and we will send you a link to reset your password</string>
     <string name="recovermypassword">Recover my password</string>
-    <string name="introone">Meet Doctors from \n hospitals near you</string>
+    <string name="introone">Meet Doctors\n from hospitals near you</string>
     <string name="introtwo">Medicine delivery \n from nearest Pharmacy</string>
     <string name="introthree">See what others \n say about your doctor</string>
     <string name="skip">Skip</string>
@@ -57,7 +57,7 @@
     <string name="gethelpquickly">Get help Quickly</string>
     <string name="browseourfaqs">Browse our FAQs</string>
     <string name="livechartsupport">Live chat support</string>
-    <string name="sendamessage">Send us a message</string>
+    <string name="sendamessage">Send us an email</string>
     <string name="callsupporttwofourseven">Call support 24/7</string>
     <string name="passwordinformation">Password Information</string>
     <string name="eightcharacterminimum">8 Characters Minimum</string>
@@ -196,6 +196,13 @@
     <string name="settings_switch_domain">Switch domain</string>
     <string name="settings_hide_screen_share_toolbar_annotation">Hide annotation button in screen share</string>
     <string name="settings_hide_screen_share_toolbar_stopshare">Hide stopshare button in screen share</string>
+    <string name="commingsoon" translatable="false">Coming Soon</string>
+    <string name="privacypolicy">Privacy Policy</string>
 
+
+    <string-array name="realms_list">
+        <item>us1</item>
+        <item>ie1</item>
+    </string-array>
 
 </resources>

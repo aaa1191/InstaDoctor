@@ -42,8 +42,6 @@
             app:layout_constraintStart_toEndOf="@+id/imageview"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-
         <androidx.appcompat.widget.AppCompatRatingBar
             android:id="@+id/ratingbar"
             android:layout_width="wrap_content"
@@ -52,6 +50,7 @@
             style = "?android:attr/ratingBarStyleSmall"
             app:setRating="@{viewModel.review_stars}"
             android:layout_marginStart="@dimen/ten"
+            android:theme="@style/RatingBar"
             app:layout_constraintTop_toBottomOf="@+id/username"
             app:layout_constraintStart_toEndOf="@+id/imageview"
             />

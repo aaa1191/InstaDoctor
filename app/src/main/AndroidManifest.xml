@@ -3,11 +3,24 @@
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.softgates.instadoctor">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+
     <dist:module dist:instant="true" />
 
+<!--
+    android:name="androidx.multidex.MultiDexApplication"
+-->
+
     <application
-        android:name="androidx.multidex.MultiDexApplication"
+        android:name=".twillo.TwilioApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -30,6 +43,16 @@
             />
 
         <activity android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/blackNoactionbar"
+            />
+
+        <activity android:name=".twillo.ChannelActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/blackNoactionbar"
+            />
+
+        <activity android:name=".twillo.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/blackNoactionbar"
             />
@@ -61,7 +84,7 @@
         </provider>
 
         <activity
-            android:name=".zoom.ui.APIUserStartJoinMeetingActivity"
+            android:name=".demoo.ui.APIUserStartJoinMeetingActivity"
             android:icon="@drawable/ic_launcher"
             android:label="@string/app_name"
             android:theme="@style/ZMTheme.MainWindow">

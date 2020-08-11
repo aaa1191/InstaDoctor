@@ -45,8 +45,9 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             app:layout_constraintTop_toBottomOf="@+id/customersupporttxt"
+            android:layout_marginTop="100dp"
             >
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -58,91 +59,92 @@
                 android:layout_marginTop="@dimen/ten">
 
 
-                <RelativeLayout
-                    android:id="@+id/malefemalelayout"
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:id="@+id/gendertypelayout"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tellushowtxt"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginTop="@dimen/fourty">
+                    android:layout_marginTop="@dimen/fourty"
+                    app:layout_constraintEnd_toEndOf="parent">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginStart="@dimen/fourty">
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/malebtn"
+                        android:layout_width="140dp"
+                        android:layout_height="155dp"
+                        android:layout_marginEnd="@dimen/ten"
+                        app:cardBackgroundColor="@color/gray"
+                        app:cardCornerRadius="@dimen/fifteen">
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/maleicon"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/male_icon"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            />
-
-                       <androidx.appcompat.widget.AppCompatTextView
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="@string/male"
-                           android:textSize="@dimen/textsize_fourteen"
-                           android:textColor="@color/black"
-                           app:fontFamily="@font/poppin_semi_bold"
-                           android:layout_marginTop="@dimen/ten"
-                           app:layout_constraintStart_toStartOf="@+id/maleicon"
-                           app:layout_constraintEnd_toEndOf="@+id/maleicon"
-                           app:layout_constraintTop_toBottomOf="@+id/maleicon"
-                           />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="@dimen/fourty">
-
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/femaleicon"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/female_icon"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            />
+                        <ImageView
+                            android:layout_width="@dimen/malefemaleimg"
+                            android:layout_height="75dp"
+                            android:layout_gravity="center|top"
+                            android:layout_marginTop="@dimen/twoenty"
+                            android:src="@drawable/male_icon" />
 
                         <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/maletxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/male"
+                            android:layout_gravity="bottom|center"
+                            android:layout_marginBottom="@dimen/five"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/textsize_etn"
+                            android:fontFamily="@font/poppin_reg"
+                            android:textStyle="bold"
+                            />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/female"
+                        android:layout_width="140dp"
+                        android:layout_height="155dp"
+                        android:layout_marginStart="@dimen/fifteen"
+                        app:cardBackgroundColor="@color/gray"
+                        app:cardCornerRadius="@dimen/fifteen">
+
+
+                        <ImageView
+                            android:layout_width="@dimen/malefemaleimg"
+                            android:layout_height="@dimen/malefemaleimg"
+                            android:src="@drawable/female_icon"
+                            android:layout_gravity="center|top"
+                            android:layout_marginTop="@dimen/twoenty"                />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/femaletxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/female"
-                            android:textSize="@dimen/textsize_fourteen"
-                            android:textColor="@color/black"
-                            app:fontFamily="@font/poppin_semi_bold"
-                            android:layout_marginTop="@dimen/ten"
-                            app:layout_constraintStart_toStartOf="@+id/femaleicon"
-                            app:layout_constraintEnd_toEndOf="@+id/femaleicon"
-                            app:layout_constraintTop_toBottomOf="@+id/femaleicon"
+                            android:layout_gravity="bottom|center"
+                            android:layout_marginBottom="@dimen/ten"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/textsize_etn"
+                            android:fontFamily="@font/poppin_reg"
+                            android:textStyle="bold"
                             />
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
 
-                </RelativeLayout>
+                </LinearLayout>
 
-            <!--    <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/registerchildimg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="200dp"
-                    android:padding="@dimen/fifteen"
-                    android:src="@drawable/registerchild"
 
-                    />-->
+                <!--    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/registerchildimg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="200dp"
+                        android:padding="@dimen/fifteen"
+                        android:src="@drawable/registerchild"
+
+                        />-->
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/nameedittxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/malefemalelayout"
+                    app:layout_constraintTop_toBottomOf="@+id/gendertypelayout"
                     android:layout_marginTop="@dimen/fourty"
                     android:theme="@style/TextLabel"
                     android:fontFamily="@font/poppin_reg"

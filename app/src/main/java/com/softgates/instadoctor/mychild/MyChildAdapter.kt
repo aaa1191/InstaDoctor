@@ -1,5 +1,4 @@
 package com.softgates.instadoctor.mychild
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil

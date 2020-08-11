@@ -3,6 +3,7 @@ package com.softgates.instadoctor.createaccount
 import android.app.Application
 import android.content.SharedPreferences
 import android.util.Log
+import androidx.core.content.edit
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -173,10 +174,24 @@ class CreateAccountViewModel (val sharedPreferences: SharedPreferences,
                     if(response.status == Constant.SUCCEESSSTATUSTWOHUNDRED)
                     {
                         Log.e(Constant.APIRESPONSE,"registration api response success one one one is......")
-
+                        sharedPreferences.edit { putString(Constant.LOGINSIGNUPCHECK,"1") }
+                        sharedPreferences.edit { putString(Constant.USERTOKEN, response.data!!.token.toString()) }
+                        sharedPreferences.edit { putString(Constant.USEREMAIL, response.data!!.patient_email.toString()) }
+                        sharedPreferences.edit { putString(Constant.PATIENTID, response.data!!.patient_id.toString()) }
+                        sharedPreferences.edit { putString(Constant.PATIENTNAME, response.data!!.patient_name.toString()) }
+                        sharedPreferences.edit { putString(Constant.PATIENTGENDER, response.data!!.patient_gender.toString()) }
+                        sharedPreferences.edit { putString(Constant.USERPHONE, response.data!!.phone.toString()) }
+                        sharedPreferences.edit { putString(Constant.USERADDRESSONE, response.data!!.address.toString()) }
+                        sharedPreferences.edit { putString(Constant.USERADDRESSTWO, response.data!!.address2.toString()) }
+                        sharedPreferences.edit { putString(Constant.USERCITY, response.data!!.city.toString()) }
+                        sharedPreferences.edit { putString(Constant.USERSTATE, response.data!!.state.toString()) }
+                        sharedPreferences.edit { putString(Constant.USERZIPCODE, response.data!!.zipcode.toString()) }
                         // _message.value= response.message
                       //  _navigateVerification.value=1
-                      _message.value= response.message!!.toString()
+
+                        Log.e(Constant.APIRESPONSE,"registration api response success one one one is......")
+
+                        _message.value= response.message!!.toString()
                         _navigateActivity.value =1
 
                     }

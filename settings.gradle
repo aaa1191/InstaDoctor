@@ -1,2 +1,2 @@
 rootProject.name='InstaDoctor'
-include ':app', ':commonlib', ':mobilertc'
+include ':app', ':commonlib', ':mobilertc', ':paytabs_sdk-v4.0.1'

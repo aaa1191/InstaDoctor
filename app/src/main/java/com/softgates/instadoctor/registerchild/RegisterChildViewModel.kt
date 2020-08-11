@@ -50,6 +50,10 @@ class RegisterChildViewModel (val sharedPreferences: SharedPreferences,
     val month : LiveData<Int?>
         get() = _month
 
+    private val _gender= MutableLiveData<String>()
+    val gender: LiveData<String>
+        get() = _gender
+
     init {
         _name.value=""
         _year.value=0
@@ -59,6 +63,11 @@ class RegisterChildViewModel (val sharedPreferences: SharedPreferences,
 
     fun complete() {
 
+    }
+
+    fun setGender(value:String)
+    {
+        _gender.value = value
     }
 
     fun onTextChangedName(s: CharSequence, start: Int, before: Int, count: Int) {
@@ -112,14 +121,16 @@ class RegisterChildViewModel (val sharedPreferences: SharedPreferences,
             coroutineScope.launch {
                 // Get the Deferred object for our Retrofit request
                 //Log.e("RESPONSE","email...."+email.value.toString()+"...pin...")
-                var getPropertiesDeferred = InstaDoctorApi.retrofitService.registerChild("add_child",token.toString(),name.value.toString(),year.value.toString(),month.value.toString(),email.toString(),"2020-06-06","male")
+                var getPropertiesDeferred = InstaDoctorApi.retrofitService.registerChild("add_child",token.toString(),name.value.toString(),year.value.toString(),month.value.toString(),email.toString(),"2020-07-07",gender.value.toString())
                 try {
                     val response = getPropertiesDeferred.await()
                     Log.e(Constant.APIRESPONSE,"registration api response is......"+response.toString())
                     if(response.status == Constant.SUCCEESSSTATUSTWOHUNDRED)
                     {
-                        Log.e(Constant.APIRESPONSE,"registration api response success one one one is......")
-                        sharedPreferences.edit { putInt(Constant.CHILDID,response.data!!.child_id!!) }
+                        Log.e(Constant.APIRESPONSE,"registration child api response success one one one is......"+response.toString())
+                        sharedPreferences.edit { putInt(Constant.CHILDID,response.data!!.get(0).child_id!!.toInt()) }
+                        sharedPreferences.edit { putInt(Constant.NOOFPATIENTCHILD, response.data!!.get(0).child_count!!.toInt()) }
+
                         _navigateActivity.value=1
                         _message.value= response.message!!.toString()
                     }
@@ -131,7 +142,7 @@ class RegisterChildViewModel (val sharedPreferences: SharedPreferences,
                 } catch (e: Exception) {
                     _status.value = ApiStatus.ERROR
                     _message.value= "Api Failure "+e.message
-                    Log.e(Constant.APIRESPONSE,"registration api failure is......"+e.toString())
+                    Log.e(Constant.APIRESPONSE,"registration child api failure is......"+e.toString())
                 }
             }
         }

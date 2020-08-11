@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.softgates.instadoctor.choosedoctor.ChooseDoctorViewModel
 
 class MyChildViewModelFactory (val sharedPreferences: SharedPreferences,
                                private val application: Application

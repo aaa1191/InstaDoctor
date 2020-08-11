@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.databinding.DataBindingUtil
@@ -16,6 +17,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
+import com.softgates.instadoctor.activity.HomeActivity
 import com.softgates.instadoctor.databinding.PaymentsummeryViewBinding
 import com.softgates.instadoctor.databinding.PrescriptionViewBinding
 import com.softgates.instadoctor.mychild.*
@@ -57,6 +59,18 @@ class Prescription_View : Fragment() {
             }
         })
 
+        viewModel.message.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            Toast.makeText(activity as AppCompatActivity,it.toString(), Toast.LENGTH_SHORT).show()
+        })
+
+        viewModel.notifyItem.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                if (it == 1) {
+                    binding.viewModel = viewModel
+                }
+            }
+        })
+
         viewModel.prescriptionlist.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             mychildadapter.submitList(it)
             mychildadapter.notifyDataSetChanged()
@@ -67,6 +81,11 @@ class Prescription_View : Fragment() {
         viewModel.notifyItem.observe(viewLifecycleOwner, Observer {
             binding.prescriptionrecyclerview.adapter?.notifyItemChanged(it)
         })
+
+        binding.backbtn.setOnClickListener {
+            Log.e("ONBACKPRESSED","onbackpressed is called")
+            (activity as HomeActivity).onbackpressed()
+        }
 
         return  binding.root
     }

@@ -39,6 +39,8 @@
              app:layout_constraintTop_toTopOf="parent"
              app:layout_constraintEnd_toEndOf="parent"
              app:background="@{viewModel.doc_online_status}"
+             android:onClick="@{() -> clickListener.ontype(viewModel,index)}"
+
              >
 
 
@@ -159,6 +161,7 @@
             app:setRating="@{viewModel.avg_rating}"
             style = "?android:attr/ratingBarStyleSmall"
             android:layout_marginStart="@dimen/fifteen"
+            android:theme="@style/RatingBar"
             app:layout_constraintTop_toBottomOf="@+id/profession"
             app:layout_constraintStart_toEndOf="@+id/imageview"
             />

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.softgates.instadoctor.chatsupport.ChatSupportViewModel" />
+    </data>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/homebg">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/homebg"
+            android:paddingBottom="@dimen/twoenty">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/backbtn"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:src="@drawable/backbtn_back"
+                android:layout_marginTop="@dimen/twoenty"
+                android:layout_marginStart="@dimen/twoenty"
+                />
+
+            <ImageView
+                android:id="@+id/tickimg"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:layout_constraintTop_toBottomOf="@+id/backbtn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/twoenty"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/felttextview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="If you are comfortable with our team kindly drop your message"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="@dimen/textsize_sixteen"
+                app:fontFamily="@font/poppin_reg"
+                android:layout_marginStart="@dimen/fifty"
+                android:layout_marginEnd="@dimen/fifty"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tickimg" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/phonenolayout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="@dimen/sixtyfive"
+                android:layout_marginEnd="@dimen/sixtyfive"
+                app:cardBackgroundColor="#f2f1f6"
+                android:layout_marginTop="@dimen/fifteen"
+                app:layout_constraintTop_toBottomOf="@+id/felttextview">
+
+                <EditText
+                    android:id="@+id/phoneno"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    app:layout_constraintTop_toBottomOf="@+id/felttextview"
+                    android:onTextChanged="@{viewModel.onTextChangedMsg}"
+                    android:padding="@dimen/ten"
+                    android:gravity="top"
+                    android:hint="Enter Phone number"
+                    android:text="@{viewModel.msg}" />
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/addcomment"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginStart="@dimen/sixtyfive"
+                android:layout_marginEnd="@dimen/sixtyfive"
+                app:cardBackgroundColor="#f2f1f6"
+                android:layout_marginTop="@dimen/fifteen"
+                app:layout_constraintTop_toBottomOf="@+id/phonenolayout">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:onTextChanged="@{viewModel.onTextChangedMsg}"
+                    android:padding="@dimen/ten"
+                    android:gravity="top"
+                    android:hint="Enter Message here"
+                    android:text="@{viewModel.msg}" />
+
+            </androidx.cardview.widget.CardView>
+
+            <RelativeLayout
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:layout_constraintTop_toBottomOf="@+id/addcomment"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@drawable/gradient_lightcreate_account"
+                android:layout_marginTop="@dimen/thirty"
+                android:layout_marginStart="@dimen/fifty"
+                android:onClick="@{()-> viewModel.submit()}"
+                android:layout_marginEnd="@dimen/fifty">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/sumbit"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppin_semi_bold"
+                    android:textSize="@dimen/textsize_etn"
+                    android:textColor="@color/orange"
+                    />
+            </RelativeLayout>
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

@@ -7,6 +7,12 @@ data class Data(
     @Json(name="patient_id")
     var patient_id: Int? = null,
 
+    @Json(name="patient_name")
+    var patient_name: String? = "",
+
+    @Json(name="patient_gender")
+    var patient_gender: String? = "",
+
     @Json(name="patient_email")
     var patient_email: String? = null,
 
@@ -17,20 +23,23 @@ data class Data(
     var token: String? = null,
 
     @Json(name="phone")
-    var phone: String? = null,
+    var phone: String? = "",
 
     @Json(name="address")
-    var address: String? = null,
+    var address: String? = "",
 
     @Json(name="address2")
-    var address2: String? = null,
+    var address2: String? = "",
 
     @Json(name="city")
-    var city: String? = null,
+    var city: String? = "",
 
     @Json(name="state")
-    var state: String? = null,
+    var state: String? = "",
 
     @Json(name="zipcode")
-    var zipcode: String? = null
+    var zipcode: String? = "",
+
+    @Json(name="no_of_child")
+    var no_of_child: Int? = 0
 )

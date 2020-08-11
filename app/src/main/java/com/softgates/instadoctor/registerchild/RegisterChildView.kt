@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softgates.instadoctor.R
+import com.softgates.instadoctor.activity.HomeActivity
 import com.softgates.instadoctor.activity.LoginActivity
 import com.softgates.instadoctor.databinding.RegisterchildViewBinding
 import com.softgates.instadoctor.recoverpassword.RecoverPasswordViewModel
@@ -114,12 +115,22 @@ class RegisterChildView : Fragment() {
         })
 
 
+        binding.malebtn.setOnClickListener {
 
-    /*    binding.addyourchild.setOnClickListener {
+            binding.female.setCardBackgroundColor(resources.getColor(R.color.gray))
+            binding.malebtn.setCardBackgroundColor(resources.getColor(R.color.yellow))
+            binding.femaletxt.setTextColor(resources.getColor(R.color.yellow))
+            binding.maletxt.setTextColor(resources.getColor(android.R.color.white))
+            viewModel.setGender("Male")
+        }
 
-
-
-        }*/
+        binding.female.setOnClickListener {
+            binding.malebtn.setCardBackgroundColor(resources.getColor(R.color.gray))
+            binding.female.setCardBackgroundColor(resources.getColor(R.color.yellow))
+            binding.femaletxt.setTextColor(resources.getColor(android.R.color.white))
+            binding.maletxt.setTextColor(resources.getColor(R.color.yellow))
+            viewModel.setGender("Female")
+        }
 
         viewModel.navigateActivity.observe(viewLifecycleOwner, Observer {
             it?.let {
@@ -129,6 +140,11 @@ class RegisterChildView : Fragment() {
                 }
             }
         })
+
+        binding.backbtn.setOnClickListener {
+            Log.e("ONBACKPRESSED","onbackpressed is called")
+            (activity as HomeActivity).onbackpressed()
+        }
 
         binding.viewModel = viewModel
         return  binding.root

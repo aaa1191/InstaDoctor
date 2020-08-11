@@ -46,8 +46,8 @@ class LoginViewModel (val sharedPreferences: SharedPreferences,
         get() = _password
 
     init {
-        _email.value="mk@gmail.com"
-        _password.value="123456"
+        _email.value=""
+        _password.value=""
         _navigateActivity.value=0
     }
 
@@ -110,13 +110,19 @@ class LoginViewModel (val sharedPreferences: SharedPreferences,
                         sharedPreferences.edit { putString(Constant.USERTOKEN, response.data!!.token.toString()) }
                         sharedPreferences.edit { putString(Constant.USEREMAIL, response.data!!.patient_email.toString()) }
                         sharedPreferences.edit { putString(Constant.PATIENTID, response.data!!.patient_id.toString()) }
+                        sharedPreferences.edit { putString(Constant.PATIENTNAME, response.data!!.patient_name.toString()) }
+                        sharedPreferences.edit { putString(Constant.PATIENTGENDER, response.data!!.patient_gender.toString()) }
                         sharedPreferences.edit { putString(Constant.USERPHONE, response.data!!.phone.toString()) }
+
                         sharedPreferences.edit { putString(Constant.USERADDRESSONE, response.data!!.address.toString()) }
                         sharedPreferences.edit { putString(Constant.USERADDRESSTWO, response.data!!.address2.toString()) }
                         sharedPreferences.edit { putString(Constant.USERCITY, response.data!!.city.toString()) }
+
+                        Log.e("CONTACTINFORMATION","usercity value...."+response.data!!.city.toString())
+
                         sharedPreferences.edit { putString(Constant.USERSTATE, response.data!!.state.toString()) }
                         sharedPreferences.edit { putString(Constant.USERZIPCODE, response.data!!.zipcode.toString()) }
-
+                        sharedPreferences.edit { putInt(Constant.NOOFPATIENTCHILD, response.data!!.no_of_child!!) }
                         _navigateActivity.value=1
                         _message.value= response.message!!.toString()
                     }
